@@ -6,12 +6,17 @@ Use this checklist to track your deployment progress.
 
 ## 📋 Phase 1: Core OS Preparation
 
-- [ ] **Directory structure created**
+- [ ] **Repository cloned**
+  - [ ] `git clone --recursive https://github.com/Tecnocrat/aios-win.git`
+  - [ ] Submodule `server/` present and populated
+  - [ ] `git submodule status` shows correct commit
+
+- [ ] **Directory structure verified**
   - [ ] `C:\aios-supercell\scripts\`
   - [ ] `C:\aios-supercell\config\`
   - [ ] `C:\aios-supercell\data\`
   - [ ] `C:\aios-supercell\logs\`
-  - [ ] `C:\Users\jesus\server\stacks\`
+  - [ ] `C:\aios-supercell\server\stacks\`
 
 - [ ] **OS hardening completed**
   - [ ] Sleep and hibernation disabled
@@ -54,42 +59,33 @@ Use this checklist to track your deployment progress.
 
 ---
 
-## 📋 Phase 3: TLS Certificates
+## 📋 Phase 3: Unified Stack Deployment
 
-- [ ] **Certificate generation**
-  - [ ] Self-signed certificate created
-  - [ ] Private key created
-  - [ ] Certificate covers *.lan domains
-  - [ ] `acme.json` created with restricted permissions
-  - [ ] Certificate imported to Trusted Root (optional)
+- [ ] **05-deploy-all-stacks.ps1 executed**
+  - [ ] TLS certificates generated
+  - [ ] Windows hosts file updated
+  - [ ] Docker network created
+  - [ ] All stacks deployed successfully
+  - [ ] Vault initialized
 
----
+- [ ] **Individual stack verification**
 
-## 📋 Phase 4: Ingress Stack (Traefik)
+### Ingress Stack (Traefik)
 
 - [ ] **Traefik deployment**
-  - [ ] `docker-compose.yml` configured
-  - [ ] `traefik.yml` static config created
-  - [ ] `dynamic/tls.yml` dynamic config created
-  - [ ] Certificates mounted correctly
-  - [ ] Stack deployed: `docker compose up -d`
   - [ ] Traefik container running
   - [ ] Dashboard accessible: https://traefik.lan
   - [ ] Whoami test service accessible: https://whoami.lan
   - [ ] Default password changed
 
----
+### Observability Stack
 
-## 📋 Phase 5: Observability Stack
-
-- [ ] **Prometheus deployment**
-  - [ ] `prometheus.yml` configured
-  - [ ] Alert rules created
+- [ ] **Prometheus**
   - [ ] Container running
   - [ ] Targets discovered and UP
   - [ ] Accessible: https://prometheus.lan
 
-- [ ] **Grafana deployment**
+- [ ] **Grafana**
   - [ ] Container running
   - [ ] Prometheus data source connected
   - [ ] Loki data source connected
@@ -97,23 +93,16 @@ Use this checklist to track your deployment progress.
   - [ ] Default password changed
   - [ ] Dashboards loading
 
-- [ ] **Loki deployment**
-  - [ ] Loki config created
-  - [ ] Container running
-  - [ ] Accessible: https://loki.lan
-
-- [ ] **Promtail deployment**
-  - [ ] Promtail config created
-  - [ ] Container running
+- [ ] **Loki & Promtail**
+  - [ ] Loki container running
+  - [ ] Promtail container running
   - [ ] Logs being shipped to Loki
 
-- [ ] **Exporters running**
+- [ ] **Exporters**
   - [ ] Node Exporter (host metrics)
   - [ ] cAdvisor (container metrics)
 
----
-
-## 📋 Phase 6: Secrets Management (Vault)
+### Secrets Management (Vault)
 
 - [ ] **Vault deployment**
   - [ ] Container running
@@ -121,31 +110,26 @@ Use this checklist to track your deployment progress.
 
 - [ ] **Vault initialization**
   - [ ] Vault initialized
-  - [ ] Unseal keys generated
-  - [ ] Root token generated
-  - [ ] Keys backed up securely
-  - [ ] Vault unsealed
-  - [ ] AppRole auth enabled
-  - [ ] KV v2 secrets engine enabled
-  - [ ] AIOS policy created
+  - [ ] Unseal keys backed up: `C:\aios-supercell\config\vault-unseal-keys.json`
+  - [ ] Root token backed up: `C:\aios-supercell\config\vault-root-token.txt`
+  - [ ] Vault unsealed and healthy
 
 ---
 
-## 📋 Phase 7: Security Hardening
+## 📋 Phase 4: Security Hardening
 
 - [ ] **Credentials changed**
-  - [ ] Traefik dashboard password
+  - [ ] Traefik dashboard password (edit `server/stacks/ingress/docker-compose.yml`)
   - [ ] Grafana admin password
   - [ ] Vault root token secured
 
 - [ ] **Files secured**
   - [ ] Vault unseal keys backed up offline
   - [ ] Root token backed up offline
-  - [ ] Sensitive files NOT in Git
+  - [ ] `.gitignore` excludes sensitive files
 
 - [ ] **Network security**
-  - [ ] Hosts file updated (if using .lan domains)
-  - [ ] IP whitelisting configured (if exposing publicly)
+  - [ ] Hosts file updated with .lan domains
   - [ ] Windows Firewall rules reviewed
 
 - [ ] **BitLocker enabled** (optional)
@@ -154,7 +138,7 @@ Use this checklist to track your deployment progress.
 
 ---
 
-## 📋 Phase 8: Verification Tests
+## 📋 Phase 5: Verification Tests
 
 - [ ] **Container health**
   - [ ] All containers in "Up" status
@@ -186,7 +170,7 @@ Use this checklist to track your deployment progress.
 
 ---
 
-## 📋 Phase 9: Operational Readiness
+## 📋 Phase 6: Operational Readiness
 
 - [ ] **Documentation reviewed**
   - [ ] README.md read
@@ -211,7 +195,7 @@ Use this checklist to track your deployment progress.
 
 ---
 
-## 📋 Phase 10: Next Evolution (Optional)
+## 📋 Phase 7: Next Evolution (Optional)
 
 - [ ] **Overlay mesh networking**
   - [ ] Tailscale or ZeroTier installed

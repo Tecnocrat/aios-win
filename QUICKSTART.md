@@ -7,21 +7,16 @@
 ## ⚡ TL;DR — 5 Commands to Full Stack
 
 ```powershell
-# 1. Bootstrap core OS
+# 1. Clone with submodules
+git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell
+
+# 2. Bootstrap core OS
 C:\aios-supercell\scripts\00-master-bootstrap.ps1
 
-# 2. After restart, configure Ubuntu
-wsl -d Ubuntu bash /mnt/c/aios-supercell/scripts/ubuntu-bootstrap.sh
+# 3. Deploy all stacks (after restart)
+C:\aios-supercell\scripts\05-deploy-all-stacks.ps1
 
-# 3. Generate TLS certificates
-C:\aios-supercell\scripts\generate-tls-certs.ps1
-
-# 4. Deploy all stacks
-cd C:\Users\jesus\server\stacks\ingress; docker compose up -d
-cd C:\Users\jesus\server\stacks\observability; docker compose up -d
-cd C:\Users\jesus\server\stacks\secrets; docker compose up -d
-
-# 5. Initialize Vault
+# 4. Initialize Vault
 C:\aios-supercell\scripts\vault-manager.ps1 -Action init
 ```
 
@@ -57,6 +52,17 @@ Before starting, ensure:
 
 ## 🚀 Step-by-Step Execution
 
+### Step 0: Clone Repository (5 min)
+
+```powershell
+# Clone with submodules
+git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell
+cd C:\aios-supercell
+
+# Verify submodule
+git submodule status
+```
+
 ### Step 1: Core OS Bootstrap (30-60 min)
 
 ```powershell
@@ -88,107 +94,55 @@ C:\aios-supercell\scripts\00-master-bootstrap.ps1
 
 ---
 
-### Step 2: WSL2 Ubuntu Setup (10 min)
+### Step 2: Deploy All Stacks (15 min)
 
 ```powershell
-# Launch Ubuntu
-wsl -d Ubuntu
+# Run unified deployment script
+C:\aios-supercell\scripts\05-deploy-all-stacks.ps1
 ```
 
-Inside Ubuntu:
-```bash
-# Run bootstrap script
-bash /mnt/c/aios-supercell/scripts/ubuntu-bootstrap.sh
+**What happens:**
+1. Generates TLS certificates for *.lan domains
+2. Updates Windows hosts file
+3. Creates Docker network (aios-network)
+4. Deploys Traefik ingress stack
+5. Deploys observability stack (Prometheus, Grafana, Loki)
+6. Deploys Vault secrets stack
+7. Initializes Vault with Shamir unsealing
 
-# Log out and back in
-exit
+**Output:**
 ```
-
-**Verify Docker:**
-```bash
-wsl -d Ubuntu docker ps
-wsl -d Ubuntu docker run hello-world
+✓ TLS certificates generated
+✓ Hosts file updated with .lan domains
+✓ Docker network created
+✓ Traefik ingress deployed
+✓ Observability stack deployed
+✓ Vault deployed and initialized
+✓ All services accessible via HTTPS
 ```
 
 ---
 
-### Step 3: Generate TLS Certificates (2 min)
+### Step 3: Verify Deployment (5 min)
 
 ```powershell
-# Generate self-signed certs for .lan domains
-C:\aios-supercell\scripts\generate-tls-certs.ps1
+# Check all containers
+docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
-# Trust certificate (optional, for browsers)
-Import-Certificate -FilePath "C:\Users\jesus\server\stacks\ingress\certs\lan.crt" `
-    -CertStoreLocation Cert:\LocalMachine\Root
-```
-
----
-
-### Step 4: Deploy Ingress Stack (5 min)
-
-```powershell
-cd C:\Users\jesus\server\stacks\ingress
-docker compose up -d
-
-# Wait 30 seconds for startup
-Start-Sleep -Seconds 30
-
-# Verify
-docker ps | Select-String "aios"
-docker logs aios-traefik --tail 20
-```
-
-**Test:**
-- Open browser: https://traefik.lan (admin:changeme)
-- Test routing: https://whoami.lan
-
----
-
-### Step 5: Deploy Observability Stack (5 min)
-
-```powershell
-cd C:\Users\jesus\server\stacks\observability
-docker compose up -d
-
-# Wait for startup
-Start-Sleep -Seconds 30
-
-# Verify
-docker logs aios-grafana --tail 20
-docker logs aios-prometheus --tail 20
-```
-
-**Test:**
-- Grafana: https://grafana.lan (admin:changeme)
-- Prometheus: https://prometheus.lan
-- Check targets: https://prometheus.lan/targets
-
----
-
-### Step 6: Deploy Vault (5 min)
-
-```powershell
-cd C:\Users\jesus\server\stacks\secrets
-docker compose up -d
-
-# Wait for startup
-Start-Sleep -Seconds 10
-
-# Initialize Vault (FIRST TIME ONLY)
-C:\aios-supercell\scripts\vault-manager.ps1 -Action init
-
-# Check status
-C:\aios-supercell\scripts\vault-manager.ps1 -Action status
+# Test services
+curl https://traefik.lan -k
+curl https://grafana.lan -k
+curl https://prometheus.lan -k
+curl https://vault.lan -k
 ```
 
 **⚠️ CRITICAL: Backup these files NOW:**
 - `C:\aios-supercell\config\vault-unseal-keys.json`
 - `C:\aios-supercell\config\vault-root-token.txt`
 
-**Test:**
+**Access Vault:**
 - Open browser: https://vault.lan
-- Login with token from `vault-root-token.txt`
+- Login with token from `C:\aios-supercell\config\vault-root-token.txt`
 
 ---
 
@@ -239,7 +193,7 @@ Your AIOS supercell is now operational with:
 
 ```powershell
 # 1. Change Traefik password
-# Edit C:\Users\jesus\server\stacks\ingress\docker-compose.yml
+# Edit C:\aios-supercell\server\stacks\ingress\docker-compose.yml
 # Generate new password: htpasswd -nb admin YourNewPassword
 
 # 2. Change Grafana password
