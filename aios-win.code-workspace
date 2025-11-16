@@ -5,8 +5,8 @@
 			"name": "aios-win"
 		},
 		{
-			"path": "C:\\Users\\jesus\\server",
-			"name": "server"
+			"path": "./server",
+			"name": "server (submodule)"
 		}
 	],
 	"settings": {
