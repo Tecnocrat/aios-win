@@ -1,0 +1,18 @@
+{
+	"folders": [
+		{
+			"path": ".",
+			"name": "aios-win"
+		},
+		{
+			"path": "C:\\Users\\jesus\\server",
+			"name": "server"
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/node_modules": true,
+			"**/.git": false
+		}
+	}
+}

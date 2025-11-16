@@ -1,0 +1,23 @@
+﻿# AIOS Windows-specific files
+config/vault-unseal-keys.json
+config/vault-root-token.txt
+config/*.key
+
+# Logs
+logs/
+*.log
+
+# Data and backups
+data/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# VS Code
+.vscode/
+*.code-workspace.bak
+
+# PowerShell
+*.ps1.bak
