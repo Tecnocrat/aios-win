@@ -13,6 +13,7 @@
 		"files.exclude": {
 			"**/node_modules": true,
 			"**/.git": false
-		}
+		},
+		"powershell.cwd": "aios-win"
 	}
 }
