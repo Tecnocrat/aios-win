@@ -18,6 +18,16 @@
 			"**/node_modules": true,
 			"**/.git": false
 		},
-		"powershell.cwd": "🪟 AIOS Win"
+		"powershell.cwd": "🪟 AIOS Win",
+		"dotnet.projects.enableAutomaticRestore": false,
+		"dotnet.projects.excludedFolders": [
+			"**/aios-core/**",
+			"**/server/**"
+		],
+		"omnisharp.enableMsBuildLoadProjectsOnDemand": false,
+		"omnisharp.enableRoslynAnalyzers": false,
+		"cmake.configureOnOpen": false,
+		"cmake.sourceDirectory": "",
+		"C_Cpp.intelliSenseEngine": "disabled"
 	}
 }
