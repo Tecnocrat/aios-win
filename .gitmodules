@@ -1,3 +1,6 @@
 [submodule "server"]
 	path = server
 	url = https://github.com/Tecnocrat/server.git
+[submodule "aios-core"]
+	path = aios-core
+	url = https://github.com/Tecnocrat/AIOS.git

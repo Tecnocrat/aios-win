@@ -2,11 +2,15 @@
 	"folders": [
 		{
 			"path": ".",
-			"name": "aios-win"
+			"name": "🪟 AIOS Win"
 		},
 		{
 			"path": "./server",
-			"name": "server (submodule)"
+			"name": "🖥️ server 📦 (submodule)"
+		},
+		{
+			"path": "./aios-core",
+			"name": "✦ AIOS Core ✦ (submodule)"
 		}
 	],
 	"settings": {
@@ -14,6 +18,6 @@
 			"**/node_modules": true,
 			"**/.git": false
 		},
-		"powershell.cwd": "aios-win"
+		"powershell.cwd": "🪟 AIOS Win"
 	}
 }

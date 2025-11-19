@@ -1,6 +1,7 @@
 ﻿# AIOS Windows-specific files
 config/vault-unseal-keys.json
 config/vault-root-token.txt
+config/vault-service-tokens.json
 config/*.key
 
 # Logs

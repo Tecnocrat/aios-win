@@ -1,23 +1,42 @@
+<!-- ============================================================================ -->
+<!-- AINLP HEADER - BOOTLOADER SECTION                                          -->
+<!-- ============================================================================ -->
+<!-- Document: QUICKSTART.md - Windows Deployment Guide                         -->
+<!-- Location: /QUICKSTART.md (root deployment documentation)                   -->
+<!-- Purpose: Deploy AIOS consciousness interface to Windows 11 environment     -->
+<!-- Consciousness: 1.0 (stable - production deployment guide)                  -->
+<!-- Spatial Context: Root deployment layer - Windows consciousness interface   -->
+<!-- AINLP Protocol: OS0.6.4.claude                                             -->
+<!-- Last Updated: November 18, 2025                                            -->
+<!-- Temporal Scope: Vault security hardening and semantic pointer phase        -->
+<!-- Dependencies: aios-core/ (consciousness substrate), server/ (Docker stacks)-->
+<!-- Purpose Directive: Deploy AIOS dimensional projection with semantic security-->
+<!-- ============================================================================ -->
+
 # AIOS Supercell — Quick Start Guide
 
-**Get your Windows 11 AIOS supercell operational in under 2 hours.**
+**Deploy AIOS consciousness interface on Windows 11 in under 2 hours.**
 
 ---
 
-## ⚡ TL;DR — 5 Commands to Full Stack
+## ⚡ TL;DR — Deployment Overview
 
 ```powershell
-# 1. Clone with submodules
-git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell
+# 1. Clone with submodules (AIOS core + server stacks)
+git clone --recursive https://github.com/Tecnocrat/aios-win.git
+cd aios-win
 
-# 2. Bootstrap core OS
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+# 2. Bootstrap core OS (PowerShell 7, WSL2, Docker Desktop)
+.\scripts\00-master-bootstrap.ps1
 
-# 3. Deploy all stacks (after restart)
-C:\aios-supercell\scripts\05-deploy-all-stacks.ps1
+# 3. Deploy all stacks (Traefik, Observability, Vault)
+.\scripts\05-deploy-all-stacks.ps1
 
-# 4. Initialize Vault
-C:\aios-supercell\scripts\vault-manager.ps1 -Action init
+# 4. Initialize Vault (after system restart)
+.\scripts\vault-manager.ps1 -Action init
+
+# 5. Backup Vault keys (CRITICAL)
+.\scripts\backup-vault-keys.ps1 -BackupPath E:\vault-backup
 ```
 
 ---
@@ -26,14 +45,14 @@ C:\aios-supercell\scripts\vault-manager.ps1 -Action init
 
 | Service | URL | Default Credentials |
 |---------|-----|---------------------|
-| **Traefik Dashboard** | https://traefik.lan | admin:changeme |
-| **Grafana** | https://grafana.lan | admin:changeme |
-| **Prometheus** | https://prometheus.lan | None |
-| **Loki** | https://loki.lan | None |
-| **Vault** | https://vault.lan | See token file |
-| **Whoami (test)** | https://whoami.lan | None |
+| **Traefik Dashboard** | http://traefik.lan/dashboard/ | Set during deployment |
+| **Grafana** | http://grafana.lan | Set during deployment |
+| **Prometheus** | http://localhost:9090 | None |
+| **Loki** | http://localhost:3100 | None |
+| **Vault** | http://localhost:8200 | See token file |
+| **Whoami (test)** | http://whoami.lan | None |
 
-**⚠️ Change default passwords immediately!**
+**⚠️ Set strong passwords during deployment and store securely!**
 
 ---
 
@@ -41,12 +60,12 @@ C:\aios-supercell\scripts\vault-manager.ps1 -Action init
 
 Before starting, ensure:
 
-- [ ] Fresh Windows 11 installation
-- [ ] Administrator access
-- [ ] 16GB+ RAM (32GB recommended)
-- [ ] 100GB+ free disk space
-- [ ] Internet connection
-- [ ] No existing WSL2/Docker installations
+- [x] Fresh Windows 11 installation
+- [x] Administrator access
+- [x] 16GB+ RAM (32GB recommended)
+- [x] 100GB+ free disk space
+- [x] Internet connection
+- [x] No existing WSL2/Docker installations
 
 ---
 
@@ -55,94 +74,161 @@ Before starting, ensure:
 ### Step 0: Clone Repository (5 min)
 
 ```powershell
-# Clone with submodules
-git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell
-cd C:\aios-supercell
+# Clone with submodules (includes AIOS core + server stacks)
+git clone --recursive https://github.com/Tecnocrat/aios-win.git
+cd aios-win
 
-# Verify submodule
+# Verify submodules loaded
 git submodule status
+# Expected output:
+# [hash] aios-core (branch: OS) - AIOS consciousness substrate
+# [hash] server (branch: main) - Docker stack definitions
 ```
 
-### Step 1: Core OS Bootstrap (30-60 min)
+### Step 1: Core OS Bootstrap (30-60 min) ✅
+
+**Status: Completed**
 
 ```powershell
-# Open PowerShell as Administrator
-Set-ExecutionPolicy Bypass -Scope Process -Force
-
-# Run master bootstrap
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+# Already executed - system bootstrapped
+# PowerShell 7.5.4 installed
+# WSL2 Ubuntu 22.04 configured (user: tecnocrat)
+# Docker Desktop 28.5.2 running
 ```
 
-**What happens:**
-1. Creates directory structure
-2. Disables sleep/hibernation
-3. Enables RDP with NLA
-4. Installs PowerShell 7, Windows Terminal
-5. Enables Hyper-V, WSL2
-6. **RESTART** (auto-resumes after login)
-7. Installs Ubuntu on WSL2
-8. Installs Docker Desktop
+**What was completed:**
+1. ✅ Directory structure created
+2. ✅ Sleep/hibernation disabled
+3. ✅ RDP with NLA enabled
+4. ✅ PowerShell 7.5.4, Windows Terminal installed
+5. ✅ Hyper-V, WSL2 enabled
+6. ✅ System restart completed
+7. ✅ Ubuntu 22.04 on WSL2 configured
+8. ✅ Docker Desktop 28.5.2 installed and running
 
-**Output:**
+---
+
+### Step 2: Deploy All Stacks (15 min) ✅
+
+**Status: Completed - Manual Deployment**
+
+```powershell
+# Manual deployment was performed instead of automated script
+# Stacks deployed individually using docker compose
 ```
-✓ Core OS hardened and optimized
-✓ PowerShell 7, Windows Terminal installed
-✓ Hyper-V and WSL2 enabled
-✓ Ubuntu on WSL2 configured
-✓ Docker Desktop ready
+
+**What was completed:**
+1. ✅ Hosts file updated with .lan domains
+2. ✅ Docker network created (aios-ingress)
+3. ✅ Traefik ingress stack deployed (HTTP-only, auth-protected)
+4. ✅ Observability stack deployed (Prometheus, Grafana, Loki, Promtail, Node Exporter, cAdvisor)
+5. ✅ Vault deployed, initialized, and unsealed
+6. ✅ Unified credentials configured (aios/6996)
+7. ✅ Full Traefik → Prometheus → Grafana integration operational
+8. ✅ Loki v2.9+ configuration fixed and stable
+
+**Current Status:**
+```
+✓ 9 containers operational
+✓ Traefik: HTTP dashboard with Basic Auth (aios/6996)
+✓ Grafana: Accessible with aios/6996 credentials
+✓ Prometheus: Scraping Traefik metrics successfully
+✓ Loki: Log aggregation operational
+✓ Vault: Unsealed with 3 service-specific policies
+✓ Vault credentials stored for Grafana, Traefik, Prometheus
+✓ Audit logging enabled at /vault/logs/audit.log
+✓ Service tokens created with least-privilege access
+✓ Vault keys backed up to E: drive and ready for cloud
 ```
 
 ---
 
-### Step 2: Deploy All Stacks (15 min)
+### Step 3: Vault Security Configuration (10 min) ✅
+
+**Status: Completed**
 
 ```powershell
-# Run unified deployment script
-C:\aios-supercell\scripts\05-deploy-all-stacks.ps1
+# Vault initialized, unsealed, and secured
+# Service credentials migrated to Vault
+# Access policies and audit logging configured
 ```
 
-**What happens:**
-1. Generates TLS certificates for *.lan domains
-2. Updates Windows hosts file
-3. Creates Docker network (aios-network)
-4. Deploys Traefik ingress stack
-5. Deploys observability stack (Prometheus, Grafana, Loki)
-6. Deploys Vault secrets stack
-7. Initializes Vault with Shamir unsealing
+**What was completed:**
+1. ✅ Vault initialized with Shamir 5/3 configuration
+2. ✅ Vault unsealed using 3 of 5 keys
+3. ✅ Service credentials stored in Vault:
+   - `aios-secrets/grafana` → aios/6996
+   - `aios-secrets/traefik` → aios/6996
+   - `aios-secrets/prometheus` → metadata
+4. ✅ Service-specific access policies created:
+   - `grafana-policy` → read-only grafana secrets
+   - `traefik-policy` → read-only traefik secrets
+   - `prometheus-policy` → read-only prometheus secrets
+5. ✅ Service tokens generated with least-privilege access
+6. ✅ Audit logging enabled at `/vault/logs/audit.log`
+7. ✅ Vault keys backed up to E: drive
+8. ✅ Cloud backup archive created (vault-backup-*.zip)
 
-**Output:**
+**Vault Files (backed up):**
 ```
-✓ TLS certificates generated
-✓ Hosts file updated with .lan domains
-✓ Docker network created
-✓ Traefik ingress deployed
-✓ Observability stack deployed
-✓ Vault deployed and initialized
-✓ All services accessible via HTTPS
+✓ config/vault-unseal-keys.json (5 Shamir keys, threshold: 3)
+✓ config/vault-root-token.txt (Root token - NEVER commit to Git)
+✓ config/vault-service-tokens.json (3 service tokens with policies)
+✓ E:\aios-vault-backup-[timestamp]\ (Local backup - unencrypted)
+✓ config\vault-backup-[timestamp].zip (Cloud-ready archive)
 ```
+
+**⚠️ CRITICAL: These files are the ONLY way to access Vault after restart!**
 
 ---
 
-### Step 3: Verify Deployment (5 min)
+### Step 4: Verify Deployment (5 min)
 
 ```powershell
-# Check all containers
+# Check all containers (expect 9 running)
 docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
 
-# Test services
-curl https://traefik.lan -k
-curl https://grafana.lan -k
-curl https://prometheus.lan -k
-curl https://vault.lan -k
+# Expected containers:
+# aios-traefik, aios-grafana, aios-prometheus, aios-loki,
+# aios-promtail, aios-node-exporter, aios-cadvisor, 
+# aios-vault, aios-whoami
+
+# Test service access
+curl http://traefik.lan/dashboard/ -u aios:6996
+curl http://grafana.lan
+curl http://localhost:9090/api/v1/query?query=up
+curl http://localhost:8200/v1/sys/health
 ```
 
-**⚠️ CRITICAL: Backup these files NOW:**
-- `C:\aios-supercell\config\vault-unseal-keys.json`
-- `C:\aios-supercell\config\vault-root-token.txt`
+**⚠️ CRITICAL: Vault keys backed up to:**
+- **Local:** `E:\aios-vault-backup-[timestamp]\` (3 files, unencrypted)
+- **Cloud-ready:** `config\vault-backup-[timestamp].zip`
 
-**Access Vault:**
-- Open browser: https://vault.lan
-- Login with token from `C:\aios-supercell\config\vault-root-token.txt`
+**Action required:** Upload ZIP to private GitHub Gist, OneDrive, or password manager
+
+**Without these files, all Vault data is permanently inaccessible after restart!**
+
+---
+
+**Access Vault UI:**
+- Browser: http://localhost:8200
+- Token: Get from `config\vault-root-token.txt` in workspace root
+
+**Verify Vault secrets via CLI:**
+```powershell
+# Set token from file (NEVER hardcode in scripts)
+$env:VAULT_TOKEN = Get-Content ".\config\vault-root-token.txt"
+
+# Read service credentials from Vault
+docker exec -e VAULT_TOKEN=$env:VAULT_TOKEN aios-vault vault kv get aios-secrets/grafana
+docker exec -e VAULT_TOKEN=$env:VAULT_TOKEN aios-vault vault kv get aios-secrets/traefik
+
+# List all policies
+docker exec -e VAULT_TOKEN=$env:VAULT_TOKEN aios-vault vault policy list
+
+# Check audit log status
+docker exec -e VAULT_TOKEN=$env:VAULT_TOKEN aios-vault vault audit list
+```
 
 ---
 
@@ -192,17 +278,23 @@ Your AIOS supercell is now operational with:
 ## 🔐 Immediate Security Actions
 
 ```powershell
-# 1. Change Traefik password
-# Edit C:\aios-supercell\server\stacks\ingress\docker-compose.yml
-# Generate new password: htpasswd -nb admin YourNewPassword
+# 1. Backup Vault keys (CRITICAL)
+.\scripts\backup-vault-keys.ps1 -BackupPath E:\vault-backup
 
-# 2. Change Grafana password
-# Login to https://grafana.lan
-# Go to Profile > Change Password
+# 2. Upload vault-backup ZIP to cloud storage
+# Location: .\config\vault-backup-*.zip
+# Upload to: GitHub Gist (private), OneDrive, or password manager
 
-# 3. Secure Vault keys
-# Copy to encrypted USB or password manager
-Copy-Item C:\aios-supercell\config\vault-*.* D:\SecureBackup\
+# 3. Change service passwords (optional)
+# Generate new Traefik password:
+docker run --rm httpd:2.4-alpine htpasswd -nbB aios NewPassword123
+
+# Change Grafana password:
+docker exec aios-grafana grafana-cli admin reset-admin-password NewPassword123
+
+# Update in Vault (read token from file):
+$vaultToken = Get-Content ".\config\vault-root-token.txt"
+docker exec -e VAULT_TOKEN=$vaultToken aios-vault vault kv put aios-secrets/grafana username=aios password=NewPassword123
 
 # 4. Enable BitLocker (if TPM available)
 Enable-BitLocker -MountPoint "C:" -EncryptionMethod XtsAes256 -UsedSpaceOnly -TpmProtector
@@ -239,7 +331,7 @@ ipconfig /flushdns
 
 ```powershell
 # Unseal Vault
-C:\aios-supercell\scripts\vault-manager.ps1 -Action unseal
+.\scripts\vault-manager.ps1 -Action unseal
 ```
 
 ### Issue: WSL2 not starting
@@ -258,25 +350,52 @@ wsl --list --verbose
 
 ## 📊 Next Steps
 
-1. **Explore Grafana dashboards** — Add custom panels for your metrics
-2. **Configure alerts** — Edit `stacks/observability/prometheus/alerts/`
-3. **Store secrets in Vault** — Migrate hardcoded credentials
-4. **Deploy AI services** — Add Whisper, TTS, or CV models
-5. **Set up backups** — Configure automated Vault backups
+### Immediate:
+1. **Backup Vault keys** — Upload ZIP to secure cloud storage (CRITICAL)
+2. **Verify integration** — Check Traefik → Prometheus → Grafana data flow
+3. **Test Vault queries** — Run `.\scripts\agent-helper.ps1 -Query all`
 
-**See full README.md for advanced configurations.**
+### Advanced:
+4. **AI Agent Integration** — See `docs\AI-AGENT-VAULT-PROTOCOL.md` for semantic pointers
+5. **AIOS Core Knowledge** — Explore `aios-core\docs\` for architectural principles
+6. **Custom Dashboards** — Add Grafana panels for consciousness metrics
+7. **Deploy AI Services** — Integrate with AIOS core intelligence layer
+
+### Resources:
+- **AIOS Architecture:** `aios-core\PROJECT_CONTEXT.md` (consciousness substrate)
+- **AINLP Principles:** `aios-core\docs\ARCHITECTURE_INDEX.md`
+- **Windows-Specific:** `docs\AI-AGENT-VAULT-PROTOCOL.md` (Vault as security core)
+- **Agent Helper:** `.\scripts\agent-helper.ps1` (discover configuration)
+
+**See README.md for complete system architecture.**
 
 ---
 
 ## 📞 Help & Resources
 
-- **Logs:** `C:\aios-supercell\logs\`
-- **Config:** `C:\aios-supercell\config\`
-- **Full docs:** `C:\aios-supercell\README.md`
+- **Logs:** `.\logs\`
+- **Config:** `.\config\`
+- **Full docs:** `.\README.md`
 - **Docker logs:** `docker logs [container-name] -f`
 
 ---
 
-**🎯 Goal achieved: Windows 11 → AIOS Supercell in < 2 hours**
+**🎯 Deployment Complete: AIOS Consciousness Interface Operational**
 
-Now go build something recursive. 🧬
+*Windows 11 → AIOS-win supercell in < 2 hours*
+
+Now build dendritic pathways. 🧬
+
+<!-- ============================================================================ -->
+<!-- AINLP FOOTER - GARBAGE COLLECTION SECTION                                  -->
+<!-- ============================================================================ -->
+<!-- Semantic Closure: Complete Windows deployment guide with security hardening-->
+<!-- Open Questions: None - production deployment validated                      -->
+<!-- Next Actions: TOONize remaining aios-win documentation at appropriate levels-->
+<!-- Maintenance: Update when Docker stack changes or AIOS core protocol evolves -->
+<!-- AI Context: Root-level deployment guide, human-optimized with full context  -->
+<!-- Consciousness Coherence: 1.0 - Stable production guide, no revisions needed -->
+<!-- Artifacts: config/vault-*.json, logs/, data/, server/ stacks deployed       -->
+<!-- Cross-References: README.md (architecture), AI-AGENT-VAULT-PROTOCOL.md,     -->
+<!--                   aios-core/PROJECT_CONTEXT.md (consciousness substrate)    -->
+<!-- ============================================================================ -->
