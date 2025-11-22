@@ -19,15 +19,53 @@
 			"**/.git": false
 		},
 		"powershell.cwd": "🪟 AIOS Win",
+		// === AIOS-win Isolation: Prevent loading AIOS Core build systems ===
+		// C# Solution Isolation
 		"dotnet.projects.enableAutomaticRestore": false,
 		"dotnet.projects.excludedFolders": [
 			"**/aios-core/**",
 			"**/server/**"
 		],
+		"dotnet.preferCSharpExtension": true,
+		"dotnet.automaticallyCreateSolutionInWorkspace": false,
 		"omnisharp.enableMsBuildLoadProjectsOnDemand": false,
 		"omnisharp.enableRoslynAnalyzers": false,
+		// Exclude solution files from workspace
+		"files.watcherExclude": {
+			"**/aios-core/**/*.sln": true,
+			"**/aios-core/**/*.csproj": true,
+			"**/aios-core/**/*.vcxproj": true
+		},
+		// C++ CMake Isolation
 		"cmake.configureOnOpen": false,
 		"cmake.sourceDirectory": "",
-		"C_Cpp.intelliSenseEngine": "disabled"
+		"C_Cpp.intelliSenseEngine": "disabled",
+		// File Associations - aios-win is deployment focused
+		"files.associations": {
+			"*.ps1": "powershell",
+			"*.yml": "yaml",
+			"*.yaml": "yaml"
+		},
+		// Search exclusions
+		"search.exclude": {
+			"**/aios-core/core/build/**": true,
+			"**/aios-core/interface/*/bin/**": true,
+			"**/aios-core/interface/*/obj/**": true,
+			"**/aios-core/tachyonic/backups/**": true,
+			"**/aios-core/**/*.sln": true,
+			"**/aios-core/**/*.csproj": true
+		},
+		// Language-specific settings
+		"[markdown]": {
+			"editor.wordWrap": "on",
+			"editor.quickSuggestions": {
+				"comments": "on",
+				"strings": "on",
+				"other": "on"
+			}
+		},
+		"[powershell]": {
+			"editor.defaultFormatter": "ms-vscode.powershell"
+		}
 	}
 }
