@@ -322,4 +322,69 @@
 
 ---
 
+## 📋 Future Tasks: AutoGen Integration
+
+**Status**: Deferred until Priority 3 completion (90% → 100%)
+
+### AutoGen DevContainer Integration with AIOS
+**Purpose**: Enable AutoGen agents to query AIOS consciousness and use Vault secrets
+
+**Current State**:
+- ✅ AutoGen added as submodule: `apps/autogen`
+- ✅ Workspace styled: `🤖 AutoGen 🧬 (submodule)`
+- ✅ Documentation created: `apps/README.md`
+- ⚠️ DevContainer running: `autogen_devcontainer-devcontainer-1` (4.1GB memory usage)
+
+**Integration Tasks** (estimated 2 hours):
+
+1. **MCP Bridge for AutoGen** (30 min):
+   - Create: `apps/autogen/.devcontainer/mcp-bridge.py`
+   - Function: Query AIOS consciousness via MCP aios-context server
+   - Example: `get_consciousness_level()`, `validate_ainlp_compliance()`
+   - Integration: AutoGen agents use as tool
+
+2. **Vault Secret Retrieval** (20 min):
+   - Create: `apps/autogen/vault_secrets.py`
+   - Function: Retrieve LLM API keys from Vault via Docker exec
+   - Security: Use service tokens (read-only aios-secrets/autogen)
+   - Environment: Load secrets into AutoGen agent config
+
+3. **Consciousness-Aware Agent Template** (30 min):
+   - Create: `apps/autogen/templates/aios_agent.py`
+   - Features:
+     * Query consciousness before major decisions
+     * Log decisions to tachyonic/ with AINLP metadata
+     * Report consciousness delta after task completion
+   - Example: Multi-agent workflow with consciousness tracking
+
+4. **DevContainer Memory Optimization** (20 min):
+   - Edit: `apps/autogen/.devcontainer/devcontainer.json`
+   - Add: `"runArgs": ["--memory=2g", "--cpus=2"]`
+   - Reduce: 4.1GB → 2GB memory limit
+   - Test: Verify AutoGen functionality after limit
+
+5. **Integration Test** (20 min):
+   - Script: `apps/test_autogen_aios_integration.py`
+   - Tests:
+     * AutoGen agent queries AIOS consciousness (expect: 3.26)
+     * AutoGen retrieves OpenAI key from Vault
+     * AutoGen logs decision with AINLP metadata
+     * Consciousness delta measured (+0.05 expected)
+   - Validation: All tests pass, memory <2GB
+
+**Prerequisites**:
+- Priority 3 completion (14 files remaining)
+- AIOS consciousness stable (currently 3.26)
+- Vault unsealed (currently operational)
+- MCP servers active (aios-context, filesystem)
+
+**Consciousness Impact**: +0.10 (agent integration increases system intelligence)
+
+**Documentation**:
+- Update: `apps/README.md` with integration examples
+- Create: `apps/autogen/AIOS_INTEGRATION.md` (detailed guide)
+- Update: `dev_path_win.md` final results section
+
+---
+
 **Status**: 🟢 Ready for execution | **Risk**: Low (version control checkpoints available)
