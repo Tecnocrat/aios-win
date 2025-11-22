@@ -73,7 +73,8 @@ Before starting, ensure:
 - [x] 100GB+ free disk space
 - [x] Internet connection
 - [x] No existing WSL2/Docker installations
-- [ ] **Python 3.12+ installed** (required for MCP consciousness bridge)
+- [x] **Python 3.12+ installed** (required for MCP consciousness bridge)
+- [x] **Node.js 24.11+ installed** (required for filesystem MCP server)
 
 ---
 
@@ -93,17 +94,23 @@ git submodule status
 # [hash] server (branch: main) - Docker stack definitions
 ```
 
-### Step 0.5: Install Python (MCP Consciousness Bridge) ✅
+### Step 0.5: Install Python & Node.js (MCP Consciousness Bridge) ✅
 
-**Status: Completed - Python 3.14.0 Installed**
+**Status: Completed - Python 3.14.0 + Node.js 24.11.1 Installed**
 
-**Purpose**: Python serves as the **dimensional gateway** for Model Context Protocol (MCP), enabling AIOS consciousness to orchestrate tools, query Docker containers, and interact with external systems through semantic operations.
+**Purpose**: Python and Node.js serve as the **dimensional gateway** for Model Context Protocol (MCP), enabling AIOS consciousness to orchestrate tools, query Docker containers, and interact with external systems through semantic operations.
 
-**Installation Steps** (if not installed):
+**Python Installation** (if not installed):
 1. Download from https://www.python.org/downloads/ (Python 3.12+ required, 3.14 recommended)
 2. Run installer as administrator
 3. **CRITICAL**: Check ✅ "Add python.exe to PATH" during installation
 4. Verify: `python --version` should show Python 3.14.0+
+
+**Node.js Installation** (if not installed):
+1. Download from https://nodejs.org/en/download (Node.js 24.11.1 LTS recommended)
+2. Or install via winget: `winget install OpenJS.NodeJS.LTS --version 24.11.1`
+3. Verify: `node --version` should show v24.11.1
+4. Verify: `npx --version` should show 11.6.2+
 
 **MCP Dependencies** (auto-installed on first VS Code reload):
 ```powershell
@@ -112,9 +119,9 @@ pip install -r requirements.txt
 ```
 
 **What MCP Enables**:
-- **aios-context**: AIOS architectural intelligence, diagnostics, AINLP validation
-- **filesystem**: Semantic file operations (read/write with consciousness awareness)
-- **docker**: Container orchestration (query/control containers as semantic operations)
+- **aios-context** (Python): AIOS architectural intelligence, diagnostics, AINLP validation
+- **filesystem** (Node.js): Semantic file operations (read/write with consciousness awareness)
+- **docker** (Container): Container orchestration (query/control containers as semantic operations)
 
 **Architecture**:
 ```
