@@ -393,12 +393,12 @@ Your AIOS supercell is now operational with:
 ## 🔐 Immediate Security Actions
 
 ```powershell
-# 1. Backup Vault keys (CRITICAL)
-.\scripts\backup-vault-keys.ps1 -BackupPath E:\vault-backup
+# 1. Backup Vault keys (CRITICAL) ✅
+# COMPLETED: E:\aios-vault-backup-2025-11-18-0013
 
-# 2. Upload vault-backup ZIP to cloud storage
-# Location: .\config\vault-backup-*.zip
-# Upload to: GitHub Gist (private), OneDrive, or password manager
+# 2. Upload vault-backup ZIP to cloud storage ✅
+# COMPLETED: Vault backup uploaded to personal OneDrive
+# Location: E:\aios-vault-backup-2025-11-18-0013
 
 # 3. Change service passwords (optional)
 # Generate new Traefik password:

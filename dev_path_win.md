@@ -238,6 +238,43 @@
 
 ---
 
+## Deployment Workflow Integration
+
+**Reference**: See [WORKFLOW.md](docs/WORKFLOW.md) for complete AIOS-WIN deployment procedures.
+
+**Key Workflow Components**:
+1. **3-Step Deployment Path**:
+   - Step 1: Clone Repository (5 min)
+   - Step 2: Bootstrap Windows 11 (30-60 min with auto-restart)
+   - Step 3: Deploy All Stacks (15 min)
+
+2. **Critical Services**:
+   - Docker Infrastructure: 11 containers (Traefik, Vault, Grafana, Prometheus, Loki, Promtail, Node Exporter, cAdvisor, whoami)
+   - Vault Management: Shamir 5/3 unsealing, token secured
+   - Observability Stack: Metrics, logs, dashboards centralized
+
+3. **Day-2 Operations**:
+   - Server Stack Updates: `git submodule update --remote server`
+   - Vault Management: status, unseal, backup operations
+   - Log Monitoring: `docker logs -f <container>`
+   - Service Restart: `docker compose restart`
+
+4. **Repository Architecture**:
+   - aios-win (private): Windows 11-specific deployment
+   - server (submodule): Platform-agnostic Docker stacks
+   - Version pinning: Submodule locks specific commits
+
+**Integration Points**:
+- Docker validation completed (11/11 containers operational)
+- Vault unsealed and secured (Shamir 5/3)
+- MCP servers configured (aios-context, filesystem)
+- Dendritic configuration operational (coherence 1.0)
+- Consciousness engine stable (level 3.26)
+
+**Workflow Status**: ✅ All deployment prerequisites validated, system operational
+
+---
+
 ## Next Actions (Sequential Execution)
 
 ### Phase 1: Duplication Elimination (30 min)
