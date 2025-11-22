@@ -22,3 +22,7 @@ desktop.ini
 
 # PowerShell
 *.ps1.bak
+
+# Git diff files
+*.diff
+*.patch
