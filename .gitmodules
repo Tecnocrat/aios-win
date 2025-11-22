@@ -4,3 +4,6 @@
 [submodule "aios-core"]
 	path = aios-core
 	url = https://github.com/Tecnocrat/AIOS.git
+[submodule "apps/autogen"]
+	path = apps/autogen
+	url = https://github.com/Tecnocrat/autogen.git
