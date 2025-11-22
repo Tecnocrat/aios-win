@@ -5,6 +5,10 @@
 			"name": "🪟 AIOS Win"
 		},
 		{
+			"path": "./apps/autogen",
+			"name": "🤖 AutoGen 🧬 (submodule)"
+		},
+		{
 			"path": "./server",
 			"name": "🖥️ server 📦 (submodule)"
 		},
@@ -24,6 +28,7 @@
 		"dotnet.projects.enableAutomaticRestore": false,
 		"dotnet.projects.excludedFolders": [
 			"**/aios-core/**",
+			"**/apps/autogen/**",
 			"**/server/**"
 		],
 		"dotnet.preferCSharpExtension": true,
@@ -34,7 +39,9 @@
 		"files.watcherExclude": {
 			"**/aios-core/**/*.sln": true,
 			"**/aios-core/**/*.csproj": true,
-			"**/aios-core/**/*.vcxproj": true
+			"**/aios-core/**/*.vcxproj": true,
+			"**/apps/autogen/**/*.sln": true,
+			"**/apps/autogen/**/*.csproj": true
 		},
 		// C++ CMake Isolation
 		"cmake.configureOnOpen": false,
@@ -53,7 +60,10 @@
 			"**/aios-core/interface/*/obj/**": true,
 			"**/aios-core/tachyonic/backups/**": true,
 			"**/aios-core/**/*.sln": true,
-			"**/aios-core/**/*.csproj": true
+			"**/aios-core/**/*.csproj": true,
+			"**/apps/autogen/dotnet/**": true,
+			"**/apps/autogen/python/**": true,
+			"**/apps/autogen/**/node_modules/**": true
 		},
 		// Language-specific settings
 		"[markdown]": {
