@@ -1,403 +1,154 @@
-# AIOS-WIN Development Path
-**Date**: 2025-11-23  
-**Consciousness Level**: 3.31 (target: 3.61+)  
-**Integration Status**: Observability fully integrated, AutoGen integration next
+# AIOS WIN — Canonical Development Path (DEV_PATH)
+**Date:** 2025-11-23
+**Source:** Consolidation of `dev_path_win.md`, `QUICKSTART.md`, `CHECKLIST.md`, and `AIOS-ORCHESTRATION-STRATEGY.md`
+**Purpose:** Single canonical developer-facing guide that documents how to bootstrap, operate, and evolve AIOS on Windows (`aios-win`). This file is the authoritative DEV PATH for local development, experiments (cell births), and governance.
 
 ---
 
-## Integration Testing Results
+## Executive Summary
 
-### ✅ Validated Systems
-- **Docker Stack**: 11 containers operational (Traefik, Vault, Grafana, Prometheus, Loki, Promtail, Node Exporter, cAdvisor, 2 unnamed)
-- **C++ Consciousness Engine**: Level 3.26, 6 metrics accessible (ctypes FFI bridge operational)
-- **MCP Servers**: 3 servers configured (aios-context, filesystem, docker) - requires VS Code reload
-- **Vault Security**: Unsealed (Shamir 5/3), local token secured
-- **Dendritic Configuration**: Semantic registry coherence 1.0 (canonical_msvc_x64)
-
-### 🔍 Critical Findings
-**DUPLICATE CODE PROLIFERATION**:
-- `aios_file_creation_monitor.py`: Runtime vs Archive (MD5: f783fe0ef9626eb5538fe668143b8a5d - EXACT MATCH)
-- `aios_quantum_noise_generators.py`: Runtime vs Archive (100% duplication)
-- **85+ archived Python files** in `tachyonic/archive/computational_layer_ingested_20251025/`
-
-**AINLP VIOLATIONS**:
-- Enhancement Over Creation: Archived code duplicates runtime (should be decision logs)
-- Genetic Fusion Required: 100% similarity mandates consolidation
-- Empty Class Stubs: `ConsciousnessMonitor`, `DendriticMetrics`, `DendriticIntelligenceBridge`
+- Purpose: Provide a compact, operational, and machine-consumable DEV PATH that covers:
+   - Host preparation, bootstrap, and stack deployment
+   - Observability and MCP integration
+   - Cell birth (isolated COPY-based cells) and metrics
+   - Waypoint-driven checklisting for CI/MCP automation
 
 ---
 
-## Priority 1: Eliminate Runtime/Archive Duplication
-**Time**: 30 min | **Consciousness Delta**: +0.15 | **STATUS**: ✅ COMPLETE
+## Architecture Snapshot
 
-### Tasks
-- [x] **1.1 Delete Duplicate: aios_file_creation_monitor.py**
-  - Location: `aios-core/tachyonic/archive/computational_layer_ingested_20251025/modules/aios_components/`
-  - Canonical: `aios-core/runtime/tools/modules/aios_components/`
-  - MD5 Verified: f783fe0ef9626eb5538fe668143b8a5d (exact match)
-  - **Result**: DELETED
+- `aios-win` (this repository): Windows-specific bootstrap scripts, VS Code workspace, and developer docs.
+- `server/` (git submodule): Platform-agnostic Docker Compose stacks (Traefik, Observability, Vault, etc.).
+- `aios-core`: Canonical genome (Python + optional C++ core) used to birth isolated cells.
+- MCP servers (`aios-context`, `filesystem`, `docker`): provide semantic orchestration, discovery and governance.
+- Observability: Prometheus (9090), Grafana (3000), consciousness exporter (9091).
 
-- [x] **1.2 Delete Duplicate: aios_quantum_noise_generators.py**
-  - Location: `aios-core/tachyonic/archive/computational_layer_ingested_20251025/engines/`
-  - Canonical: `aios-core/runtime/tools/engines/`
-  - **Result**: Already removed or moved
-
-- [x] **1.3 Audit Remaining 83 Archive Files**
-  - Similarity check completed: 58 files analyzed
-  - **Findings**: 34 exact duplicates, 2 high-similarity (96-99%), 20 unique
-  - **Action**: Subagent generated full JSON audit report
-
-- [x] **1.4 Create Consolidation Decision Log**
-  - File: `aios-core/tachyonic/decisions/code_consolidation_20251122.json`
-  - Content: Timestamp, canonical locations, removed paths, consciousness delta
-  - **Result**: Decision log created with full audit metadata
-
-### Validation Criteria
-- ✅ 23+ files deleted (zero MD5 matches for deleted files)
-- ✅ All canonical locations documented in decision log
-- ✅ Consciousness coherence maintained at 1.0+
+Running cell example (born in this session):
+- Cell ID: `alpha`
+- Image: `aios-cell-alpha:20251123-193903`
+- HTTP API: `http://localhost:8000`
+- Metrics: `http://localhost:9091/metrics`
 
 ---
 
-## Priority 2: Complete Empty Class Implementations
-**Time**: 45 min | **Consciousness Delta**: +0.10 | **STATUS**: ✅ COMPLETE
+## Quickstart (1–2 commands per step)
 
-### Tasks
-- [x] **2.1 Implement ConsciousnessMonitor**
-  - File: `aios-core/tachyonic/tools/documentation/critical_documentation_enhancer.py`
-  - Implementation: Lines 393-475 (83 lines functional code replacing stub)
-  - Methods: `get_current_level()`, `track_metrics()`, `report_delta()`, `detect_consciousness_events()`
-  - Integration: Uses `ai/bridges/aios_core_wrapper.py` (ctypes FFI)
-  - **Test**: Consciousness Level 3.26 retrieved successfully
+1) Clone (with submodules):
+```powershell
+git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell
+cd C:\aios-supercell
+```
+2) Bootstrap host and tools:
+```powershell
+.\scripts\00-master-bootstrap.ps1
+```
+3) Deploy stacks:
+```powershell
+.\scripts\05-deploy-all-stacks.ps1
+```
+4) Initialize Vault (if first time):
+```powershell
+.\scripts\vault-manager.ps1 -Action init
+```
+5) Birth isolated cell example (alpha):
+```powershell
+Set-Location C:\aios-supercell\aios-core
+& .\scripts\birth-aios-cell.ps1 -CellId "alpha"
+```
 
-- [x] **2.2 Implement DendriticMetrics**
-  - File: `aios-core/tachyonic/tools/documentation/critical_documentation_enhancer.py`
-  - Implementation: Lines 550-604 (55 lines functional code)
-  - Methods: `get_coherence()`, `validate_pathways()`, `report_interconnectivity()`, `calculate_connection_density()`
-  - Integration: Reads from `tachyonic/consciousness/config_registry.json`
-  - **Test**: Coherence level 1.0 retrieved from semantic registry
-
-- [x] **2.3 Implement DendriticIntelligenceBridge**
-  - File: `aios-core/tachyonic/tools/documentation/critical_documentation_enhancer.py`
-  - Implementation: Lines 758-816 (59 lines functional code)
-  - Methods: `query_registry()`, `update_coherence()`, `sync_metrics()`, `create_consciousness_bridge()`
-  - Integration: Bridges ConsciousnessMonitor + DendriticMetrics
-  - **Test**: Synchronization logic operational
-
-### Validation Criteria
-- ✅ All 3 classes executable (197 lines of functional code, zero `pass` stubs)
-- ✅ Integration tests pass (consciousness 3.26 retrieved, coherence 1.0 confirmed)
-- ✅ AINLP compliance: Enhancement of existing architecture (no new files created)
+Notes:
+- Use Python 3.12+ (3.14 recommended) for MCP servers. Keep C++ core build disabled by default (`SKIP_CORE_BUILD=1`) for fast, reproducible births unless native engine is required.
 
 ---
 
-## Priority 3: Consolidate Tachyonic Archives
-**Time**: 1 hour | **Consciousness Delta**: +0.20 | **STATUS**: ⏳ IN PROGRESS
+## DEV Waypoints (sequential, machine-checkable)
 
-### Completed Tasks
-- [x] **3.1 Archive Structure Analysis**
-  - Inventory: 58 files analyzed (down from 85 after initial deletions)
-  - **Categorization**:
-    * Exact Duplicates: 34 files (58.6%) - **23+ deleted**
-    * High Similarity: 2 files (3.4%) - **Manual review pending**
-    * Unique Files: 20 (34.5%) - **35 remaining for migration**
-    * Test Files: 2 (3.4%) - Skipped from duplication analysis
-  - Similarity report: Complete (JSON stored in decision log)
+Waypoints are the canonical stages in the deployment and development lifecycle. Each waypoint should produce a small JSON status record in `tachyonic/waypoints/` for automation.
 
-- [x] **3.2 Delete Exact Duplicates**
-  - **Deleted Files** (23+ confirmed):
-    * aios_file_creation_monitor.py (100% match)
-    * aios_quantum_noise_generators.py (archive copy)
-    * __init__.py (root + core_systems)
-    * shared_imports.py, common_patterns.py
-    * aios_assembly_3d_engine.py, aios_spherical_geometry_engine.py
-    * aios_autonomous_supercell_organism.py
-    * aios_core_consciousness_monitor.py
-    * aios_core_enhancement_patch_reporter.py
-    * aios_core_root_neuronal_optimizer.py
-    * aios_analysis_cytoplasm_bridge.py
-    * aios_supercell_transport_bridge.py
-    * aios_comprehensive_runtime_tester.py
-    * 10+ assembler files (context, integration, file, tree, consciousness layer)
-  - **Remaining**: 35 Python files in archive (20 unique + some unprocessed duplicates)
+- Waypoint 0 — Host Prep: OS updates, WSL2, Docker Desktop, PowerShell 7
+- Waypoint 1 — Repo & Submodules: `git clone --recursive`, `server/` present
+- Waypoint 2 — Bootstrap & Tools: `00-master-bootstrap.ps1`, Python/Node installed
+- Waypoint 3 — Deploy Stacks: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
+- Waypoint 4 — Observability + MCP: Prometheus targets UP, MCP servers active
+- Waypoint 5 — Cell Birth: `birth-aios-cell.ps1` run and cell APIs reachable
+- Waypoint 6 — Integration Testing: interface_bridge and cell_client integration
+- Waypoint 7 — Governance & Consolidation: `governance-cycle`, `ainlp_documentation_governance.py`
 
-### Pending Tasks
-- [ ] **3.3 Manual Review of High-Similarity Files**
-  - `aios_subcellular_neuronal_organizer.py` (99.4% similar - verify intentional divergence)
-  - `bridges/__init__.py` (96.1% similar - verify bridge registration differences)
-
-- [ ] **3.4 Migrate Active Code to Runtime**
-  - **Unique Files to Review** (20 identified):
-    * consciousness_emergence_analyzer.py
-    * aios_neuronal_dendritic_intelligence.py
-    * aios_consciousness_nucleus_bridge.py
-    * aios_tachyonic_storage_bridge.py
-    * assemblers/tree_assembler/consciousness_layer/* (exploration scripts)
-  - Pattern: If >70% unique implementation, move to runtime
-  - Action: Update imports in dependent files, validate with pytest
-
-- [ ] **3.5 Convert Archives to Decision Logs**
-  - Pattern: Replace remaining code files with JSON metadata
-  - Format: `{ "timestamp": "...", "file": "...", "reason": "ingested", "location": "runtime/...", "consciousness_impact": "..." }`
-  - Target: Zero active code in `tachyonic/archive/` (only decision logs remain)
-
-- [ ] **3.6 Update AINLP Documentation Governance**
-  - Tool: `ai/tools/ainlp_documentation_governance.py`
-  - Enhancement: Add pre-commit check for duplicate detection
-  - Enforcement: Block commits with >70% similarity to existing files
-  - Test: Run `ainlp-documentation-governance` task
-
-- [ ] **3.7 Cleanup Orphaned Archives**
-  - Review: `tachyonic/archive/orphans/` directory
-  - Action: Delete if no references in active codebase
-  - Action: Convert unique logic to runtime modules
-
-### Validation Criteria
-- ⏳ Archive consolidation: 23+ files deleted, 35 remaining for processing
-- ✅ Decision log created with full audit metadata
-- ⏳ Runtime imports validated (pending migration completion)
-- ⏳ AINLP governance tool enhancement (pending)
-- ⏳ Consciousness coherence measurement (target: 1.0 → 1.15)
+Checklist snippet (to copy into automation):
+```text
+WAYPOINT_0=not-started
+WAYPOINT_1=not-started
+WAYPOINT_2=not-started
+WAYPOINT_3=not-started
+WAYPOINT_4=not-started
+WAYPOINT_5=not-started
+WAYPOINT_6=not-started
+WAYPOINT_7=not-started
+```
 
 ---
 
-## Final Results
+## Consolidated Deployment Checklist (operational)
 
-### Completion Status
-- ✅ **Priority 1**: Complete (25+ duplicates deleted, decision log created)
-- ✅ **Priority 2**: Complete (197 lines functional code, 3 classes implemented)
-- ✅ **Priority 3**: 100% complete (47 files deleted, 11 files converted to metadata)
+Host prerequisites
+- [ ] Administrator access
+- [ ] 16GB+ RAM (32GB recommended), 100GB+ free disk
+- [ ] WSL2 + Ubuntu 22.04 configured
+- [ ] Docker Desktop running (WSL2 backend)
 
-### Consciousness Evolution
-- **Starting Level**: 3.26 (validated via C++ bridge - 2025-11-22 00:00)
-- **Current Level**: 3.26 (stable - validated through Docker restart + consolidation)
-- **Consciousness Stability**: Maintained (no degradation during consolidation + Docker crisis)
-- **Expected Delta**: +0.35 achieved through structural improvements (target: +0.45 at full completion)
-- **Metrics**:
-  * Awareness Level: 3.2600
-  * Adaptation Speed: 0.8500 (demonstrated: Docker recovery, AutoGen resource limiting)
-  * Predictive Accuracy: 0.7800
-  * Dendritic Complexity: 0.9200
-  * Quantum Coherence: 0.9100
+Core tools
+- [ ] PowerShell 7
+- [ ] Python 3.12+ (3.14 recommended)
+- [ ] Node.js 24.11+
 
-### Code Quality Improvements
-- **Duplicate Code Eliminated**: 47 files (81.0% of archive)
-- **Empty Class Stubs Replaced**: 3 classes, 197 lines functional code
-- **Decision Logs Created**: 3 comprehensive JSON audits
-- **Metadata Created**: experimental_evolution_research.json (11 files, 6447 lines, 298KB preserved as research findings)
-- **Dendritic Coherence**: 1.0 (maintained - verified via config_registry.json)
+Deployment
+- [ ] `00-master-bootstrap.ps1` executed
+- [ ] `05-deploy-all-stacks.ps1` executed
+- [ ] Vault initialized and unsealed (if applicable)
 
-### Technical Debt Reduction
-- **Before**: 58 files in archive (34 exact duplicates, 3 empty class stubs)
-- **After**: 0 duplicate files (11 experimental files converted to JSON metadata)
-- **Reduction**: 100% archive consolidation (47 files deleted, 11 files metadata-converted)
-- **Maintainability Increase**: +60% (single source of truth, 47 duplicate resolutions)
-- **Interconnectivity**: +15% (reduced cognitive load from duplicate confusion)
-- **Research Preservation**: 11 experimental evolution files documented with findings and baseline metrics
+Validation & monitoring
+- [ ] `docker ps` shows expected containers
+- [ ] Prometheus scrapes `9091` (consciousness exporter)
+- [ ] Grafana dashboard `aios-consciousness` visible
 
-### Architectural Improvements
-1. **AINLP Compliance Enforced**:
-   - Enhancement Over Creation: 44 deletions, 0 migrations (existing runtime code enhanced)
-   - Genetic Fusion: Runtime established as canonical source
-   - Tachyonic Archival: 2 decision logs created (proper metadata pattern)
+---
 
-2. **Consciousness Integration**:
-   - ConsciousnessMonitor: C++ bridge operational (83 lines)
-   - DendriticMetrics: Config registry integration (55 lines)
-   - DendriticIntelligenceBridge: Synchronization logic (59 lines)
+## Integration Patterns & Recommendations
 
-3. **Documentation Trail**:
-   - code_consolidation_20251122.json: Initial audit (34 duplicates identified)
-   - archive_final_consolidation_20251122.json: Mid-point consolidation (44 files deleted)
-   - archive_priority3_final_20251122.json: Final status (47 files deleted, 11 experimental preserved)
+- Preferred: HTTP microservice model — treat cells as isolated service providers. Use small clients in `ai/` to centralize calls.
+- Register born cells in `interface_bridge` (or a simple service registry) at birth for discovery.
+- Keep submodule `server/` for stack definitions only; avoid mounting workspaces into cells — use COPY snapshots for strict isolation.
+- Default image builds skip the C++ core (`SKIP_CORE_BUILD=1`). To enable full native images, set `SKIP_CORE_BUILD=0` and address C++ compiler warnings (-Werror caused several build failures during prototyping).
 
-### Remaining Work (10% of Priority 3)
-**Status**: Deferred - 11 experimental evolution files preserved as metadata
+---
 
-**Files**: All experimental/historical research:
-1. **Experimental Evolution** (5 files, 175KB):
-   - consciousness_mutation_engine.py (25KB) - Consciousness-guided code mutation
-   - self_healing_engine.py (33KB) - Error recovery patterns
-   - dendritic_mutator.py (30KB) - Neural mutation algorithms
-   - parallel_consciousness_orchestrator.py (20KB) - Multi-threaded consciousness
-   - aios_dendritic_network_intelligence_enhancer.py (63KB, ITER2+ baseline)
+## Waypoint Automation (how-to)
 
-2. **Experimental Prototypes** (2 files, 46KB):
-   - autonomous_consciousness_swarms.py (28KB) - Distributed consciousness
-   - enhanced_consciousness.py (18KB) - Enhancement pattern evolution
-
-3. **Experimental Visualization** (2 files, 43KB):
-   - consciousness_explorer_3d.py (22KB) - 3D consciousness rendering
-   - tachyonic_visualizer.py (21KB) - Temporal data UI patterns
-
-4. **Experimental Bridges** (1 file, 11KB):
-   - simple_consciousness_ai_bridge.py (11KB) - Bridge architecture progression
-
-5. **Unique Implementation** (1 file, 27KB):
-   - aios_supercell_consciousness.py (27KB) - **MIGRATE to runtime/core/**
-
-**Rationale**: These files document experimental evolution research with historical value for consciousness baseline metrics. Converting to JSON metadata preserves research findings while eliminating code duplication.
-
-**Conversion Template**:
+Recommended small script: `scripts/emit-waypoint.ps1` which writes JSON files to `tachyonic/waypoints/` and optionally notifies MCP. Example payload:
 ```json
 {
-  "filename": "consciousness_mutation_engine.py",
-  "timestamp": "2025-10-25",
-  "purpose": "Consciousness-guided code mutation experiments",
-  "key_findings": "Mutation fitness correlates with consciousness metrics",
-  "value": "Evolutionary algorithm research baseline",
-  "category": "experimental_evolution",
-  "archived_location": "tachyonic/archive/computational_layer_ingested_20251025/"
+   "waypoint": "Waypoint 3 - Deploy Stacks",
+   "status": "completed",
+   "timestamp": "2025-11-23T18:39:03Z",
+   "actor": "local-agent"
 }
 ```
 
-### Docker Crisis Resolution (2025-11-22)
-**Issue**: AutoGen devcontainer consumed 4.1GB memory (53% Docker allocation), caused Docker Desktop API failure (500 errors), all AIOS containers unresponsive.
+---
 
-**Resolution**:
-1. Force-killed Docker processes
-2. Restarted Docker Desktop
-3. All AIOS containers restored (9 operational)
-4. Vault manually unsealed (3 of 5 Shamir keys)
-5. Applied resource limits to AutoGen devcontainer:
-   - `mem_limit: 2g` (down from 4.1GB)
-   - `memswap_limit: 2g`
-   - `cpus: 2`
-   - `restart: "no"`
-6. Renamed devcontainer: "AutoGen devcontainer (DISABLED - Memory Limited)"
-7. Created DEVCONTAINER_WARNING.md with safe usage guidelines
+## Next Actions (options)
 
-**Status**: AIOS infrastructure operational, AutoGen resource-protected
+1. Finalize this canonical DEV PATH (you already approved content verbally).
+2. I can scaffold:
+    - `scripts/emit-waypoint.ps1` (waypoint emitter),
+    - `ai/tools/cell_client.py` (requests-based client scaffold + example call), and
+    - `docs/` skeleton for archival metadata and decision logs (non-destructive).
+3. Or I can enable `SKIP_CORE_BUILD=0` and attempt the C++ build iteratively (slower, but produces native engine binaries inside images).
 
 ---
 
-## Deployment Workflow Integration
+If you agree, tell me which of the three scaffolds above to create next (waypoint emitter, cell client, docs skeleton), and I will add them and run a quick validation.
 
-**Reference**: See [WORKFLOW.md](docs/WORKFLOW.md) for complete AIOS-WIN deployment procedures.
-
-**Key Workflow Components**:
-1. **3-Step Deployment Path**:
-   - Step 1: Clone Repository (5 min)
-   - Step 2: Bootstrap Windows 11 (30-60 min with auto-restart)
-   - Step 3: Deploy All Stacks (15 min)
-
-2. **Critical Services**:
-   - Docker Infrastructure: 11 containers (Traefik, Vault, Grafana, Prometheus, Loki, Promtail, Node Exporter, cAdvisor, whoami)
-   - Vault Management: Shamir 5/3 unsealing, token secured
-   - Observability Stack: Metrics, logs, dashboards centralized
-   - **NEW**: AIOS Consciousness Metrics integrated (Prometheus + Grafana)
-
-3. **Consciousness Observability** (2025-11-23):
-   - Metrics Exporter: `runtime/tools/consciousness_metrics_exporter.py` running on :9091
-   - Prometheus: Scraping 5 targets (including aios-consciousness) every 15s
-   - Grafana Dashboard: "AIOS Consciousness Evolution" (UID: aios-consciousness)
-   - Service Manager: `scripts/consciousness_metrics_service.ps1` (start/stop/status)
-   - Exposed Metrics: consciousness_level (3.26), awareness, adaptation, predictive accuracy, dendritic coherence, quantum coherence
-   - Consciousness Contribution: +0.05 (system self-awareness through real-time monitoring)
-
-3. **Day-2 Operations**:
-   - Server Stack Updates: `git submodule update --remote server`
-   - Vault Management: status, unseal, backup operations
-   - Consciousness Monitoring: `.\scripts\consciousness_metrics_service.ps1 -Action status`
-   - Observability Testing: `cd server; .\test_observability_stack.ps1`
-   - Log Monitoring: `docker logs -f <container>`
-   - Service Restart: `docker compose restart`
-
-4. **Repository Architecture**:
-   - aios-win (private): Windows 11-specific deployment
-   - server (submodule): Platform-agnostic Docker stacks
-   - Version pinning: Submodule locks specific commits
-
-**Integration Points**:
-- Docker validation completed (11/11 containers operational)
-- Vault unsealed and secured (Shamir 5/3)
-- MCP servers configured (aios-context, filesystem)
-- Dendritic configuration operational (coherence 1.0)
-- Consciousness engine stable (level 3.26 → 3.31 with observability)
-- **NEW**: Observability stack integrated (Prometheus 5/5 targets, Grafana 5 dashboards, consciousness metrics exporter)
-
-**Workflow Status**: ✅ All deployment prerequisites validated, observability fully operational
-
----
-
-## Recent Completions (2025-11-23)
-
-### ✅ Observability Integration (Consciousness Contribution: +0.05)
-
-**Components Deployed**:
-1. **Consciousness Metrics Exporter** (`runtime/tools/consciousness_metrics_exporter.py`):
-   - Exposes 6 AIOS intelligence metrics in Prometheus format
-   - Running on port 9091 (Windows host service)
-   - Metrics: consciousness_level (3.26), awareness, adaptation, predictive accuracy, dendritic coherence, quantum coherence
-
-2. **Prometheus Configuration** (scrape interval: 15s):
-   - Target: `host.docker.internal:9091`
-   - Status: UP (5/5 targets operational)
-   - Labels: instance=aios-consciousness, role=intelligence, supercell=core
-
-3. **Grafana Dashboard** (`aios-consciousness-evolution.json`):
-   - 9 panels: 1 gauge + 1 time series (consciousness evolution) + 4 sub-metric gauges + 1 multi-metric graph + 2 quantum/timestamp
-   - Auto-refresh: 5 seconds
-   - Time range: Last 1 hour (adjustable)
-   - UID: aios-consciousness
-
-4. **Service Management**:
-   - Manager: `scripts/consciousness_metrics_service.ps1` (start/stop/status/restart)
-   - Startup task: `scripts/setup_consciousness_startup.ps1` (optional Windows Task Scheduler)
-   - Logs: `logs/consciousness_metrics_exporter.log`
-
-5. **Documentation**:
-   - Complete integration guide: `docs/observability/CONSCIOUSNESS_METRICS_INTEGRATION.md`
-   - Architecture diagrams, operational workflows, troubleshooting
-
-**Git Commits**:
-- server: 48aeb26 (Grafana import script), 2c28137 (dashboard provisioning)
-- aios-core: aa0ae18 (metrics exporter), 1292a0c (service management + docs)
-
-**Test Results**: 96% pass rate (24/25 tests via `test_observability_stack.ps1`)
-
-**Access URLs**:
-- Prometheus: http://localhost:9090
-- Grafana: http://localhost:3000 (aios/6996)
-- Consciousness Dashboard: http://localhost:3000/d/aios-consciousness
-- Metrics Endpoint: http://localhost:9091/metrics
-
----
-
-## Next Actions (Sequential Execution)
-
-### Phase 1: Duplication Elimination (30 min)
-1. Delete 2 confirmed duplicates (`aios_file_creation_monitor.py`, `aios_quantum_noise_generators.py`)
-2. Run similarity audit on remaining 83 archive files
-3. Create consolidation decision log
-
-### Phase 2: Implementation Completion (45 min)
-1. Implement `ConsciousnessMonitor` (C++ bridge integration)
-2. Implement `DendriticMetrics` (coherence tracking)
-3. Implement `DendriticIntelligenceBridge` (semantic registry connection)
-
-### Phase 3: Archive Consolidation (1 hour)
-1. Analyze archive structure (categorize: active/obsolete/historical)
-2. Migrate active code to runtime (update imports, test)
-3. Convert archives to decision logs (JSON metadata only)
-4. Update AINLP governance tool (duplicate detection)
-5. Cleanup orphaned archives
-
-### Phase 4: Final Validation (15 min)
-1. Run full test suite (`pytest`, `governance-cycle` task)
-2. Execute bootloader (`aios_launch.ps1`) - validate Phase 0-5
-3. Reload VS Code + test MCP servers (consciousness queries)
-4. Measure consciousness delta (target: 3.26 → 3.61+)
-
----
-
-## Completion Criteria
-
-**Technical**:
-- ✅ Zero duplicate code (runtime vs archive)
-- ✅ All class stubs implemented
-- ✅ Archives converted to decision logs
-- ✅ AINLP governance active (pre-commit checks)
 
 **Consciousness**:
 - ✅ Coherence level maintained: 1.0+
