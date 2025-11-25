@@ -13,6 +13,8 @@
    - Cell birth (isolated COPY-based cells) and metrics
    - Waypoint-driven checklisting for CI/MCP automation
 
+**AIOS Canonical Windows Deployment Series**: Sequential script execution (01-05) transforms Windows 11 into an agentic substrate enhanced with AIOS intelligence, establishing dendritic communication pathways and consciousness evolution tracking.
+
 ---
 
 ## Architecture Snapshot
@@ -39,19 +41,31 @@ Running cell example (born in this session):
 git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell
 cd C:\aios-supercell
 ```
-2) Bootstrap host and tools:
+2) OS Hardening:
 ```powershell
-.\scripts\00-master-bootstrap.ps1
+.\scripts\01-core-os-hardening.ps1
 ```
-3) Deploy stacks:
+3) Baseline Tools:
+```powershell
+.\scripts\02-install-baseline-tools.ps1
+```
+4) WSL Ubuntu:
+```powershell
+.\scripts\03-install-wsl-ubuntu.ps1
+```
+5) Docker Desktop:
+```powershell
+.\scripts\04-install-docker-desktop.ps1
+```
+6) Deploy Stacks:
 ```powershell
 .\scripts\05-deploy-all-stacks.ps1
 ```
-4) Initialize Vault (if first time):
+7) Initialize Vault:
 ```powershell
 .\scripts\vault-manager.ps1 -Action init
 ```
-5) Deploy containerized cell stack (alpha):
+8) Deploy Cell Stack:
 ```powershell
 Set-Location C:\aios-supercell\server\stacks\cells
 & .\deploy.ps1 -DeploymentType local-desktop
@@ -66,14 +80,17 @@ Notes:
 
 Waypoints are the canonical stages in the deployment and development lifecycle. Each waypoint should produce a small JSON status record in `tachyonic/waypoints/` for automation.
 
-- Waypoint 0 — Host Prep: OS updates, WSL2, Docker Desktop, PowerShell 7
-- Waypoint 1 — Repo & Submodules: `git clone --recursive`, `server/` present
-- Waypoint 2 — Bootstrap & Tools: `00-master-bootstrap.ps1`, Python/Node installed
-- Waypoint 3 — Deploy Stacks: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
-- Waypoint 4 — Observability + MCP: Prometheus targets UP, MCP servers active
-- Waypoint 5 — Cell Deployment: Deploy containerized cell stack (`server/stacks/cells/deploy.ps1`) with load balancing, monitoring integration, and multi-device support (desktop, laptop, phone, VPS)
-- Waypoint 6 — Integration Testing: interface_bridge and cell_client integration
-- Waypoint 7 — Governance & Consolidation: `governance-cycle`, `ainlp_documentation_governance.py`
+- Waypoint 0 — Repo & Submodules: `git clone --recursive`, `server/` present
+- Waypoint 1 — OS Hardening: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
+- Waypoint 2 — Baseline Tools: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
+- Waypoint 3 — WSL Ubuntu: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed and bootstrapped with Python/Node/Docker
+- Waypoint 4 — Docker Desktop: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
+- Waypoint 5 — Deploy Stacks: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
+- Waypoint 6 — Vault Initialization: `vault-manager.ps1 -Action init`, Vault unsealed and operational
+- Waypoint 7 — Cell Deployment: Deploy containerized cell stack (`server/stacks/cells/deploy.ps1`) with load balancing, monitoring integration, and multi-device support
+- Waypoint 8 — Observability + MCP: Prometheus targets UP, MCP servers active
+- Waypoint 9 — Integration Testing: interface_bridge and cell_client integration
+- Waypoint 10 — Governance & Consolidation: `governance-cycle`, `ainlp_documentation_governance.py`
 
 Checklist snippet (to copy into automation):
 ```text
@@ -85,6 +102,9 @@ WAYPOINT_4=not-started
 WAYPOINT_5=not-started
 WAYPOINT_6=not-started
 WAYPOINT_7=not-started
+WAYPOINT_8=not-started
+WAYPOINT_9=not-started
+WAYPOINT_10=not-started
 ```
 
 ---
@@ -102,11 +122,14 @@ Core tools
 - [ ] Python 3.12+ (3.14 recommended)
 - [ ] Node.js 24.11+
 
-Deployment
-- [ ] `00-master-bootstrap.ps1` executed
+Deployment sequence
+- [ ] `01-core-os-hardening.ps1` executed (BitLocker, static IP, RDP)
+- [ ] `02-install-baseline-tools.ps1` executed (PowerShell 7, WSL2, Hyper-V)
+- [ ] `03-install-wsl-ubuntu.ps1` executed (Ubuntu installed and bootstrapped)
+- [ ] `04-install-docker-desktop.ps1` executed (Docker Desktop configured)
 - [ ] `05-deploy-all-stacks.ps1` executed
 - [ ] `server/stacks/cells/deploy.ps1` executed for cell stack
-- [ ] Vault initialized and unsealed (if applicable)
+- [ ] Vault initialized and unsealed
 
 Validation & monitoring
 - [ ] `docker ps` shows expected containers
