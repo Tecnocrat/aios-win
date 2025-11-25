@@ -2,6 +2,7 @@
 config/vault-unseal-keys.json
 config/vault-root-token.txt
 config/vault-service-tokens.json
+config/bitlocker-recovery-key.txt
 config/*.key
 
 # Logs

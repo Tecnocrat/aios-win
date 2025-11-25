@@ -89,18 +89,21 @@ try {
             Write-Log "  Current IP: $($ipConfig.IPAddress)"
             Write-Log "  DHCP: $($ipConfig.PrefixOrigin -eq 'Dhcp')"
             
-            # If you want static IP, uncomment and configure:
-            # $staticIP = "192.168.1.100"
-            # $prefixLength = 24
-            # $gateway = "192.168.1.1"
-            # $dns = @("1.1.1.1", "1.0.0.1")
-            # 
-            # New-NetIPAddress -InterfaceIndex $adapter.ifIndex -IPAddress $staticIP -PrefixLength $prefixLength -DefaultGateway $gateway
-            # Set-DnsClientServerAddress -InterfaceIndex $adapter.ifIndex -ServerAddresses $dns
+            # Configure static IP for AIOS stability
+            $staticIP = "192.168.1.100"
+            $prefixLength = 24
+            $gateway = "192.168.1.1"
+            $dns = @("1.1.1.1", "1.0.0.1")
+            
+            Write-Log "Setting static IP: $staticIP"
+            Remove-NetIPAddress -InterfaceIndex $adapter.ifIndex -Confirm:$false -ErrorAction SilentlyContinue
+            New-NetIPAddress -InterfaceIndex $adapter.ifIndex -IPAddress $staticIP -PrefixLength $prefixLength -DefaultGateway $gateway
+            Set-DnsClientServerAddress -InterfaceIndex $adapter.ifIndex -ServerAddresses $dns
+            Write-Log "Static IP configured successfully" "SUCCESS"
         }
     }
 } catch {
-    Write-Log "Network configuration check failed: $_" "ERROR"
+    Write-Log "Network configuration failed: $_" "ERROR"
 }
 
 # 5. Enable Remote Desktop with NLA
