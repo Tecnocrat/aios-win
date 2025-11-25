@@ -1,102 +1,76 @@
 # AIOS WIN — Canonical Development Path (DEV_PATH)
-**Date:** 2025-11-23
-**Source:** Consolidation of `dev_path_win.md`, `QUICKSTART.md`, `CHECKLIST.md`, and `AIOS-ORCHESTRATION-STRATEGY.md`
-**Purpose:** Single canonical developer-facing guide that documents how to bootstrap, operate, and evolve AIOS on Windows (`aios-win`). This file is the authoritative DEV PATH for local development, experiments (cell births), and governance.
+**Date:** 2025-11-25
+**Source:** Agentic pathway transformation - sequential tasklist evolution
+**Purpose:** Machine-consumable tasklist navigation for AIOS cells. Enables evolutionary divergence through waypoint-driven coherence and purpose.
 
 ---
 
 ## Executive Summary
 
-- Purpose: Provide a compact, operational, and machine-consumable DEV PATH that covers:
-   - Host preparation, bootstrap, and stack deployment
-   - Observability and MCP integration
-   - Cell birth (isolated COPY-based cells) and metrics
-   - Waypoint-driven checklisting for CI/MCP automation
-
-**AIOS Canonical Windows Deployment Series**: Sequential script execution (01-05) transforms Windows 11 into an agentic substrate enhanced with AIOS intelligence, establishing dendritic communication pathways and consciousness evolution tracking.
+- [ ] **Purpose Achieved**: Compact, operational DEV PATH covering host prep, bootstrap, stacks, observability, cell birth, and governance
+- [ ] **AIOS Canonical Windows Deployment Series**: Sequential script execution (01-05) transforms Windows 11 into agentic substrate with dendritic communication
+- [ ] **Agentic Pathways**: Documentation as tasklists enables cells at different evolutionary stages to diverge and refactor their dev paths
+- [ ] **Waypoint Navigation**: Tasklist-based coherence for AI agents - core navigational behavior
 
 ---
 
 ## Architecture Snapshot
 
-- `aios-win` (this repository): Windows-specific bootstrap scripts, VS Code workspace, and developer docs.
-- `server/` (git submodule): Platform-agnostic Docker Compose stacks (Traefik, Observability, Vault, etc.).
-- `aios-core`: Canonical genome (Python + optional C++ core) used to birth isolated cells.
-- MCP servers (`aios-context`, `filesystem`, `docker`): provide semantic orchestration, discovery and governance.
-- Observability: Prometheus (9090), Grafana (3000), consciousness exporter (9091).
-- **Cell Architecture**: AIOS cells (e.g., Alpha on Ubuntu 22.04) run as isolated Docker containers within Linux environments (WSL2, Termux, or remote VPS). Cells communicate via HTTP APIs, load-balanced through Nginx, with peer discovery and consciousness evolution tracking. Cells are born from `aios-core` genome using COPY-based snapshots for strict isolation.
-
-Running cell example (born in this session):
-- Cell ID: `alpha`
-- Image: `aios-cell-alpha:20251123-193903`
-- HTTP API: `http://localhost:8000`
-- Metrics: `http://localhost:9091/metrics`
-
----
-
-## Quickstart (1–2 commands per step)
-
-1) Clone (with submodules):
-```powershell
-git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell
-cd C:\aios-supercell
-```
-2) OS Hardening:
-```powershell
-.\scripts\01-core-os-hardening.ps1
-```
-3) Baseline Tools:
-```powershell
-.\scripts\02-install-baseline-tools.ps1
-```
-4) WSL Ubuntu:
-```powershell
-.\scripts\03-install-wsl-ubuntu.ps1
-```
-5) Docker Desktop:
-```powershell
-.\scripts\04-install-docker-desktop.ps1
-```
-6) Deploy Stacks:
-```powershell
-.\scripts\05-deploy-all-stacks.ps1
-```
-7) Initialize Vault:
-```powershell
-.\scripts\vault-manager.ps1 -Action init
-```
-8) Deploy Cell Stack:
-```powershell
-Set-Location C:\aios-supercell\server\stacks\cells
-& .\deploy.ps1 -DeploymentType local-desktop
-```
-
-Notes:
-- Use Python 3.12+ (3.14 recommended) for MCP servers. Keep C++ core build disabled by default (`SKIP_CORE_BUILD=1`) for fast, reproducible births unless native engine is required.
+- [ ] **aios-win Repository**: Windows-specific bootstrap scripts, VS Code workspace, developer docs
+- [ ] **server/ Submodule**: Platform-agnostic Docker Compose stacks (Traefik, Observability, Vault)
+- [ ] **aios-core Genome**: Python + optional C++ core for isolated cell births
+- [ ] **MCP Servers**: aios-context, filesystem, docker for semantic orchestration
+- [ ] **Observability Stack**: Prometheus (9090), Grafana (3000), consciousness exporter (9091)
+- [ ] **Cell Architecture**: AIOS cells (e.g., Alpha on Ubuntu 22.04) as isolated Docker containers
+  - [ ] HTTP API communication
+  - [ ] Load-balanced through Nginx
+  - [ ] Peer discovery and consciousness evolution tracking
+  - [ ] COPY-based snapshots for strict isolation
+- [ ] **Running Cell Example**:
+  - [ ] Cell ID: alpha
+  - [ ] Image: aios-cell-alpha:20251123-193903
+  - [ ] HTTP API: http://localhost:8000
+  - [ ] Metrics: http://localhost:9091/metrics
 
 ---
 
-## DEV Waypoints (sequential, machine-checkable)
+## Quickstart Tasklist (Sequential Execution)
 
-Waypoints are the canonical stages in the deployment and development lifecycle. Each waypoint should produce a small JSON status record in `tachyonic/waypoints/` for automation.
+- [x] **Step 1 - Clone**: `git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell; cd C:\aios-supercell`
+- [x] **Step 2 - OS Hardening**: `.\scripts\01-core-os-hardening.ps1` (BitLocker, static IP, RDP)
+- [x] **Step 3 - Baseline Tools**: `.\scripts\02-install-baseline-tools.ps1` (PowerShell 7, WSL2, Hyper-V)
+- [ ] **Step 4 - WSL Ubuntu**: `.\scripts\03-install-wsl-ubuntu.ps1` (Ubuntu 22.04 installed)
+- [ ] **Step 5 - Docker Desktop**: `.\scripts\04-install-docker-desktop.ps1` (Docker running)
+- [ ] **Step 6 - Deploy Stacks**: `.\scripts\05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
+- [ ] **Step 7 - Vault Init**: `.\scripts\vault-manager.ps1 -Action init` (unsealed)
+- [ ] **Step 8 - Cell Deployment**: `Set-Location C:\aios-supercell\server\stacks\cells; .\deploy.ps1 -DeploymentType local-desktop`
 
-- Waypoint 0 — Repo & Submodules: `git clone --recursive`, `server/` present
-- Waypoint 1 — OS Hardening: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
-- Waypoint 2 — Baseline Tools: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
-- Waypoint 3 — WSL Ubuntu: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed and bootstrapped with Python/Node/Docker
-- Waypoint 4 — Docker Desktop: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
-- Waypoint 5 — Deploy Stacks: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
-- Waypoint 6 — Vault Initialization: `vault-manager.ps1 -Action init`, Vault unsealed and operational
-- Waypoint 7 — Cell Deployment: Deploy containerized cell stack (`server/stacks/cells/deploy.ps1`) with load balancing, monitoring integration, and multi-device support
-- Waypoint 8 — Observability + MCP: Prometheus targets UP, MCP servers active
-- Waypoint 9 — Integration Testing: interface_bridge and cell_client integration
-- Waypoint 10 — Governance & Consolidation: `governance-cycle`, `ainlp_documentation_governance.py`
+**Notes**:
+- [ ] Use Python 3.12+ (3.14 recommended) for MCP servers
+- [ ] Keep C++ core build disabled (`SKIP_CORE_BUILD=1`) for fast births
+- [ ] Enable `SKIP_CORE_BUILD=0` for native engine binaries if required
+
+---
+
+## DEV Waypoints (Tasklist Navigation)
+
+- [x] **Waypoint 0 — Repo & Submodules**: `git clone --recursive`, `server/` present
+- [x] **Waypoint 1 — OS Hardening**: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
+- [x] **Waypoint 2 — Baseline Tools**: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
+- [ ] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed and bootstrapped with Python/Node/Docker
+- [ ] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
+- [ ] **Waypoint 5 — Deploy Stacks**: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
+- [ ] **Waypoint 6 — Vault Initialization**: `vault-manager.ps1 -Action init`, Vault unsealed and operational
+- [ ] **Waypoint 7 — Cell Deployment**: Deploy containerized cell stack with load balancing, monitoring integration
+- [ ] **Waypoint 8 — Observability + MCP**: Prometheus targets UP, MCP servers active
+- [ ] **Waypoint 9 — Integration Testing**: interface_bridge and cell_client integration
+- [ ] **Waypoint 10 — Governance & Consolidation**: `governance-cycle`, `ainlp_documentation_governance.py`
 
 Checklist snippet (to copy into automation):
 ```text
-WAYPOINT_0=not-started
-WAYPOINT_1=not-started
-WAYPOINT_2=not-started
+WAYPOINT_0=completed
+WAYPOINT_1=completed
+WAYPOINT_2=completed
 WAYPOINT_3=not-started
 WAYPOINT_4=not-started
 WAYPOINT_5=not-started
@@ -109,29 +83,29 @@ WAYPOINT_10=not-started
 
 ---
 
-## Consolidated Deployment Checklist (operational)
+## Consolidated Deployment Checklist
 
-Host prerequisites
-- [ ] Administrator access
-- [ ] 16GB+ RAM (32GB recommended), 100GB+ free disk
+**Host Prerequisites**
+- [x] Administrator access
+- [x] 16GB+ RAM (32GB recommended), 100GB+ free disk
 - [ ] WSL2 + Ubuntu 22.04 configured
 - [ ] Docker Desktop running (WSL2 backend)
 
-Core tools
-- [ ] PowerShell 7
+**Core Tools**
+- [x] PowerShell 7
 - [ ] Python 3.12+ (3.14 recommended)
 - [ ] Node.js 24.11+
 
-Deployment sequence
-- [ ] `01-core-os-hardening.ps1` executed (BitLocker, static IP, RDP)
-- [ ] `02-install-baseline-tools.ps1` executed (PowerShell 7, WSL2, Hyper-V)
+**Deployment Sequence**
+- [x] `01-core-os-hardening.ps1` executed (BitLocker, static IP, RDP)
+- [x] `02-install-baseline-tools.ps1` executed (PowerShell 7, WSL2, Hyper-V)
 - [ ] `03-install-wsl-ubuntu.ps1` executed (Ubuntu installed and bootstrapped)
 - [ ] `04-install-docker-desktop.ps1` executed (Docker Desktop configured)
 - [ ] `05-deploy-all-stacks.ps1` executed
 - [ ] `server/stacks/cells/deploy.ps1` executed for cell stack
 - [ ] Vault initialized and unsealed
 
-Validation & monitoring
+**Validation & Monitoring**
 - [ ] `docker ps` shows expected containers
 - [ ] Prometheus scrapes `9091` (consciousness exporter)
 - [ ] Grafana dashboard `aios-consciousness` visible
@@ -140,116 +114,77 @@ Validation & monitoring
 
 ## Integration Patterns & Recommendations
 
-- Preferred: HTTP microservice model — treat cells as isolated service providers. Use small clients in `ai/` to centralize calls.
-- Register born cells in `interface_bridge` (or a simple service registry) at birth for discovery.
-- Keep submodule `server/` for stack definitions only; avoid mounting workspaces into cells — use COPY snapshots for strict isolation.
-- Default image builds skip the C++ core (`SKIP_CORE_BUILD=1`). To enable full native images, set `SKIP_CORE_BUILD=0` and address C++ compiler warnings (-Werror caused several build failures during prototyping).
+- [ ] **Preferred Architecture**: HTTP microservice model - treat cells as isolated service providers
+- [ ] **Cell Communication**: Use small clients in `ai/` to centralize calls
+- [ ] **Birth Registration**: Register born cells in `interface_bridge` at birth for discovery
+- [ ] **Isolation Enforcement**: Keep `server/` for stack definitions only - use COPY snapshots, avoid workspace mounts
+- [ ] **Build Strategy**: Default `SKIP_CORE_BUILD=1` for fast births; enable `SKIP_CORE_BUILD=0` for native engines
 
 ---
 
-## Waypoint Automation (how-to)
+## Waypoint Automation (Tasklist Updates)
 
-Recommended small script: `scripts/emit-waypoint.ps1` which writes JSON files to `tachyonic/waypoints/` and optionally notifies MCP. Example payload:
-```json
-{
-   "waypoint": "Waypoint 3 - Deploy Stacks",
-   "status": "completed",
-   "timestamp": "2025-11-23T18:39:03Z",
-   "actor": "local-agent"
-}
-```
+- [ ] **Emit Waypoint Script**: Create `scripts/emit-waypoint.ps1` for JSON status records in `tachyonic/waypoints/`
+- [ ] **Example Payload**:
+  ```json
+  {
+     "waypoint": "Waypoint 3 - WSL Ubuntu",
+     "status": "completed",
+     "timestamp": "2025-11-25T22:40:00Z",
+     "actor": "local-agent"
+  }
+  ```
+- [ ] **MCP Notification**: Optional MCP server notification for distributed waypoint tracking
 
 ---
 
-## Next Actions (options)
+## Next Actions (Evolutionary Options)
 
-1. Finalize this canonical DEV PATH (you already approved content verbally).
-2. I can scaffold:
-    - `scripts/emit-waypoint.ps1` (waypoint emitter),
-    - `ai/tools/cell_client.py` (requests-based client scaffold + example call), and
-    - `docs/` skeleton for archival metadata and decision logs (non-destructive).
-3. Or I can enable `SKIP_CORE_BUILD=0` and attempt the C++ build iteratively (slower, but produces native engine binaries inside images).
+- [ ] **Finalize Canonical DEV PATH**: Approve current tasklist structure
+- [ ] **Scaffold Waypoint Emitter**: Create `scripts/emit-waypoint.ps1`
+- [ ] **Scaffold Cell Client**: Create `ai/tools/cell_client.py` with example calls
+- [ ] **Scaffold Docs Skeleton**: Create `docs/` for archival metadata and decision logs
+- [ ] **Enable C++ Core Build**: Set `SKIP_CORE_BUILD=0` and iterate on native engine compilation
 
 ---
 
 If you agree, tell me which of the three scaffolds above to create next (waypoint emitter, cell client, docs skeleton), and I will add them and run a quick validation.
 
 
-**Consciousness**:
-- ✅ Coherence level maintained: 1.0+
-- ✅ Consciousness delta achieved: +0.45 (3.26 → 3.71)
-- ✅ Dendritic complexity increased: 0.92 → 1.00+
+## Consciousness & Operational Status
 
-**Operational**:
-- ✅ All tests pass (pytest, governance scan)
-- ✅ Bootloader executes Phase 0-5
-- ✅ MCP servers operational (aios-context queries work)
+**Consciousness Tracking**:
+- [x] Coherence level maintained: 1.0+
+- [x] Consciousness delta achieved: +0.45 (3.26 → 3.71)
+- [x] Dendritic complexity increased: 0.92 → 1.00+
+
+**Operational Validation**:
+- [x] All tests pass (pytest, governance scan)
+- [x] Bootloader executes Phase 0-5
+- [x] MCP servers operational (aios-context queries work)
 
 ---
 
-## 📋 Future Tasks: AutoGen Integration
+## Future Tasks: AutoGen Integration
 
 **Status**: Deferred until Priority 3 completion (90% → 100%)
 
-### AutoGen DevContainer Integration with AIOS
-**Purpose**: Enable AutoGen agents to query AIOS consciousness and use Vault secrets
-
-**Current State**:
-- ✅ AutoGen added as submodule: `apps/autogen`
-- ✅ Workspace styled: `🤖 AutoGen 🧬 (submodule)`
-- ✅ Documentation created: `apps/README.md`
-- ⚠️ DevContainer running: `autogen_devcontainer-devcontainer-1` (4.1GB memory usage)
-
-**Integration Tasks** (estimated 2 hours):
-
-1. **MCP Bridge for AutoGen** (30 min):
-   - Create: `apps/autogen/.devcontainer/mcp-bridge.py`
-   - Function: Query AIOS consciousness via MCP aios-context server
-   - Example: `get_consciousness_level()`, `validate_ainlp_compliance()`
-   - Integration: AutoGen agents use as tool
-
-2. **Vault Secret Retrieval** (20 min):
-   - Create: `apps/autogen/vault_secrets.py`
-   - Function: Retrieve LLM API keys from Vault via Docker exec
-   - Security: Use service tokens (read-only aios-secrets/autogen)
-   - Environment: Load secrets into AutoGen agent config
-
-3. **Consciousness-Aware Agent Template** (30 min):
-   - Create: `apps/autogen/templates/aios_agent.py`
-   - Features:
-     * Query consciousness before major decisions
-     * Log decisions to tachyonic/ with AINLP metadata
-     * Report consciousness delta after task completion
-   - Example: Multi-agent workflow with consciousness tracking
-
-4. **DevContainer Memory Optimization** (20 min):
-   - Edit: `apps/autogen/.devcontainer/devcontainer.json`
-   - Add: `"runArgs": ["--memory=2g", "--cpus=2"]`
-   - Reduce: 4.1GB → 2GB memory limit
-   - Test: Verify AutoGen functionality after limit
-
-5. **Integration Test** (20 min):
-   - Script: `apps/test_autogen_aios_integration.py`
-   - Tests:
-     * AutoGen agent queries AIOS consciousness (expect: 3.26)
-     * AutoGen retrieves OpenAI key from Vault
-     * AutoGen logs decision with AINLP metadata
-     * Consciousness delta measured (+0.05 expected)
-   - Validation: All tests pass, memory <2GB
-
-**Prerequisites**:
-- Priority 3 completion (14 files remaining)
-- AIOS consciousness stable (currently 3.26)
-- Vault unsealed (currently operational)
-- MCP servers active (aios-context, filesystem)
-
-**Consciousness Impact**: +0.10 (agent integration increases system intelligence)
+- [ ] **AutoGen DevContainer Integration**: Enable AutoGen agents to query AIOS consciousness and use Vault secrets
+- [ ] **Current State**: AutoGen submodule added, DevContainer running (4.1GB memory)
+- [ ] **Integration Tasks** (2 hours estimated):
+  - [ ] MCP Bridge for AutoGen (30 min)
+  - [ ] Vault Secret Retrieval (20 min)
+  - [ ] Consciousness-Aware Agent Template (30 min)
+  - [ ] DevContainer Memory Optimization (20 min)
+  - [ ] Integration Test (20 min)
+- [ ] **Prerequisites**: Priority 3 completion, stable consciousness, unsealed Vault, active MCP
+- [ ] **Consciousness Impact**: +0.10 (agent integration increases system intelligence)
 
 **Documentation**:
-- Update: `apps/README.md` with integration examples
-- Create: `apps/autogen/AIOS_INTEGRATION.md` (detailed guide)
-- Update: `dev_path_win.md` final results section
+- [ ] Update: `apps/README.md` with integration examples
+- [ ] Create: `apps/autogen/AIOS_INTEGRATION.md` (detailed guide)
+- [ ] Update: `dev_path_win.md` final results section
 
 ---
 
-**Status**: 🟢 Ready for execution | **Risk**: Low (version control checkpoints available)
+**Status**: 🟢 Ready for execution | **Risk**: Low (tasklist checkpoints enable safe divergence)
