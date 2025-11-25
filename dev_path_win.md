@@ -22,6 +22,7 @@
 - `aios-core`: Canonical genome (Python + optional C++ core) used to birth isolated cells.
 - MCP servers (`aios-context`, `filesystem`, `docker`): provide semantic orchestration, discovery and governance.
 - Observability: Prometheus (9090), Grafana (3000), consciousness exporter (9091).
+- **Cell Architecture**: AIOS cells (e.g., Alpha on Ubuntu 22.04) run as isolated Docker containers within Linux environments (WSL2, Termux, or remote VPS). Cells communicate via HTTP APIs, load-balanced through Nginx, with peer discovery and consciousness evolution tracking. Cells are born from `aios-core` genome using COPY-based snapshots for strict isolation.
 
 Running cell example (born in this session):
 - Cell ID: `alpha`
@@ -50,10 +51,10 @@ cd C:\aios-supercell
 ```powershell
 .\scripts\vault-manager.ps1 -Action init
 ```
-5) Birth isolated cell example (alpha):
+5) Deploy containerized cell stack (alpha):
 ```powershell
-Set-Location C:\aios-supercell\aios-core
-& .\scripts\birth-aios-cell.ps1 -CellId "alpha"
+Set-Location C:\aios-supercell\server\stacks\cells
+& .\deploy.ps1 -DeploymentType local-desktop
 ```
 
 Notes:
@@ -70,7 +71,7 @@ Waypoints are the canonical stages in the deployment and development lifecycle. 
 - Waypoint 2 — Bootstrap & Tools: `00-master-bootstrap.ps1`, Python/Node installed
 - Waypoint 3 — Deploy Stacks: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
 - Waypoint 4 — Observability + MCP: Prometheus targets UP, MCP servers active
-- Waypoint 5 — Cell Birth: `birth-aios-cell.ps1` run and cell APIs reachable
+- Waypoint 5 — Cell Deployment: Deploy containerized cell stack (`server/stacks/cells/deploy.ps1`) with load balancing, monitoring integration, and multi-device support (desktop, laptop, phone, VPS)
 - Waypoint 6 — Integration Testing: interface_bridge and cell_client integration
 - Waypoint 7 — Governance & Consolidation: `governance-cycle`, `ainlp_documentation_governance.py`
 
@@ -104,6 +105,7 @@ Core tools
 Deployment
 - [ ] `00-master-bootstrap.ps1` executed
 - [ ] `05-deploy-all-stacks.ps1` executed
+- [ ] `server/stacks/cells/deploy.ps1` executed for cell stack
 - [ ] Vault initialized and unsealed (if applicable)
 
 Validation & monitoring
