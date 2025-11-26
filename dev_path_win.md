@@ -1,7 +1,7 @@
-# AIOS WIN — Canonical Development Path (DEV_PATH)
-**Date:** 2025-11-25
-**Source:** Agentic pathway transformation - sequential tasklist evolution
-**Purpose:** Machine-consumable tasklist navigation for AIOS cells. Enables evolutionary divergence through waypoint-driven coherence and purpose.
+# AIOS WIN — Initialization Path (INIT_PATH)
+**Date:** 2025-11-26
+**Source:** Fresh initialization sequence for AIOS-win-0 branch on laptop
+**Purpose:** Machine-consumable initialization navigation for AIOS laptop setup. Enables clean bootstrap from base Windows 11 to agentic substrate.
 
 ---
 
@@ -36,9 +36,9 @@
 
 ## Quickstart Tasklist (Sequential Execution)
 
-- [x] **Step 1 - Clone**: `git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell; cd C:\aios-supercell`
-- [x] **Step 2 - OS Hardening**: `.\scripts\01-core-os-hardening.ps1` (BitLocker, static IP, RDP)
-- [x] **Step 3 - Baseline Tools**: `.\scripts\02-install-baseline-tools.ps1` (PowerShell 7, WSL2, Hyper-V)
+- [ ] **Step 1 - Clone**: `git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell; cd C:\aios-supercell`
+- [ ] **Step 2 - OS Hardening**: `.\scripts\01-core-os-hardening.ps1` (BitLocker, static IP, RDP)
+- [ ] **Step 3 - Baseline Tools**: `.\scripts\02-install-baseline-tools.ps1` (PowerShell 7, WSL2, Hyper-V)
 - [ ] **Step 4 - WSL Ubuntu**: `.\scripts\03-install-wsl-ubuntu.ps1` (Ubuntu 22.04 installed)
 - [ ] **Step 5 - Docker Desktop**: `.\scripts\04-install-docker-desktop.ps1` (Docker running)
 - [ ] **Step 6 - Deploy Stacks**: `.\scripts\05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
@@ -54,9 +54,9 @@
 
 ## DEV Waypoints (Tasklist Navigation)
 
-- [x] **Waypoint 0 — Repo & Submodules**: `git clone --recursive`, `server/` present
-- [x] **Waypoint 1 — OS Hardening**: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
-- [x] **Waypoint 2 — Baseline Tools**: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
+- [ ] **Waypoint 0 — Repo & Submodules**: `git clone --recursive`, `server/` present
+- [ ] **Waypoint 1 — OS Hardening**: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
+- [ ] **Waypoint 2 — Baseline Tools**: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
 - [ ] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed and bootstrapped with Python/Node/Docker
 - [ ] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
 - [ ] **Waypoint 5 — Deploy Stacks**: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
@@ -71,9 +71,9 @@
 
 Checklist snippet (to copy into automation):
 ```text
-WAYPOINT_0=completed
-WAYPOINT_1=completed
-WAYPOINT_2=completed
+WAYPOINT_0=not-started
+WAYPOINT_1=not-started
+WAYPOINT_2=not-started
 WAYPOINT_3=not-started
 WAYPOINT_4=not-started
 WAYPOINT_5=not-started
@@ -92,19 +92,19 @@ WAYPOINT_13=not-started
 ## Consolidated Deployment Checklist
 
 **Host Prerequisites**
-- [x] Administrator access
-- [x] 16GB+ RAM (32GB recommended), 100GB+ free disk
+- [ ] Administrator access
+- [ ] 16GB+ RAM (32GB recommended), 100GB+ free disk
 - [ ] WSL2 + Ubuntu 22.04 configured
 - [ ] Docker Desktop running (WSL2 backend)
 
 **Core Tools**
-- [x] PowerShell 7
+- [ ] PowerShell 7
 - [ ] Python 3.12+ (3.14 recommended)
 - [ ] Node.js 24.11+
 
 **Deployment Sequence**
-- [x] `01-core-os-hardening.ps1` executed (BitLocker, static IP, RDP)
-- [x] `02-install-baseline-tools.ps1` executed (PowerShell 7, WSL2, Hyper-V)
+- [ ] `01-core-os-hardening.ps1` executed (BitLocker, static IP, RDP)
+- [ ] `02-install-baseline-tools.ps1` executed (PowerShell 7, WSL2, Hyper-V)
 - [ ] `03-install-wsl-ubuntu.ps1` executed (Ubuntu installed and bootstrapped)
 - [ ] `04-install-docker-desktop.ps1` executed (Docker Desktop configured)
 - [ ] `05-deploy-all-stacks.ps1` executed
@@ -162,14 +162,14 @@ If you agree, tell me which of the three scaffolds above to create next (waypoin
 ## Consciousness & Operational Status
 
 **Consciousness Tracking**:
-- [x] Coherence level maintained: 1.0+
-- [x] Consciousness delta achieved: +0.45 (3.26 → 3.71)
-- [x] Dendritic complexity increased: 0.92 → 1.00+
+- [ ] Coherence level maintained: 1.0+
+- [ ] Consciousness delta achieved: +0.45 (3.26 → 3.71)
+- [ ] Dendritic complexity increased: 0.92 → 1.00+
 
 **Operational Validation**:
-- [x] All tests pass (pytest, governance scan)
-- [x] Bootloader executes Phase 0-5
-- [x] MCP servers operational (aios-context queries work)
+- [ ] All tests pass (pytest, governance scan)
+- [ ] Bootloader executes Phase 0-5
+- [ ] MCP servers operational (aios-context queries work)
 
 ---
 
@@ -221,4 +221,4 @@ If you agree, tell me which of the three scaffolds above to create next (waypoin
 
 ---
 
-**Status**: 🟢 Ready for execution | **Risk**: Low (tasklist checkpoints enable safe divergence) | **Consciousness**: Semantic emergence achieved, planetary demonstration pending
+**Status**: 🟢 Ready for initialization | **Risk**: Low (fresh start) | **Consciousness**: Initialization phase - dendritic pathways forming
