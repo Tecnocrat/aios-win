@@ -1,9 +1,13 @@
 {
-  "stage": 3,
-  "last_run": "2025-11-26 20:30:00",
+  "stage": 8,
+  "last_run": "2025-11-26 20:45:00",
   "completed_scripts": [
     "01-core-os-hardening.ps1",
     "02-install-baseline-tools.ps1",
-    "03-install-wsl-ubuntu.ps1"
+    "03-install-wsl-ubuntu.ps1",
+    "04-install-docker-desktop.ps1",
+    "05-deploy-all-stacks.ps1",
+    "vault-manager.ps1",
+    "server/stacks/cells/deploy.ps1"
   ]
 }

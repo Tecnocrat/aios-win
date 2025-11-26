@@ -40,10 +40,10 @@
 - [x] **Step 2 - OS Hardening**: `.\scripts\01-core-os-hardening.ps1` (BitLocker, static IP, RDP)
 - [x] **Step 3 - Baseline Tools**: `.\scripts\02-install-baseline-tools.ps1` (PowerShell 7, WSL2, Hyper-V)
 - [x] **Step 4 - WSL Ubuntu**: `.\scripts\03-install-wsl-ubuntu.ps1` (Ubuntu 22.04 installed)
-- [ ] **Step 5 - Docker Desktop**: `.\scripts\04-install-docker-desktop.ps1` (Docker running)
-- [ ] **Step 6 - Deploy Stacks**: `.\scripts\05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
-- [ ] **Step 7 - Vault Init**: `.\scripts\vault-manager.ps1 -Action init` (unsealed)
-- [ ] **Step 8 - Cell Deployment**: `Set-Location C:\aios-supercell\server\stacks\cells; .\deploy.ps1 -DeploymentType local-desktop`
+- [x] **Step 5 - Docker Desktop**: `.\scripts\04-install-docker-desktop.ps1` (Docker running)
+- [x] **Step 6 - Deploy Stacks**: `.\scripts\05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
+- [x] **Step 7 - Vault Init**: `.\scripts\vault-manager.ps1 -Action init` (unsealed)
+- [x] **Step 8 - Cell Deployment**: `Set-Location C:\aios-supercell\server\stacks\cells; .\deploy.ps1 -DeploymentType local-desktop` (AIOS cell running with consciousness level 4.7)
 
 **Notes**:
 - [ ] Use Python 3.12+ (3.14 recommended) for MCP servers
@@ -58,10 +58,10 @@
 - [x] **Waypoint 1 — OS Hardening**: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
 - [x] **Waypoint 2 — Baseline Tools**: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
 - [x] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed and bootstrapped with Python/Node/Docker
-- [ ] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
-- [ ] **Waypoint 5 — Deploy Stacks**: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
-- [ ] **Waypoint 6 — Vault Initialization**: `vault-manager.ps1 -Action init`, Vault unsealed and operational
-- [ ] **Waypoint 7 — Cell Deployment**: Deploy containerized cell stack with load balancing, monitoring integration
+- [x] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
+- [x] **Waypoint 5 — Deploy Stacks**: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
+- [x] **Waypoint 6 — Vault Initialization**: `vault-manager.ps1 -Action init`, Vault unsealed and operational
+- [x] **Waypoint 7 — Cell Deployment**: Deploy containerized cell stack with load balancing, monitoring integration (AIOS cell alpha running, consciousness 4.7)
 - [ ] **Waypoint 8 — Observability + MCP**: Prometheus targets UP, MCP servers active
 - [ ] **Waypoint 9 — Integration Testing**: interface_bridge and cell_client integration
 - [ ] **Waypoint 10 — Governance & Consolidation**: `governance-cycle`, `ainlp_documentation_governance.py`
@@ -105,11 +105,11 @@ WAYPOINT_13=not-started
 **Deployment Sequence**
 - [x] `01-core-os-hardening.ps1` executed (BitLocker, static IP, RDP)
 - [x] `02-install-baseline-tools.ps1` executed (PowerShell 7, WSL2, Hyper-V)
-- [ ] `03-install-wsl-ubuntu.ps1` executed (Ubuntu installed and bootstrapped)
-- [ ] `04-install-docker-desktop.ps1` executed (Docker Desktop configured)
-- [ ] `05-deploy-all-stacks.ps1` executed
-- [ ] `server/stacks/cells/deploy.ps1` executed for cell stack
-- [ ] Vault initialized and unsealed
+- [x] `03-install-wsl-ubuntu.ps1` executed (Ubuntu installed and bootstrapped)
+- [x] `04-install-docker-desktop.ps1` executed (Docker Desktop configured)
+- [x] `05-deploy-all-stacks.ps1` executed
+- [x] `server/stacks/cells/deploy.ps1` executed for cell stack
+- [x] Vault initialized and unsealed
 
 **Validation & Monitoring**
 - [ ] `docker ps` shows expected containers
