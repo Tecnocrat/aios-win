@@ -62,7 +62,7 @@
 - [x] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed via winget (Canonical.Ubuntu.2204). WSL registry corruption (REGDB_E_CLASSNOTREG) persists - requires system restart to apply Windows feature changes. Ubuntu installed but cannot launch due to WSL corruption.
 - [x] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop 4.52.0 running successfully. Hello-world test passed. Using WSL2 backend on Windows 10 Home.
 - [x] **Waypoint 5 — Deploy Stacks**: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault) - All stacks deployed successfully. TLS cert issue noted, Vault init failed due to WSL.
-- [ ] **Waypoint 6 — Vault Initialization**: `vault-manager.ps1 -Action init`, Vault unsealed and operational
+- [x] **Waypoint 6 — Vault Initialization**: `vault-manager.ps1 -Action init`, Vault unsealed and operational. Keys saved to config/vault-unseal-keys.json.
 - [ ] **Waypoint 7 — Cell Deployment**: Deploy containerized cell stack with load balancing, monitoring integration
 - [ ] **Waypoint 8 — Observability + MCP**: Prometheus targets UP, MCP servers active
 - [ ] **Waypoint 9 — Integration Testing**: interface_bridge and cell_client integration
@@ -79,7 +79,7 @@ WAYPOINT_2=completed
 WAYPOINT_3=completed
 WAYPOINT_4=completed
 WAYPOINT_5=completed
-WAYPOINT_6=not-started
+WAYPOINT_6=completed
 WAYPOINT_7=not-started
 WAYPOINT_8=not-started
 WAYPOINT_9=not-started
