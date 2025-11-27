@@ -46,7 +46,9 @@
 - [ ] **Step 8 - Cell Deployment**: `Set-Location C:\aios-supercell\server\stacks\cells; .\deploy.ps1 -DeploymentType local-desktop`
 
 **Notes**:
-- [ ] Use Python 3.12+ (3.14 recommended) for MCP servers
+- [ ] System restart required to apply WSL/Virtual Machine Platform feature changes
+- [ ] After restart, try: `wsl --set-default-version 2` and `ubuntu2204.exe` to launch Ubuntu
+- [ ] If WSL still fails, Docker Desktop can be installed without WSL (Hyper-V mode)
 - [ ] Keep C++ core build disabled (`SKIP_CORE_BUILD=1`) for fast births
 - [ ] Enable `SKIP_CORE_BUILD=0` for native engine binaries if required
 
@@ -57,7 +59,7 @@
 - [x] **Waypoint 0 — Repo & Submodules**: `git clone --recursive`, `server/` present
 - [x] **Waypoint 1 — OS Hardening**: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
 - [x] **Waypoint 2 — Baseline Tools**: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
-- [x] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu installation attempted, .wslconfig created, directories created, bootstrap script created. WSL corruption (REGDB_E_CLASSNOTREG) persists - may need manual repair or reinstall.
+- [x] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed via winget (Canonical.Ubuntu.2204). WSL registry corruption (REGDB_E_CLASSNOTREG) persists - requires system restart to apply Windows feature changes. Ubuntu installed but cannot launch due to WSL corruption.
 - [ ] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
 - [ ] **Waypoint 5 — Deploy Stacks**: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
 - [ ] **Waypoint 6 — Vault Initialization**: `vault-manager.ps1 -Action init`, Vault unsealed and operational
