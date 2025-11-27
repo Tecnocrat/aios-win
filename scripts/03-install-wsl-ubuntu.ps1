@@ -9,7 +9,9 @@
 #>
 
 $ErrorActionPreference = "Stop"
-$LogPath = "C:\aios-supercell\logs\wsl-ubuntu-$(Get-Date -Format 'yyyyMMdd-HHmmss').log"
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$RootDir = Split-Path -Parent $ScriptDir
+$LogPath = "$RootDir\logs\wsl-ubuntu-$(Get-Date -Format 'yyyyMMdd-HHmmss').log"
 New-Item -ItemType Directory -Force -Path (Split-Path $LogPath) | Out-Null
 
 function Write-Log {
@@ -58,7 +60,7 @@ processors=$wslCPU
 
 # Swap file
 swap=8GB
-swapfile=C:\\aios-supercell\\data\\wsl-swap.vhdx
+swapfile=$($RootDir -replace '\\', '\\')\\data\\wsl-swap.vhdx
 
 # Networking
 localhostForwarding=true
@@ -80,9 +82,9 @@ systemd=true
 Write-Log "Creating persistent mount directories..."
 try {
     $mountDirs = @(
-        "C:\aios-supercell\data\wsl-home",
-        "C:\aios-supercell\data\docker-volumes",
-        "C:\aios-supercell\data\backup"
+        "$RootDir\data\wsl-home",
+        "$RootDir\data\docker-volumes",
+        "$RootDir\data\backup"
     )
     
     foreach ($dir in $mountDirs) {
@@ -101,7 +103,7 @@ try {
 # AIOS Supercell - Ubuntu Bootstrap Script
 
 set -e
-LOG_FILE="/mnt/c/aios-supercell/logs/ubuntu-bootstrap-$(date +%Y%m%d-%H%M%S).log"
+LOG_FILE="/mnt/c/dev/aios-win/logs/ubuntu-bootstrap-$(date +%Y%m%d-%H%M%S).log"
 
 log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
@@ -149,7 +151,7 @@ sudo usermod -aG docker $USER
 
 # Create symbolic links to Windows AIOS directories
 log "Creating symbolic links..."
-ln -sf /mnt/c/aios-supercell ~/aios-supercell
+ln -sf /mnt/c/dev/aios-win ~/aios-supercell
 ln -sf /mnt/c/Users/jesus/server ~/server
 
 log "=== AIOS Ubuntu Bootstrap Complete ==="
@@ -161,7 +163,7 @@ echo "2. Test Docker: docker run hello-world"
 echo "3. Install Docker Desktop on Windows for better integration"
 '@
     
-    $bootstrapPath = "C:\aios-supercell\scripts\ubuntu-bootstrap.sh"
+    $bootstrapPath = "$RootDir\scripts\ubuntu-bootstrap.sh"
     Set-Content -Path $bootstrapPath -Value $ubuntuBootstrap -Force
     Write-Log "Ubuntu bootstrap script created: $bootstrapPath" "SUCCESS"
 } catch {
@@ -175,5 +177,5 @@ Write-Host "`nNext steps:" -ForegroundColor Cyan
 Write-Host "1. Complete Ubuntu user setup if prompted" -ForegroundColor Yellow
 Write-Host "2. Restart WSL: wsl --shutdown" -ForegroundColor Yellow
 Write-Host "3. Launch Ubuntu: wsl -d Ubuntu" -ForegroundColor Yellow
-Write-Host "4. Run bootstrap: bash /mnt/c/aios-supercell/scripts/ubuntu-bootstrap.sh" -ForegroundColor Yellow
+Write-Host "4. Run bootstrap: bash /mnt/c/dev/aios-win/scripts/ubuntu-bootstrap.sh" -ForegroundColor Yellow
 Write-Host "5. Install Docker Desktop: Run 04-install-docker-desktop.ps1" -ForegroundColor Green

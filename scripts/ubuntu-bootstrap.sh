@@ -2,7 +2,7 @@
 # AIOS Supercell - Ubuntu Bootstrap Script
 
 set -e
-LOG_FILE="/mnt/c/aios-supercell/logs/ubuntu-bootstrap-$(date +%Y%m%d-%H%M%S).log"
+LOG_FILE="/mnt/c/dev/aios-win/logs/ubuntu-bootstrap-$(date +%Y%m%d-%H%M%S).log"
 
 log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
@@ -50,7 +50,7 @@ sudo usermod -aG docker $USER
 
 # Create symbolic links to Windows AIOS directories
 log "Creating symbolic links..."
-ln -sf /mnt/c/aios-supercell ~/aios-supercell
+ln -sf /mnt/c/dev/aios-win ~/aios-supercell
 ln -sf /mnt/c/Users/jesus/server ~/server
 
 log "=== AIOS Ubuntu Bootstrap Complete ==="

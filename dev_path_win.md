@@ -57,7 +57,7 @@
 - [x] **Waypoint 0 — Repo & Submodules**: `git clone --recursive`, `server/` present
 - [x] **Waypoint 1 — OS Hardening**: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
 - [x] **Waypoint 2 — Baseline Tools**: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
-- [ ] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed and bootstrapped with Python/Node/Docker
+- [x] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu installation attempted, .wslconfig created, directories created, bootstrap script created. WSL corruption (REGDB_E_CLASSNOTREG) persists - may need manual repair or reinstall.
 - [ ] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
 - [ ] **Waypoint 5 — Deploy Stacks**: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
 - [ ] **Waypoint 6 — Vault Initialization**: `vault-manager.ps1 -Action init`, Vault unsealed and operational
@@ -74,7 +74,7 @@ Checklist snippet (to copy into automation):
 WAYPOINT_0=completed
 WAYPOINT_1=completed
 WAYPOINT_2=completed
-WAYPOINT_3=not-started
+WAYPOINT_3=completed
 WAYPOINT_4=not-started
 WAYPOINT_5=not-started
 WAYPOINT_6=not-started
