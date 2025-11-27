@@ -36,7 +36,7 @@
 
 ## Quickstart Tasklist (Sequential Execution)
 
-- [ ] **Step 1 - Clone**: `git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell; cd C:\aios-supercell`
+- [x] **Step 1 - Clone**: `git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell; cd C:\aios-supercell`
 - [ ] **Step 2 - OS Hardening**: `.\scripts\01-core-os-hardening.ps1` (BitLocker, static IP, RDP)
 - [ ] **Step 3 - Baseline Tools**: `.\scripts\02-install-baseline-tools.ps1` (PowerShell 7, WSL2, Hyper-V)
 - [ ] **Step 4 - WSL Ubuntu**: `.\scripts\03-install-wsl-ubuntu.ps1` (Ubuntu 22.04 installed)
