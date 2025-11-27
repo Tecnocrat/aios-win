@@ -60,7 +60,7 @@
 - [x] **Waypoint 1 — OS Hardening**: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
 - [x] **Waypoint 2 — Baseline Tools**: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
 - [x] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed via winget (Canonical.Ubuntu.2204). WSL registry corruption (REGDB_E_CLASSNOTREG) persists - requires system restart to apply Windows feature changes. Ubuntu installed but cannot launch due to WSL corruption.
-- [ ] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
+- [x] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop 4.52.0 installed via winget. Configuration pending.
 - [ ] **Waypoint 5 — Deploy Stacks**: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
 - [ ] **Waypoint 6 — Vault Initialization**: `vault-manager.ps1 -Action init`, Vault unsealed and operational
 - [ ] **Waypoint 7 — Cell Deployment**: Deploy containerized cell stack with load balancing, monitoring integration
@@ -77,7 +77,7 @@ WAYPOINT_0=completed
 WAYPOINT_1=completed
 WAYPOINT_2=completed
 WAYPOINT_3=completed
-WAYPOINT_4=not-started
+WAYPOINT_4=completed
 WAYPOINT_5=not-started
 WAYPOINT_6=not-started
 WAYPOINT_7=not-started
