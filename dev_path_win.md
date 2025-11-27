@@ -37,8 +37,8 @@
 ## Quickstart Tasklist (Sequential Execution)
 
 - [x] **Step 1 - Clone**: `git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell; cd C:\aios-supercell`
-- [ ] **Step 2 - OS Hardening**: `.\scripts\01-core-os-hardening.ps1` (BitLocker, static IP, RDP)
-- [ ] **Step 3 - Baseline Tools**: `.\scripts\02-install-baseline-tools.ps1` (PowerShell 7, WSL2, Hyper-V)
+- [x] **Step 2 - OS Hardening**: `.\scripts\01-core-os-hardening.ps1` (BitLocker, static IP, RDP)
+- [x] **Step 3 - Baseline Tools**: `.\scripts\02-install-baseline-tools.ps1` (PowerShell 7, WSL2, Hyper-V)
 - [ ] **Step 4 - WSL Ubuntu**: `.\scripts\03-install-wsl-ubuntu.ps1` (Ubuntu 22.04 installed)
 - [ ] **Step 5 - Docker Desktop**: `.\scripts\04-install-docker-desktop.ps1` (Docker running)
 - [ ] **Step 6 - Deploy Stacks**: `.\scripts\05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
@@ -54,9 +54,9 @@
 
 ## DEV Waypoints (Tasklist Navigation)
 
-- [ ] **Waypoint 0 — Repo & Submodules**: `git clone --recursive`, `server/` present
-- [ ] **Waypoint 1 — OS Hardening**: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
-- [ ] **Waypoint 2 — Baseline Tools**: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
+- [x] **Waypoint 0 — Repo & Submodules**: `git clone --recursive`, `server/` present
+- [x] **Waypoint 1 — OS Hardening**: `01-core-os-hardening.ps1`, BitLocker enabled, static IP configured, RDP enabled
+- [x] **Waypoint 2 — Baseline Tools**: `02-install-baseline-tools.ps1`, PowerShell 7, Windows Terminal, Hyper-V, WSL2 kernel updated
 - [ ] **Waypoint 3 — WSL Ubuntu**: `03-install-wsl-ubuntu.ps1`, Ubuntu 22.04 installed and bootstrapped with Python/Node/Docker
 - [ ] **Waypoint 4 — Docker Desktop**: `04-install-docker-desktop.ps1`, Docker Desktop running with WSL2 backend
 - [ ] **Waypoint 5 — Deploy Stacks**: `05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
@@ -71,9 +71,9 @@
 
 Checklist snippet (to copy into automation):
 ```text
-WAYPOINT_0=not-started
-WAYPOINT_1=not-started
-WAYPOINT_2=not-started
+WAYPOINT_0=completed
+WAYPOINT_1=completed
+WAYPOINT_2=completed
 WAYPOINT_3=not-started
 WAYPOINT_4=not-started
 WAYPOINT_5=not-started
