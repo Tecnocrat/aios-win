@@ -39,10 +39,10 @@
 - [x] **Step 1 - Clone**: `git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell; cd C:\aios-supercell`
 - [x] **Step 2 - OS Hardening**: `.\scripts\01-core-os-hardening.ps1` (BitLocker, static IP, RDP)
 - [x] **Step 3 - Baseline Tools**: `.\scripts\02-install-baseline-tools.ps1` (PowerShell 7, WSL2, Hyper-V)
-- [ ] **Step 4 - WSL Ubuntu**: `.\scripts\03-install-wsl-ubuntu.ps1` (Ubuntu 22.04 installed)
-- [ ] **Step 5 - Docker Desktop**: `.\scripts\04-install-docker-desktop.ps1` (Docker running)
-- [ ] **Step 6 - Deploy Stacks**: `.\scripts\05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
-- [ ] **Step 7 - Vault Init**: `.\scripts\vault-manager.ps1 -Action init` (unsealed)
+- [x] **Step 4 - WSL Ubuntu**: `.\scripts\03-install-wsl-ubuntu.ps1` (Ubuntu 22.04 installed)
+- [x] **Step 5 - Docker Desktop**: `.\scripts\04-install-docker-desktop.ps1` (Docker running)
+- [x] **Step 6 - Deploy Stacks**: `.\scripts\05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
+- [x] **Step 7 - Vault Init**: `.\scripts\vault-manager.ps1 -Action init` (unsealed)
 - [ ] **Step 8 - Cell Deployment**: `Set-Location C:\aios-supercell\server\stacks\cells; .\deploy.ps1 -DeploymentType local-desktop`
 
 **Notes**:

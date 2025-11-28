@@ -1,0 +1,25 @@
+{
+  "local_services": {
+    "bridge": {
+      "status": "unreachable",
+      "error": "[WinError 64] The specified network name is no longer available",
+      "url": "http://localhost:3001/health"
+    },
+    "discovery": {
+      "status": "reachable",
+      "http_status": 200,
+      "response_time_ms": 274.34,
+      "url": "http://localhost:8001/health"
+    }
+  },
+  "desktop_connectivity": {
+    "desktop_cell": {
+      "status": "error",
+      "error": "",
+      "url": "http://192.168.1.128:8000/health"
+    }
+  },
+  "discovered_peers": {
+    "peers": []
+  }
+}
