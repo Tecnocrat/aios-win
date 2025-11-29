@@ -100,13 +100,13 @@ WAYPOINT_13=not-started
 - [ ] Docker Desktop running (WSL2 backend)
 
 **Core Tools**
-- [ ] PowerShell 7
-- [ ] Python 3.12+ (3.14 recommended)
-- [ ] Node.js 24.11+
+- [x] PowerShell 7
+- [x] Python 3.12+ (3.14 recommended)
+- [x] Node.js 24.11+
 
 **Deployment Sequence**
 - [ ] `01-core-os-hardening.ps1` executed (BitLocker, static IP, RDP)
-- [ ] `02-install-baseline-tools.ps1` executed (PowerShell 7, WSL2, Hyper-V)
+- [x] `02-install-baseline-tools.ps1` executed (PowerShell 7, Node.js, WSL2, Hyper-V)
 - [ ] `03-install-wsl-ubuntu.ps1` executed (Ubuntu installed and bootstrapped)
 - [ ] `04-install-docker-desktop.ps1` executed (Docker Desktop configured)
 - [ ] `05-deploy-all-stacks.ps1` executed
