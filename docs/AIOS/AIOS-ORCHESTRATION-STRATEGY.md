@@ -63,12 +63,14 @@
 ```
 aios-win/
 ├── scripts/
-│   ├── 00-master-bootstrap.ps1
-│   ├── 01-core-os-hardening.ps1
-│   ├── 02-install-baseline-tools.ps1
-│   ├── 03-install-wsl-ubuntu.ps1
-│   ├── 04-install-docker-desktop.ps1
-│   ├── 05-deploy-all-stacks.ps1
+│   ├── windows-bootstrap/
+│   │   ├── 00-master-bootstrap.ps1
+│   │   ├── 01-core-os-hardening.ps1
+│   │   ├── 02-install-baseline-tools.ps1
+│   │   ├── 03-install-wsl-ubuntu.ps1
+│   │   ├── 04-install-docker-desktop.ps1
+│   │   ├── 05-deploy-all-stacks.ps1
+│   │   └── agent-helper.ps1
 │   ├── generate-tls-certs.ps1
 │   └── vault-manager.ps1
 ├── docs/
@@ -115,7 +117,7 @@ git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercel
 cd C:\aios-supercell\server
 
 # 3. Run bootstrap
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 
 # 4. Deploy stacks
 C:\aios-supercell\scripts\05-deploy-all-stacks.ps1

@@ -232,16 +232,16 @@ path "secret/data/aios/*" {
 ## 🔄 Bootstrap Workflow
 
 ### Phase 1: Master Bootstrap
-**Entry Point:** `scripts/00-master-bootstrap.ps1`
+**Entry Point:** `scripts/windows-bootstrap/00-master-bootstrap.ps1`
 
 **Orchestration:**
 1. Creates directory structure
 2. Tracks progress in `config/bootstrap-state.json`
 3. Executes scripts in sequence:
-   - `01-core-os-hardening.ps1` (power, RDP, BitLocker prep)
-   - `02-install-baseline-tools.ps1` (PowerShell 7, Terminal, Hyper-V, WSL2)
-   - `03-install-wsl-ubuntu.ps1` (Ubuntu + `.wslconfig`)
-   - `04-install-docker-desktop.ps1` (Docker + daemon.json)
+   - `windows-bootstrap/01-core-os-hardening.ps1` (power, RDP, BitLocker prep)
+   - `windows-bootstrap/02-install-baseline-tools.ps1` (PowerShell 7, Terminal, Hyper-V, WSL2)
+   - `windows-bootstrap/03-install-wsl-ubuntu.ps1` (Ubuntu + `.wslconfig`)
+   - `windows-bootstrap/04-install-docker-desktop.ps1` (Docker + daemon.json)
 4. Handles restarts with scheduled task (`AIOS-Bootstrap-Resume`)
 5. Logs all actions to `logs/` with timestamps
 
@@ -638,7 +638,7 @@ ipconfig /flushdns
 ### PowerShell Essentials
 ```powershell
 # Bootstrap
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 
 # Vault
 .\scripts\vault-manager.ps1 -Action [init|unseal|seal|status|backup]

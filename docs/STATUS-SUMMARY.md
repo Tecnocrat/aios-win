@@ -43,12 +43,12 @@ winget install --id Microsoft.PowerShell --source winget --silent
 6. ✅ `RESOLVED-VSCODE-POWERSHELL.md` — Issue resolution log
 
 ### Scripts (8 files)
-1. ✅ `00-master-bootstrap.ps1` — Orchestrates all phases
-2. ✅ `01-core-os-hardening.ps1` — Power, RDP, BitLocker
-3. ✅ `02-install-baseline-tools.ps1` — PowerShell 7, Terminal, Hyper-V, WSL2
-4. ✅ `03-install-wsl-ubuntu.ps1` — Ubuntu + resource limits
-5. ✅ `04-install-docker-desktop.ps1` — Container runtime
-6. ✅ `05-deploy-all-stacks.ps1` — **NEW: Deploy all Docker stacks**
+1. ✅ `windows-bootstrap/00-master-bootstrap.ps1` — Orchestrates all phases
+2. ✅ `windows-bootstrap/01-core-os-hardening.ps1` — Power, RDP, BitLocker
+3. ✅ `windows-bootstrap/02-install-baseline-tools.ps1` — PowerShell 7, Terminal, Hyper-V, WSL2
+4. ✅ `windows-bootstrap/03-install-wsl-ubuntu.ps1` — Ubuntu + resource limits
+5. ✅ `windows-bootstrap/04-install-docker-desktop.ps1` — Container runtime
+6. ✅ `windows-bootstrap/05-deploy-all-stacks.ps1` — **NEW: Deploy all Docker stacks**
 7. ✅ `generate-tls-certs.ps1` — Self-signed certificates
 8. ✅ `vault-manager.ps1` — Vault lifecycle management
 
@@ -84,7 +84,7 @@ winget install --id Microsoft.PowerShell --source winget --silent
 
 **Phase 1: Bootstrap (60 min)**
 ```powershell
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 ```
 - Hardens OS, installs tools, enables Hyper-V/WSL2
 - **Automatic restart and resume**
@@ -154,14 +154,14 @@ Whoami:     https://whoami.lan     (test service)
 
 **Option A: Start Full Bootstrap (Recommended)**
 ```powershell
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 ```
 *Execute the complete automated deployment from scratch*
 
 **Option B: Fast Track (If Prerequisites Met)**
 ```powershell
 # If you already have WSL2 + Docker Desktop:
-C:\aios-supercell\scripts\05-deploy-all-stacks.ps1
+C:\aios-supercell\scripts\windows-bootstrap\05-deploy-all-stacks.ps1
 ```
 *Skip to stack deployment*
 
@@ -180,7 +180,7 @@ Since you agreed with the proposed path and want to integrate all steps in seque
 ```powershell
 # 1. Open PowerShell 7 as Administrator
 # 2. Execute master bootstrap
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 
 # 3. After automatic restart, continue with WSL2 setup
 wsl -d Ubuntu bash /mnt/c/aios-supercell/scripts/ubuntu-bootstrap.sh
@@ -258,7 +258,7 @@ docker logs aios-vault -f
 **To start the transformation, execute:**
 
 ```powershell
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 ```
 
 **Or tell me what you'd like to do next!**
