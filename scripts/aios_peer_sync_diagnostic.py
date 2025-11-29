@@ -1,32 +1,66 @@
 #!/usr/bin/env python3
 """
 AIOS Peer Synchronization Diagnostic Tool
-Validates connectivity and synchronization status between laptop and desktop AIOS cells
+Validates connectivity and synchronization status between laptop and
+desktop AIOS cells
 """
 
+# Standard Library Imports
 import asyncio
-import aiohttp
 import json
-import sys
 from datetime import datetime
-from typing import Dict, Any, Optional
+from pathlib import Path
+from typing import Dict, Any
+
+# Third Party Imports
+import aiohttp
+
 
 class AIOSPeerSyncDiagnostic:
+    """
+    AIOS Peer Synchronization Diagnostic Tool.
+
+    This class provides comprehensive diagnostics for validating
+    connectivity and synchronization status between laptop and
+    desktop AIOS cells. It tests local services (bridge and discovery
+    endpoints) and verifies communication with the desktop AIOS cell.
+
+    The diagnostic suite performs the following checks:
+    - Local bridge service connectivity and health status
+    - Local discovery service connectivity and peer enumeration
+    - Desktop AIOS cell connectivity and response times
+    - Bridge status details including consciousness level and branch info
+    - Peer discovery and network topology validation
+
+    Attributes:
+        desktop_cell (str): URL of the desktop AIOS cell endpoint
+        bridge_endpoint (str): URL of the local bridge service endpoint
+        discovery_endpoint (str): URL of the local discovery service endpoint
+        results (dict): Dictionary containing all diagnostic results
+
+    Example:
+        >>> diagnostic = AIOSPeerSyncDiagnostic()
+        >>> await diagnostic.run_diagnostics()
+        >>> diagnostic.print_report()
+    """
     def __init__(self):
         self.desktop_cell = "http://192.168.1.128:8000"
         self.bridge_endpoint = "http://localhost:3001"
         self.discovery_endpoint = "http://localhost:8001"
         self.results = {}
 
-    async def test_connectivity(self, url: str, timeout: int = 5) -> Dict[str, Any]:
+    async def test_connectivity(self, url: str, timeout: int = 5) \
+            -> Dict[str, Any]:
         """Test connectivity to a service endpoint"""
         try:
-            async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=timeout)) as session:
+            timeout_config = aiohttp.ClientTimeout(total=timeout)
+            async with aiohttp.ClientSession(timeout=timeout_config) \
+                    as session:
                 start_time = datetime.now()
                 async with session.get(url) as response:
                     end_time = datetime.now()
-                    response_time = (end_time - start_time).total_seconds() * 1000
-
+                    response_time = ((end_time - start_time).total_seconds()
+                                     * 1000)
                     return {
                         "status": "reachable",
                         "http_status": response.status,
@@ -39,7 +73,7 @@ class AIOSPeerSyncDiagnostic:
                 "error": str(e),
                 "url": url
             }
-        except Exception as e:
+        except (ValueError, TypeError, OSError, asyncio.TimeoutError) as e:
             return {
                 "status": "error",
                 "error": str(e),
@@ -50,126 +84,153 @@ class AIOSPeerSyncDiagnostic:
         """Run complete diagnostic suite"""
         print("🔍 Running AIOS Peer Synchronization Diagnostics...")
         print("=" * 60)
-
         # Test local services
         print("📡 Testing local services...")
-
-        bridge_health = await self.test_connectivity(f"{self.bridge_endpoint}/health")
-        discovery_health = await self.test_connectivity(f"{self.discovery_endpoint}/health")
-
+        bridge_health = await self.test_connectivity(
+            f"{self.bridge_endpoint}/health")
+        discovery_health = await self.test_connectivity(
+            f"{self.discovery_endpoint}/health")
         self.results["local_services"] = {
             "bridge": bridge_health,
             "discovery": discovery_health
         }
-
         # Test desktop connectivity
         print("🌐 Testing desktop connectivity...")
-
-        desktop_health = await self.test_connectivity(f"{self.desktop_cell}/health", timeout=10)
-
+        desktop_health = await self.test_connectivity(
+            f"{self.desktop_cell}/health", timeout=10)
         self.results["desktop_connectivity"] = {
             "desktop_cell": desktop_health
         }
-
         # Get detailed status if available
         if bridge_health["status"] == "reachable":
             try:
                 async with aiohttp.ClientSession() as session:
-                    async with session.get(f"{self.bridge_endpoint}/health") as response:
+                    async with session.get(
+                            f"{self.bridge_endpoint}/health") as response:
                         if response.status == 200:
                             bridge_status = await response.json()
                             self.results["bridge_status"] = bridge_status
-            except Exception as e:
+            except (aiohttp.ClientError, json.JSONDecodeError,
+                    ValueError, TypeError) as e:
                 self.results["bridge_status_error"] = str(e)
-
         # Get peer information
         if discovery_health["status"] == "reachable":
             try:
                 async with aiohttp.ClientSession() as session:
-                    async with session.get(f"{self.discovery_endpoint}/peers") as response:
+                    async with session.get(
+                            f"{self.discovery_endpoint}/peers") as response:
                         if response.status == 200:
                             peers = await response.json()
                             self.results["discovered_peers"] = peers
-            except Exception as e:
+            except (aiohttp.ClientError, json.JSONDecodeError,
+                    ValueError, TypeError) as e:
                 self.results["peers_error"] = str(e)
-
         return self.results
 
     def print_report(self):
         """Print formatted diagnostic report"""
         print("\n📊 DIAGNOSTIC REPORT")
         print("=" * 60)
+        self._print_local_services()
+        self._print_desktop_connectivity()
+        self._print_bridge_status()
+        self._print_peer_discovery()
+        self._print_recommendations()
+        print("\n📅 Generated:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-        # Local services status
+    def _print_local_services(self):
+        """Print local services status section"""
         print("🏠 LOCAL SERVICES:")
         for service, status in self.results.get("local_services", {}).items():
             status_icon = "✅" if status["status"] == "reachable" else "❌"
             if status["status"] == "reachable":
-                print(f"  {status_icon} {service}: {status['http_status']} ({status['response_time_ms']}ms)")
+                http_status = status['http_status']
+                response_time = status['response_time_ms']
+                print(f"  {status_icon} {service}: {http_status} "
+                      f"({response_time}ms)")
             else:
-                print(f"  {status_icon} {service}: {status['status']} - {status.get('error', 'Unknown error')}")
+                status_msg = status['status']
+                error_msg = status.get('error', 'Unknown error')
+                print(f"  {status_icon} {service}: {status_msg} - {error_msg}")
 
-        # Desktop connectivity
+    def _print_desktop_connectivity(self):
+        """Print desktop connectivity section"""
         print("\n🖥️  DESKTOP CONNECTIVITY:")
-        desktop = self.results.get("desktop_connectivity", {}).get("desktop_cell", {})
+        desktop_conn = self.results.get("desktop_connectivity", {})
+        desktop = desktop_conn.get("desktop_cell", {})
         if desktop.get("status") == "reachable":
-            print(f"  ✅ Desktop Cell: {desktop['http_status']} ({desktop['response_time_ms']}ms)")
+            http_status = desktop['http_status']
+            response_time = desktop['response_time_ms']
+            print(f"  ✅ Desktop Cell: {http_status} ({response_time}ms)")
         else:
-            print(f"  ❌ Desktop Cell: {desktop.get('status', 'unknown')} - {desktop.get('error', 'Connection failed')}")
+            status_val = desktop.get('status', 'unknown')
+            error_val = desktop.get('error', 'Connection failed')
+            print(f"  ❌ Desktop Cell: {status_val} - {error_val}")
 
-        # Bridge status details
+    def _print_bridge_status(self):
+        """Print bridge status details section"""
         if "bridge_status" in self.results:
             bridge_status = self.results["bridge_status"]
-            print(f"\n🔗 BRIDGE STATUS: {bridge_status.get('status', 'unknown').upper()}")
+            bridge_status_val = bridge_status.get('status', 'unknown')
+            print(f"\n🔗 BRIDGE STATUS: {bridge_status_val.upper()}")
             if bridge_status.get("status") == "degraded":
                 print(f"  ⚠️  Error: {bridge_status.get('error', 'Unknown')}")
             elif bridge_status.get("status") == "healthy":
                 desktop_info = bridge_status.get("desktop_cell_info", {})
-                print(f"  📊 Consciousness Level: {desktop_info.get('consciousness_level', 'unknown')}")
+                consciousness_level = desktop_info.get(
+                    'consciousness_level', 'unknown')
+                print(f"  📊 Consciousness Level: {consciousness_level}")
                 print(f"  🌿 Branch: {desktop_info.get('branch', 'unknown')}")
 
-        # Peer discovery
+    def _print_peer_discovery(self):
+        """Print peer discovery section"""
         if "discovered_peers" in self.results:
             peers = self.results["discovered_peers"]
             print(f"\n👥 DISCOVERED PEERS: {len(peers.get('peers', []))}")
             for peer in peers.get("peers", []):
-                print(f"  • {peer.get('cell_id', 'unknown')}: {peer.get('ip', 'unknown')}:{peer.get('port', 'unknown')}")
+                cell_id = peer.get('cell_id', 'unknown')
+                peer_ip = peer.get('ip', 'unknown')
+                peer_port = peer.get('port', 'unknown')
+                print(f"  • {cell_id}: {peer_ip}:{peer_port}")
 
-        # Recommendations
+    def _print_recommendations(self):
+        """Print recommendations section"""
         print("\n💡 RECOMMENDATIONS:")
         issues = []
-
-        if self.results.get("local_services", {}).get("bridge", {}).get("status") != "reachable":
+        local_services = self.results.get("local_services", {})
+        bridge_service = local_services.get("bridge", {})
+        if bridge_service.get("status") != "reachable":
             issues.append("Start the laptop bridge service")
-        if self.results.get("local_services", {}).get("discovery", {}).get("status") != "reachable":
+        discovery_service = local_services.get("discovery", {})
+        if discovery_service.get("status") != "reachable":
             issues.append("Start the discovery service")
-        if self.results.get("desktop_connectivity", {}).get("desktop_cell", {}).get("status") != "reachable":
-            issues.append("Resolve network connectivity to desktop (192.168.1.128)")
+        desktop_connectivity = self.results.get("desktop_connectivity", {})
+        desktop_cell = desktop_connectivity.get("desktop_cell", {})
+        if desktop_cell.get("status") != "reachable":
+            issues.append("Resolve network connectivity to desktop "
+                          "(192.168.1.128)")
             issues.append("Ensure desktop AIOS cell is running on port 8000")
             issues.append("Check firewall settings on desktop PC")
-
         if issues:
             for issue in issues:
                 print(f"  • {issue}")
         else:
             print("  ✅ All systems operational - peer synchronization ready")
 
-        print("\n📅 Generated:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
 async def main():
     """Main diagnostic function"""
     diagnostic = AIOSPeerSyncDiagnostic()
     await diagnostic.run_diagnostics()
     diagnostic.print_report()
-
-    # Save results to file
+    # Save results to file in the health diagnostics directory
+    diagnostics_base = "c:/dev/aios-win/aios-core/tachyonic/reports/health"
+    diagnostics_dir = Path(diagnostics_base)
+    diagnostics_dir.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    filename = f"aios_sync_diagnostic_{timestamp}.json"
-
-    with open(filename, 'w') as f:
+    filename = diagnostics_dir / f"aios_sync_diagnostic_{timestamp}.json"
+    with open(filename, 'w', encoding='utf-8') as f:
         json.dump(diagnostic.results, f, indent=2, default=str)
-
     print(f"\n💾 Results saved to: {filename}")
-
 if __name__ == "__main__":
     asyncio.run(main())
