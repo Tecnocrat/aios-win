@@ -9,7 +9,7 @@
 			"path": "aios-core"
 		},
 		{
-			"name": "🖥️ server 📦 (submodule)",
+			"name": "🖥️ server 📦",
 			"path": "server"
 		},
 		
