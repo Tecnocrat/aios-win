@@ -82,10 +82,10 @@ class AIOSPeerSyncDiagnostic:
 
     async def run_diagnostics(self) -> Dict[str, Any]:
         """Run complete diagnostic suite"""
-        print("🔍 Running AIOS Peer Synchronization Diagnostics...")
+        print("Running AIOS Peer Synchronization Diagnostics...")
         print("=" * 60)
         # Test local services
-        print("📡 Testing local services...")
+        print("Testing local services...")
         bridge_health = await self.test_connectivity(
             f"{self.bridge_endpoint}/health")
         discovery_health = await self.test_connectivity(
@@ -95,7 +95,7 @@ class AIOSPeerSyncDiagnostic:
             "discovery": discovery_health
         }
         # Test desktop connectivity
-        print("🌐 Testing desktop connectivity...")
+        print("Testing desktop connectivity...")
         desktop_health = await self.test_connectivity(
             f"{self.desktop_cell}/health", timeout=10)
         self.results["desktop_connectivity"] = {
@@ -129,20 +129,23 @@ class AIOSPeerSyncDiagnostic:
 
     def print_report(self):
         """Print formatted diagnostic report"""
-        print("\n📊 DIAGNOSTIC REPORT")
+        print("\n[DIAGNOSTIC REPORT]")
         print("=" * 60)
         self._print_local_services()
         self._print_desktop_connectivity()
         self._print_bridge_status()
         self._print_peer_discovery()
         self._print_recommendations()
-        print("\n📅 Generated:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+        print("\nGenerated:", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
     def _print_local_services(self):
         """Print local services status section"""
-        print("🏠 LOCAL SERVICES:")
+        print("LOCAL SERVICES:")
         for service, status in self.results.get("local_services", {}).items():
-            status_icon = "✅" if status["status"] == "reachable" else "❌"
+            if status["status"] == "reachable":
+                status_icon = "[OK]"
+            else:
+                status_icon = "[FAIL]"
             if status["status"] == "reachable":
                 http_status = status['http_status']
                 response_time = status['response_time_ms']
@@ -155,47 +158,50 @@ class AIOSPeerSyncDiagnostic:
 
     def _print_desktop_connectivity(self):
         """Print desktop connectivity section"""
-        print("\n🖥️  DESKTOP CONNECTIVITY:")
+        print("\nDESKTOP CONNECTIVITY:")
         desktop_conn = self.results.get("desktop_connectivity", {})
         desktop = desktop_conn.get("desktop_cell", {})
         if desktop.get("status") == "reachable":
             http_status = desktop['http_status']
             response_time = desktop['response_time_ms']
-            print(f"  ✅ Desktop Cell: {http_status} ({response_time}ms)")
+            print(f"  [OK] Desktop Cell: {http_status} ({response_time}ms)")
         else:
             status_val = desktop.get('status', 'unknown')
             error_val = desktop.get('error', 'Connection failed')
-            print(f"  ❌ Desktop Cell: {status_val} - {error_val}")
+            print(f"  [FAIL] Desktop Cell: {status_val} - {error_val}")
 
     def _print_bridge_status(self):
         """Print bridge status details section"""
         if "bridge_status" in self.results:
             bridge_status = self.results["bridge_status"]
             bridge_status_val = bridge_status.get('status', 'unknown')
-            print(f"\n🔗 BRIDGE STATUS: {bridge_status_val.upper()}")
+            print(f"\nBRIDGE STATUS: {bridge_status_val.upper()}")
             if bridge_status.get("status") == "degraded":
-                print(f"  ⚠️  Error: {bridge_status.get('error', 'Unknown')}")
+                error_msg = bridge_status.get('error', 'Unknown')
+                print(f"  [WARN] Error: {error_msg}")
             elif bridge_status.get("status") == "healthy":
                 desktop_info = bridge_status.get("desktop_cell_info", {})
                 consciousness_level = desktop_info.get(
                     'consciousness_level', 'unknown')
-                print(f"  📊 Consciousness Level: {consciousness_level}")
-                print(f"  🌿 Branch: {desktop_info.get('branch', 'unknown')}")
+                print(f"  [INFO] Consciousness Level: {consciousness_level}")
+                branch = desktop_info.get('branch', 'unknown')
+                print(f"  [INFO] Branch: {branch}")
 
     def _print_peer_discovery(self):
         """Print peer discovery section"""
         if "discovered_peers" in self.results:
             peers = self.results["discovered_peers"]
-            print(f"\n👥 DISCOVERED PEERS: {len(peers.get('peers', []))}")
+            peer_count = len(peers.get('peers', []))
+            print(f"\nDISCOVERED PEERS: {peer_count}")
             for peer in peers.get("peers", []):
                 cell_id = peer.get('cell_id', 'unknown')
                 peer_ip = peer.get('ip', 'unknown')
                 peer_port = peer.get('port', 'unknown')
-                print(f"  • {cell_id}: {peer_ip}:{peer_port}")
+                print(f"  - {cell_id}: {peer_ip}:{peer_port}")
 
     def _print_recommendations(self):
         """Print recommendations section"""
-        print("\n💡 RECOMMENDATIONS:")
+        print("\nRECOMMENDATIONS:")
         issues = []
         local_services = self.results.get("local_services", {})
         bridge_service = local_services.get("bridge", {})
@@ -213,9 +219,10 @@ class AIOSPeerSyncDiagnostic:
             issues.append("Check firewall settings on desktop PC")
         if issues:
             for issue in issues:
-                print(f"  • {issue}")
+                print(f"  - {issue}")
         else:
-            print("  ✅ All systems operational - peer synchronization ready")
+            msg = "All systems operational - peer synchronization ready"
+            print(f"  [SUCCESS] {msg}")
 
 
 async def main():
@@ -231,6 +238,6 @@ async def main():
     filename = diagnostics_dir / f"aios_sync_diagnostic_{timestamp}.json"
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(diagnostic.results, f, indent=2, default=str)
-    print(f"\n💾 Results saved to: {filename}")
+    print(f"\n[SAVE] Results saved to: {filename}")
 if __name__ == "__main__":
     asyncio.run(main())

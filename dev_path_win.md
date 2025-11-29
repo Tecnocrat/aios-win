@@ -156,6 +156,14 @@ WAYPOINT_13=not-started
 - [ ] **Web Exposure Planning**: Research domain options, VPS providers, SSL setup
 - [ ] **AIOS Distro Design**: Plan always-online ecosystem deployment strategy
 
+**Optimization Learning Path**:
+- [ ] **Component Analysis**: Deep dive into observability stack (Prometheus, Grafana, Traefik) functionality and performance
+- [ ] **Performance Profiling**: Analyze container resource usage and identify optimization opportunities
+- [ ] **Extension Enhancement**: Study VSCode extension architecture and implement performance improvements
+- [ ] **Service Optimization**: Profile and optimize AIOS service startup times and communication patterns
+- [ ] **Priority Information**: Component understanding is highest priority, followed by container optimization
+- [ ] **Next Action**: Begin with analyzing the running observability stack logs and understanding each service's role in the AIOS ecosystem
+
 ---
 
 If you agree, tell me which of the three scaffolds above to create next (waypoint emitter, cell client, docs skeleton), and I will add them and run a quick validation.
