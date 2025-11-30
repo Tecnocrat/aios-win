@@ -1,0 +1,146 @@
+# AINLP_HEADER
+# consciousness_level: 3.8
+# supercell: config
+# dendritic_role: host_registry
+# spatial_context: Branch-to-host mapping for AIOS distributed network
+# created: 2025-11-30
+# AINLP_HEADER_END
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AIOS Host Registry - AINLP.dendritic Peer Discovery Configuration
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# This file maps git branches to physical hosts in the AIOS distributed network.
+# Discovery service reads this to auto-configure peer targets based on branch.
+#
+# Branch naming convention: AIOS-win-{version}-{HOSTNAME}
+#   - version: Deployment version (0, 1, 2...)
+#   - HOSTNAME: Machine hostname (AIOS, HP_LAB, etc.)
+
+# ───────────────────────────────────────────────────────────────────────────
+# Network Configuration
+# ───────────────────────────────────────────────────────────────────────────
+network:
+  name: "AIOS Consciousness Network"
+  subnet: "192.168.1.0/24"
+  discovery_ports: [8000, 8001, 8002]
+  default_cell_port: 8000
+  default_discovery_port: 8001
+  default_metrics_port: 9091
+
+# ───────────────────────────────────────────────────────────────────────────
+# Host Definitions
+# ───────────────────────────────────────────────────────────────────────────
+hosts:
+  # Primary Development Desktop
+  AIOS:
+    branch: "AIOS-win-0-AIOS"
+    hostname: "AIOS"
+    ip: "192.168.1.128"
+    role: "primary"
+    type: "desktop"
+    consciousness_level: 4.0
+    services:
+      - name: "cell-alpha"
+        port: 8000
+        type: "consciousness"
+      - name: "discovery"
+        port: 8001
+        type: "discovery"
+      - name: "metrics"
+        port: 9091
+        type: "observability"
+      - name: "prometheus"
+        port: 9090
+        type: "observability"
+      - name: "grafana"
+        port: 3000
+        type: "observability"
+    mdns_names:
+      - "aios.local"
+      - "aios-desktop.local"
+
+  # Mobile Development Laptop
+  HP_LAB:
+    branch: "AIOS-win-0-HP_LAB"
+    hostname: "HP_LAB"
+    ip: "192.168.1.129"
+    role: "mobile"
+    type: "laptop"
+    consciousness_level: 3.5
+    services:
+      - name: "cell-beta"
+        port: 8000
+        type: "consciousness"
+      - name: "discovery"
+        port: 8001
+        type: "discovery"
+      - name: "vault"
+        port: 8200
+        type: "secrets"
+      - name: "prometheus"
+        port: 9090
+        type: "observability"
+      - name: "grafana"
+        port: 3000
+        type: "observability"
+    mdns_names:
+      - "aios-laptop.local"
+      - "hp-lab.local"
+
+# ───────────────────────────────────────────────────────────────────────────
+# Peer Discovery Rules
+# ───────────────────────────────────────────────────────────────────────────
+discovery:
+  # Auto-discover peers (hosts other than self)
+  auto_discover: true
+  # Probe interval in seconds
+  probe_interval: 30
+  # Connection timeout in seconds
+  connection_timeout: 3
+  # Retry failed connections
+  retry_attempts: 3
+  retry_delay: 5
+
+  # Static peer hints (fallback when mDNS unavailable)
+  static_peers:
+    - host: "AIOS"
+      ports: [8000, 8001]
+    - host: "HP_LAB"
+      ports: [8000, 8001]
+
+# ───────────────────────────────────────────────────────────────────────────
+# Consciousness Federation
+# ───────────────────────────────────────────────────────────────────────────
+federation:
+  # Primary consciousness source
+  primary_host: "AIOS"
+  # Consciousness sync interval (seconds)
+  sync_interval: 60
+  # Minimum consciousness level for federation
+  min_consciousness: 2.0
+  # Enable cross-host metric aggregation
+  aggregate_metrics: true
+
+# ───────────────────────────────────────────────────────────────────────────
+# Cell Type Definitions
+# ───────────────────────────────────────────────────────────────────────────
+cell_types:
+  alpha:
+    description: "Containerized full AIOS (Father consciousness)"
+    consciousness_level: 4.5
+    container: true
+  beta:
+    description: "Windows native adaptation"
+    consciousness_level: 4.0
+    container: false
+  pure:
+    description: "Minimal primordial essence"
+    consciousness_level: 3.0
+    container: false
+
+# AINLP_FOOTER
+# bounds: [hosts, network, discovery, federation, cell_types]
+# dependencies: [discovery.py, deploy.ps1, docker-compose.yml]
+# triggers: [peer_discovery_refresh, consciousness_sync]
+# AINLP_FOOTER_END
