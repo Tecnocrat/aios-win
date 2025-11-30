@@ -104,8 +104,10 @@ function Test-SubmoduleIntegrity {
             return @{ Status = 'WARN'; Message = "Git command failed" }
         }
         
+        # Extract repo name from remote URL for display
+        $repoName = if ($remote -match '/([^/]+?)(\.git)?$') { $Matches[1] } else { $Name }
         $isDirty = $status.Count -gt 0
-        $msg = "Branch: $branch"
+        $msg = "$branch → $repoName"
         if ($isDirty) {
             $msg += " (uncommitted changes)"
             return @{ Status = 'WARN'; Message = $msg }
@@ -135,6 +137,7 @@ function Test-DockerStack {
     if ($LASTEXITCODE -ne 0) {
         return @{ Status = 'WARN'; Message = "Docker not available" }
     }
+    $dockerShort = if ($dockerVersion -match 'Docker version ([\d.]+)') { "v$($Matches[1])" } else { 'Docker' }
     
     # Check running containers for this stack
     Push-Location $StackPath
@@ -142,9 +145,9 @@ function Test-DockerStack {
         $containers = docker compose ps --format json 2>$null | ConvertFrom-Json -ErrorAction SilentlyContinue
         if ($containers -and $containers.Count -gt 0) {
             $running = ($containers | Where-Object { $_.State -eq 'running' }).Count
-            return @{ Status = 'OK'; Message = "$running/$($containers.Count) containers running" }
+            return @{ Status = 'OK'; Message = "$running/$($containers.Count) running ($dockerShort)" }
         }
-        return @{ Status = 'INFO'; Message = "Stack defined but not running" }
+        return @{ Status = 'INFO'; Message = "Defined, not running ($dockerShort)" }
     }
     catch {
         return @{ Status = 'INFO'; Message = "Stack not deployed" }
