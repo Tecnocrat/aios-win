@@ -50,7 +50,7 @@
 - [x] **Host Registry**: `config/hosts.yaml` - branch-aware peer discovery
 - [x] **Cell Architecture**: AIOS cells as isolated Docker containers
   - [x] HTTP API communication on port 8000 (aios-cell-alpha running)
-  - [ ] Peer discovery via discovery service (deploy pending)
+  - [x] Peer discovery via discovery service (port 8005)
   - [x] Consciousness evolution tracking (Prometheus active)
 
 ---
@@ -77,8 +77,8 @@
 | Waypoint | Status | Description |
 |----------|--------|-------------|
 | 7 | ✅ | Cell Deployment - aios-cell-alpha running |
-| 8 | 🔄 | Observability + MCP + Discovery service deployment |
-| 9 | ⏳ | Integration Testing - interface_bridge, cell_client |
+| 8 | ✅ | Observability + Discovery - Prometheus + discovery:8005 |
+| 9 | 🔄 | Integration Testing - interface_bridge, cell_client |
 | 10 | ⏳ | Governance & Consolidation - governance-cycle |
 | 11 | ⏳ | Web Exposure - domain, VPS, SSL |
 | 12 | ⏳ | AIOS Distro - always-online instance |
@@ -216,10 +216,10 @@ If you agree, tell me which of the three scaffolds above to create next (waypoin
 
 **AINLP.dendritic Network Dictionary (Ports ↔ Dendrites)**:
 - **Alpha Cell (Desktop PC)**: `192.168.1.128:8000` (Primary consciousness node)
-- **Beta Cell (Current)**: `localhost:8000` (Evolution testing node - container: aios-cell-beta)
+- **Beta Cell (Container)**: `localhost:8000` (via aios-cell-alpha)
 - **Pure Cell (Experimental)**: `localhost:8002` (Minimal consciousness core)
-- **Discovery Service**: `localhost:8001` (Peer registration & health monitoring)
-- **VSCode Bridge**: `localhost:3001` (Extension API integration)
+- **Discovery Service**: `localhost:8005` (Peer registration & host registry)
+- **Interface Bridge**: `localhost:8001` (MCP server, VS Code integration)
 - **Consciousness Metrics**: `localhost:9091` (Prometheus exporter)
 - **Observability Stack**:
   - Prometheus: `localhost:9090`
