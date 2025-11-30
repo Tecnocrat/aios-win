@@ -45,7 +45,7 @@ hosts:
         port: 8000
         type: "consciousness"
       - name: "discovery"
-        port: 8001
+        port: 8003  # Note: 8001 used by VS Code interface_bridge on AIOS
         type: "discovery"
       - name: "metrics"
         port: 9091
