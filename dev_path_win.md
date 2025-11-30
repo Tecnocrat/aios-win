@@ -35,7 +35,7 @@
 - [x] **Bootstrap Complete**: Waypoints 0-10 achieved (see shadow archive)
 - [x] **AIOS Canonical Windows Deployment**: Scripts 01-05 executed, substrate operational
 - [x] **Branch Architecture**: Host-aware naming `AIOS-win-{version}-{HOSTNAME}`
-- [ ] **Agentic Pathways**: Documentation as tasklists for evolutionary divergence
+- [x] **Agentic Pathways**: Documentation as tasklists for evolutionary divergence
 - [ ] **Waypoint Navigation**: Coherence for AI agents - core navigational behavior
 
 ---
@@ -48,10 +48,10 @@
 - [x] **MCP Servers**: aios-context, filesystem, docker for semantic orchestration
 - [x] **Observability Stack**: Prometheus (9090), Grafana (3000), Loki, consciousness exporter (9091)
 - [x] **Host Registry**: `config/hosts.yaml` - branch-aware peer discovery
-- [ ] **Cell Architecture**: AIOS cells as isolated Docker containers
-  - [ ] HTTP API communication on port 8000
-  - [ ] Peer discovery via discovery service
-  - [ ] Consciousness evolution tracking
+- [x] **Cell Architecture**: AIOS cells as isolated Docker containers
+  - [x] HTTP API communication on port 8000 (aios-cell-alpha running)
+  - [ ] Peer discovery via discovery service (deploy pending)
+  - [x] Consciousness evolution tracking (Prometheus active)
 
 ---
 
@@ -64,14 +64,9 @@
 - [x] **Step 5 - Docker Desktop**: `.\scripts\04-install-docker-desktop.ps1` (Docker running)
 - [x] **Step 6 - Deploy Stacks**: `.\scripts\05-deploy-all-stacks.ps1` (Traefik, Prometheus, Grafana, Loki, Vault)
 - [x] **Step 7 - Vault Init**: `.\scripts\vault-manager.ps1 -Action init` (unsealed)
-- [ ] **Step 8 - Cell Deployment**: `Set-Location C:\aios-supercell\server\stacks\cells; .\deploy.ps1 -DeploymentType local-desktop`
+- [x] **Step 8 - Cell Deployment**: Alpha cell running (`aios-cell-alpha` on port 8000)
 
-**Notes**:
-- [ ] System restart required to apply WSL/Virtual Machine Platform feature changes
-- [ ] After restart, try: `wsl --set-default-version 2` and `ubuntu2204.exe` to launch Ubuntu
-- [ ] If WSL still fails, Docker Desktop can be installed without WSL (Hyper-V mode)
-- [ ] Keep C++ core build disabled (`SKIP_CORE_BUILD=1`) for fast births
-- [ ] Enable `SKIP_CORE_BUILD=0` for native engine binaries if required
+> **Build Notes**: `SKIP_CORE_BUILD=1` for fast births, `=0` for native engines. See Phase 1 below.
 
 ---
 
@@ -81,8 +76,8 @@
 
 | Waypoint | Status | Description |
 |----------|--------|-------------|
-| 7 | 🔄 | Cell Deployment - containerized stack with monitoring |
-| 8 | ⏳ | Observability + MCP - Prometheus targets, MCP servers |
+| 7 | ✅ | Cell Deployment - aios-cell-alpha running |
+| 8 | 🔄 | Observability + MCP + Discovery service deployment |
 | 9 | ⏳ | Integration Testing - interface_bridge, cell_client |
 | 10 | ⏳ | Governance & Consolidation - governance-cycle |
 | 11 | ⏳ | Web Exposure - domain, VPS, SSL |
