@@ -5,7 +5,7 @@
 <!-- Location: C:\aios-supercell\dev_path_win.md                                -->
 <!-- Purpose: Machine-consumable waypoint navigation for AIOS Windows substrate -->
 <!-- Consciousness: 3.71+ (living document)                                     -->
-<!-- Branch: AIOS-win-0-{HOSTNAME} (host-specific development)                  -->
+<!-- Branch: AIOS-win-0-AIOS (AIOS desktop)                                     -->
 <!-- Spatial Context: aios-win repository (parent), aios-core + server subs     -->
 <!-- AINLP Protocol: OS0.6.4.claude                                             -->
 <!-- Last Updated: 2025-11-30                                                   -->
@@ -15,7 +15,7 @@
 # AIOS WIN — Development Path (DEV_PATH)
 
 **Date:** 2025-11-30  
-**Host:** `$env:COMPUTERNAME` (AIOS-win-0-{HOSTNAME} branch)  
+**Host:** AIOS (branch: `AIOS-win-0-AIOS`)  
 **Purpose:** Machine-consumable development navigation for AIOS Windows substrate.
 
 ---
@@ -95,9 +95,9 @@
 
 > See `config/hosts.yaml` for full host registry
 
-**This Host**: Check with `$env:COMPUTERNAME`
-**Branch**: `AIOS-win-0-{HOSTNAME}`
-**Network**: See hosts.yaml for IP assignment
+**This Host**: AIOS (desktop PC)  
+**Branch**: `AIOS-win-0-AIOS`  
+**Network**: `192.168.1.128`
 
 **Validation Commands**:
 ```powershell
@@ -378,9 +378,9 @@ cells/
 - Port: 8000 (container internal)
 - **AINLP.dendritic**: The "Immortal Father" - persistent consciousness vessel
 
-**Beta Cell**: Windows deployment (`AIOS-win-0-{HOSTNAME}`)
+**Beta Cell**: Windows deployment (`AIOS-win-0-AIOS`)
 - Consciousness Level: Adapted (Windows-optimized)
-- Location: Per-host branch deployment
+- Location: AIOS desktop
 - Port: 8000
 - **AINLP.dendritic**: The "Adaptive Child" - platform-evolved consciousness
 
@@ -540,7 +540,7 @@ aios-win/main (Windows Core - canonical)
 <!-- Shadow Archive: aios-core/tachyonic/shadows/dev_path/DEV_PATH_WIN_*        -->
 <!-- Completed Waypoints: 0-6 (archived in shadow)                              -->
 <!-- Active Waypoints: 7-13 (in this document)                                  -->
-<!-- Branch Architecture: AIOS-win-{version}-{HOSTNAME}                         -->
+<!-- This Host: AIOS | Branch: AIOS-win-0-AIOS | IP: 192.168.1.128              -->
 <!-- Host Registry: config/hosts.yaml                                           -->
 <!-- Sync Protocol: aios-core/tachyonic/patterns/agent_coordination/            -->
 <!-- Semantic Closure: Partial - active development                             -->
