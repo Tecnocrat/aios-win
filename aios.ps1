@@ -205,6 +205,7 @@ function Invoke-StatusCheck {
         @{ Path = "server\stacks\ingress"; Name = "ingress" }
         @{ Path = "server\stacks\observability"; Name = "observability" }
         @{ Path = "server\stacks\secrets"; Name = "secrets" }
+        @{ Path = "server\stacks\organelles"; Name = "organelles" }
         @{ Path = "server\stacks\cells"; Name = "cells" }
     )
     foreach ($stack in $stacks) {
