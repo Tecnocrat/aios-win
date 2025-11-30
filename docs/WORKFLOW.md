@@ -50,7 +50,7 @@ git submodule status
 ```powershell
 # Run as Administrator
 Set-ExecutionPolicy Bypass -Scope Process -Force
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 ```
 
 **Automated actions:**
@@ -271,10 +271,10 @@ git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercel
 cd C:\aios-supercell
 
 # Bootstrap
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 
 # Deploy
-C:\aios-supercell\scripts\05-deploy-all-stacks.ps1
+C:\aios-supercell\scripts\windows-bootstrap\05-deploy-all-stacks.ps1
 ```
 
 ### Update Configuration

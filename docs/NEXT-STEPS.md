@@ -17,12 +17,12 @@
 
 ### Scripts Ready
 ✅ **Bootstrap Scripts:**
-  - `00-master-bootstrap.ps1` — Orchestrator
-  - `01-core-os-hardening.ps1` — Power, RDP, BitLocker
-  - `02-install-baseline-tools.ps1` — PowerShell 7, Terminal, Hyper-V, WSL2
-  - `03-install-wsl-ubuntu.ps1` — Ubuntu + resource limits
-  - `04-install-docker-desktop.ps1` — Container runtime
-  - `05-deploy-all-stacks.ps1` — **NEW: Deploy all Docker stacks**
+  - `windows-bootstrap/00-master-bootstrap.ps1` — Orchestrator
+  - `windows-bootstrap/01-core-os-hardening.ps1` — Power, RDP, BitLocker
+  - `windows-bootstrap/02-install-baseline-tools.ps1` — PowerShell 7, Terminal, Hyper-V, WSL2
+  - `windows-bootstrap/03-install-wsl-ubuntu.ps1` — Ubuntu + resource limits
+  - `windows-bootstrap/04-install-docker-desktop.ps1` — Container runtime
+  - `windows-bootstrap/05-deploy-all-stacks.ps1` — **NEW: Deploy all Docker stacks**
 
 ✅ **Utility Scripts:**
   - `generate-tls-certs.ps1` — Self-signed certificates
@@ -51,7 +51,7 @@
 **Phase 1: Bootstrap Windows 11 Core (30-60 min)**
 ```powershell
 # Open PowerShell 7 as Administrator
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 # This handles: OS hardening → Tools → Hyper-V → WSL2 → Docker Desktop
 # Includes one automatic restart
 ```
@@ -161,7 +161,7 @@ Once your supercell is operational, the next evolution stages are:
 **Quick Commands:**
 ```powershell
 # Bootstrap
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 
 # Vault management
 C:\aios-supercell\scripts\vault-manager.ps1 -Action [init|unseal|seal|status|backup]
@@ -180,7 +180,7 @@ docker logs [container-name] -f
 I can help you with:
 
 1. **"Create all Docker Compose stacks"** — I'll create all the YAML files from templates
-2. **"Start Phase 1 bootstrap"** — I'll guide you through executing 00-master-bootstrap.ps1
+2. **"Start Phase 1 bootstrap"** — I'll guide you through executing windows-bootstrap/00-master-bootstrap.ps1
 3. **"Explain [specific component]"** — Deep dive into any architecture layer
 4. **"Troubleshoot [issue]"** — Help debug any problems
 5. **"Skip to [phase]"** — If you've already completed earlier phases

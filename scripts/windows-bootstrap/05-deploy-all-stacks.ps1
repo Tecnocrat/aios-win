@@ -9,6 +9,9 @@
 #>
 
 $ErrorActionPreference = "Stop"
+$ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
+$RootDir = Split-Path -Parent $ScriptDir
+$ServerDir = "$RootDir\server"
 
 function Write-Header {
     param([string]$Message)
@@ -36,8 +39,8 @@ Write-Header "AIOS SUPERCELL - Stack Deployment"
 
 # Step 1: Generate TLS certificates
 Write-Info "Step 1: Generating TLS certificates..."
-if (-not (Test-Path "C:\Users\jesus\server\stacks\ingress\certs\lan.crt")) {
-    & "C:\aios-supercell\scripts\generate-tls-certs.ps1"
+if (-not (Test-Path "$ServerDir\stacks\ingress\certs\lan.crt")) {
+    & "$RootDir\scripts\generate-tls-certs.ps1"
     Write-Success "TLS certificates generated"
 } else {
     Write-Success "TLS certificates already exist"
@@ -45,7 +48,7 @@ if (-not (Test-Path "C:\Users\jesus\server\stacks\ingress\certs\lan.crt")) {
 
 # Step 2: Create acme.json with proper permissions
 Write-Info "Step 2: Creating acme.json..."
-$acmePath = "C:\Users\jesus\server\stacks\ingress\acme.json"
+$acmePath = "$ServerDir\stacks\ingress\acme.json"
 if (-not (Test-Path $acmePath)) {
     New-Item -ItemType File -Path $acmePath -Force | Out-Null
     $acl = Get-Acl $acmePath
@@ -60,7 +63,7 @@ if (-not (Test-Path $acmePath)) {
 
 # Step 3: Create Grafana dashboards config (if missing)
 Write-Info "Step 3: Creating Grafana dashboards config..."
-$dashboardsYml = "C:\Users\jesus\server\stacks\observability\grafana\provisioning\dashboards\dashboards.yml"
+$dashboardsYml = "$ServerDir\stacks\observability\grafana\provisioning\dashboards\dashboards.yml"
 if (-not (Test-Path $dashboardsYml)) {
     New-Item -ItemType Directory -Force -Path (Split-Path $dashboardsYml) | Out-Null
     
@@ -122,7 +125,7 @@ if (-not $networkExists) {
 
 # Step 7: Deploy Traefik stack
 Write-Header "Deploying Traefik Ingress Stack"
-Push-Location "C:\Users\jesus\server\stacks\ingress"
+Push-Location "$ServerDir\stacks\ingress"
 try {
     docker compose up -d
     Start-Sleep -Seconds 10
@@ -139,7 +142,7 @@ try {
 
 # Step 8: Deploy Observability stack
 Write-Header "Deploying Observability Stack"
-Push-Location "C:\Users\jesus\server\stacks\observability"
+Push-Location "$ServerDir\stacks\observability"
 try {
     docker compose up -d
     Start-Sleep -Seconds 15
@@ -156,7 +159,7 @@ try {
 
 # Step 9: Deploy Vault stack
 Write-Header "Deploying Vault Stack"
-Push-Location "C:\Users\jesus\server\stacks\secrets"
+Push-Location "$ServerDir\stacks\secrets"
 try {
     docker compose up -d
     Start-Sleep -Seconds 10
@@ -174,20 +177,20 @@ docker ps --filter "name=aios-*" --format "table {{.Names}}\t{{.Status}}\t{{.Por
 
 # Step 11: Initialize Vault (if not already done)
 Write-Header "Vault Initialization"
-if (-not (Test-Path "C:\aios-supercell\config\vault-unseal-keys.json")) {
+if (-not (Test-Path "$RootDir\config\vault-unseal-keys.json")) {
     Write-Info "Initializing Vault for first time..."
     Write-Host "⚠️  IMPORTANT: Backup the unseal keys immediately after initialization!" -ForegroundColor Red
     Start-Sleep -Seconds 3
     
     try {
-        & "C:\aios-supercell\scripts\vault-manager.ps1" -Action init
+        & "$RootDir\scripts\vault-manager.ps1" -Action init
     } catch {
         Write-Error "Failed to initialize Vault: $_"
     }
 } else {
     Write-Success "Vault already initialized"
     Write-Info "Checking Vault status..."
-    & "C:\aios-supercell\scripts\vault-manager.ps1" -Action status
+    & "$RootDir\scripts\vault-manager.ps1" -Action status
 }
 
 # Step 12: Service URLs
@@ -210,7 +213,7 @@ Write-Host "  Loki:       http://localhost:3100" -ForegroundColor Gray
 Write-Host "`n⚠️  IMMEDIATE SECURITY ACTIONS:" -ForegroundColor Red
 Write-Host "  1. Change Traefik password (edit ingress/docker-compose.yml)" -ForegroundColor Yellow
 Write-Host "  2. Change Grafana password (https://grafana.lan → Profile)" -ForegroundColor Yellow
-Write-Host "  3. Backup Vault keys: C:\aios-supercell\config\vault-*.* " -ForegroundColor Yellow
+Write-Host "  3. Backup Vault keys: $RootDir\config\vault-*.* " -ForegroundColor Yellow
 
 Write-Host "`nQuick Tests:" -ForegroundColor Cyan
 Write-Host '  curl https://traefik.lan -k' -ForegroundColor Gray

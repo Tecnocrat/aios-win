@@ -81,25 +81,25 @@ if (-not (Test-Path $stateFile)) {
 $scripts = @(
     @{
         "Name" = "Core OS Hardening"
-        "Script" = "01-core-os-hardening.ps1"
+        "Script" = "windows-bootstrap\01-core-os-hardening.ps1"
         "Description" = "Power settings, BitLocker, RDP, network configuration"
         "RequiresRestart" = $false
     },
     @{
         "Name" = "Baseline Tools Installation"
-        "Script" = "02-install-baseline-tools.ps1"
+        "Script" = "windows-bootstrap\02-install-baseline-tools.ps1"
         "Description" = "PowerShell 7, Windows Terminal, Hyper-V, WSL2"
         "RequiresRestart" = $true
     },
     @{
         "Name" = "WSL2 Ubuntu Setup"
-        "Script" = "03-install-wsl-ubuntu.ps1"
+        "Script" = "windows-bootstrap\03-install-wsl-ubuntu.ps1"
         "Description" = "Ubuntu distribution with resource limits"
         "RequiresRestart" = $false
     },
     @{
         "Name" = "Docker Desktop Installation"
-        "Script" = "04-install-docker-desktop.ps1"
+        "Script" = "windows-bootstrap\04-install-docker-desktop.ps1"
         "Description" = "Container runtime with WSL2 backend"
         "RequiresRestart" = $false
     }
@@ -134,7 +134,7 @@ for ($i = $startStage; $i -lt $scripts.Count; $i++) {
     
     if (-not (Test-Path $scriptPath)) {
         Write-Error "Script not found: $scriptPath"
-        Write-Info "Please ensure all scripts are in C:\aios-supercell\scripts\"
+        Write-Info "Please ensure all scripts are in C:\aios-supercell\scripts\windows-bootstrap\"
         exit 1
     }
     
@@ -157,7 +157,7 @@ for ($i = $startStage; $i -lt $scripts.Count; $i++) {
             
             if ($response -eq "Y" -or $response -eq "y") {
                 # Create startup task to resume after restart
-                $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\aios-supercell\scripts\00-master-bootstrap.ps1`""
+                $action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-ExecutionPolicy Bypass -File `"C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1`""
                 $trigger = New-ScheduledTaskTrigger -AtLogOn
                 $principal = New-ScheduledTaskPrincipal -UserId $env:USERNAME -LogonType Interactive -RunLevel Highest
                 
@@ -197,6 +197,7 @@ Write-Host "✓ Docker Desktop ready" -ForegroundColor Green
 Write-Host "`nDirectory Structure:" -ForegroundColor Cyan
 Write-Host "  C:\aios-supercell\     - Core AIOS infrastructure" -ForegroundColor White
 Write-Host "    ├── scripts\         - Automation scripts" -ForegroundColor Gray
+Write-Host "    │   └── windows-bootstrap\ - Windows initialization" -ForegroundColor Gray
 Write-Host "    ├── config\          - Configuration files" -ForegroundColor Gray
 Write-Host "    ├── data\            - Persistent data, volumes" -ForegroundColor Gray
 Write-Host "    ├── logs\            - Execution logs" -ForegroundColor Gray

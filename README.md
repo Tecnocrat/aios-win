@@ -18,10 +18,10 @@ AIOS-WIN is the Windows 11 implementation of the AIOS (Agentic Infrastructure Op
 git clone --recursive https://github.com/Tecnocrat/aios-win.git C:\aios-supercell
 
 # Bootstrap Windows 11
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 
 # Deploy all stacks
-C:\aios-supercell\scripts\05-deploy-all-stacks.ps1
+C:\aios-supercell\scripts\windows-bootstrap\05-deploy-all-stacks.ps1
 ```
 
 ##  Repository Structure
@@ -29,12 +29,16 @@ C:\aios-supercell\scripts\05-deploy-all-stacks.ps1
 ```
 aios-win/
  scripts/              PowerShell automation scripts
-    00-master-bootstrap.ps1
-    01-core-os-hardening.ps1
-    02-install-baseline-tools.ps1
-    03-install-wsl-ubuntu.ps1
-    04-install-docker-desktop.ps1
-    05-deploy-all-stacks.ps1
+    windows-bootstrap/    Windows initialization scripts
+        00-master-bootstrap.ps1
+        01-core-os-hardening.ps1
+        02-install-baseline-tools.ps1
+        03-install-wsl-ubuntu.ps1
+        02-install-baseline-tools.ps1
+        03-install-wsl-ubuntu.ps1
+        04-install-docker-desktop.ps1
+        05-deploy-all-stacks.ps1
+        agent-helper.ps1
     generate-tls-certs.ps1
     vault-manager.ps1
  docs/                 Complete documentation

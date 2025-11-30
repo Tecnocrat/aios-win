@@ -6,6 +6,7 @@
     Installs foundational tools for AIOS:
     - PowerShell 7 (pwsh)
     - Windows Terminal
+    - Node.js (for VSCode extensions)
     - Hyper-V
     - WSL2 with Ubuntu
     - winget (if not present)
@@ -70,7 +71,27 @@ try {
     Write-Log "Failed to install Windows Terminal: $_" "ERROR"
 }
 
-# 4. Enable Hyper-V
+# 4. Install Node.js
+Write-Log "Installing Node.js..."
+try {
+    $node = Get-Command node -ErrorAction SilentlyContinue
+    if (-not $node) {
+        winget install --id OpenJS.NodeJS --source winget --silent --accept-package-agreements --accept-source-agreements
+        Write-Log "Node.js installed" "SUCCESS"
+        # Refresh PATH for current session
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+        $nodeVersion = & node --version 2>$null
+        if ($LASTEXITCODE -eq 0) {
+            Write-Log "Node.js version: $nodeVersion" "SUCCESS"
+        }
+    } else {
+        Write-Log "Node.js already installed: $($node.Version)" "SUCCESS"
+    }
+} catch {
+    Write-Log "Failed to install Node.js: $_" "ERROR"
+}
+
+# 5. Enable Hyper-V
 Write-Log "Enabling Hyper-V..."
 try {
     $hyperv = Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
@@ -85,7 +106,7 @@ try {
     Write-Log "Failed to enable Hyper-V: $_" "ERROR"
 }
 
-# 5. Enable Virtual Machine Platform
+# 6. Enable Virtual Machine Platform
 Write-Log "Enabling Virtual Machine Platform..."
 try {
     $vmp = Get-WindowsOptionalFeature -Online -FeatureName VirtualMachinePlatform
@@ -100,7 +121,7 @@ try {
     Write-Log "Failed to enable Virtual Machine Platform: $_" "ERROR"
 }
 
-# 6. Enable WSL
+# 7. Enable WSL
 Write-Log "Enabling WSL..."
 try {
     $wsl = Get-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
@@ -115,7 +136,7 @@ try {
     Write-Log "Failed to enable WSL: $_" "ERROR"
 }
 
-# 7. Download and install WSL2 kernel update
+# 8. Download and install WSL2 kernel update
 Write-Log "Checking WSL2 kernel..."
 try {
     $kernelPath = "$env:TEMP\wsl_update_x64.msi"
@@ -132,7 +153,7 @@ try {
     Write-Log "Failed to install WSL2 kernel: $_" "ERROR"
 }
 
-# 8. Set WSL2 as default
+# 9. Set WSL2 as default
 Write-Log "Setting WSL2 as default version..."
 try {
     wsl --set-default-version 2

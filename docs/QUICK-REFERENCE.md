@@ -9,7 +9,7 @@
 
 ```powershell
 # Initial setup (run once)
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 
 # Generate TLS certificates
 C:\aios-supercell\scripts\generate-tls-certs.ps1

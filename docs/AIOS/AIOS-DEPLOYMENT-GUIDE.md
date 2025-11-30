@@ -37,7 +37,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force
 
 # Clone or copy AIOS scripts to C:\aios-supercell
 # If already present, proceed:
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 ```
 
 **What happens:**
@@ -64,7 +64,7 @@ C:\aios-supercell\scripts\00-master-bootstrap.ps1
 After restart, the bootstrap script continues automatically (scheduled task). If not:
 
 ```powershell
-C:\aios-supercell\scripts\00-master-bootstrap.ps1
+C:\aios-supercell\scripts\windows-bootstrap\00-master-bootstrap.ps1
 ```
 
 **What happens:**

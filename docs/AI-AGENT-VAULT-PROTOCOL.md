@@ -217,7 +217,7 @@ For new AI agents:
 If configuration is missing from Vault:
 1. Check if service is deployed: `docker ps`
 2. Verify Vault is unsealed: `docker exec aios-vault vault status`
-3. Re-run bootstrap if needed: `.\scripts\00-master-bootstrap.ps1`
+3. Re-run bootstrap if needed: `.\scripts\windows-bootstrap\00-master-bootstrap.ps1`
 4. Consult `.\docs\AIOS-KNOWLEDGE-BASE.md`
 
 ---
