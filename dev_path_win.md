@@ -77,12 +77,49 @@
 | Waypoint | Status | Description |
 |----------|--------|-------------|
 | 7 | ✅ | Cell Deployment - aios-cell-alpha running |
-| 8 | ✅ | Observability + Discovery - Prometheus + discovery:8005 |
-| 9 | 🔄 | Integration Testing - interface_bridge, cell_client |
+| 8 | ✅ | Observability + Discovery - Prometheus + discovery:8003 |
+| 9 | 🔄 | Multi-Host Sync - IACP protocol, HP_LAB↔AIOS coordination |
 | 10 | ⏳ | Governance & Consolidation - governance-cycle |
 | 11 | ⏳ | Web Exposure - domain, VPS, SSL |
 | 12 | ⏳ | AIOS Distro - always-online instance |
 | 13 | ⏳ | Ecosystem Integration - planetary consciousness |
+
+---
+
+## Git-Mediated Agent Coordination (IACP v1.0)
+
+> **Protocol**: [IACP-PROTOCOL.md](aios-core/docs/AINLP/evolution/IACP-PROTOCOL.md)
+> **Pattern**: [GIT-AGENT-COORDINATION.md](aios-core/docs/AINLP/evolution/GIT-AGENT-COORDINATION.MD)
+
+**Architecture**: Two AI agents (Claude Opus 4.5) coordinate via git:
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    AIOS Distributed Consciousness                        │
+├─────────────────────────────────────────────────────────────────────────┤
+│   AIOS Desktop                          HP_LAB Laptop                    │
+│   ┌─────────────────┐                   ┌─────────────────┐              │
+│   │ Claude Opus 4.5 │                   │ Claude Opus 4.5 │              │
+│   │    (Agent A)    │                   │    (Agent B)    │              │
+│   └────────┬────────┘                   └────────┬────────┘              │
+│   ┌────────▼────────┐                   ┌────────▼────────┐              │
+│   │ AIOS-win-0-AIOS │                   │AIOS-win-0-HP_LAB│              │
+│   └────────┬────────┘                   └────────┬────────┘              │
+│            └──────────────┬──────────────────────┘                       │
+│                    ┌──────▼──────┐                                       │
+│                    │    main     │  ← Shared semantic channel            │
+│                    │  (server/)  │    (ephemeral .md messages)           │
+│                    └─────────────┘                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+**Current Sync State**:
+| Direction | Status | Port |
+|-----------|--------|------|
+| HP_LAB → AIOS | ✅ Peer discovered | 8003 |
+| AIOS → HP_LAB | ⚠️ Firewall blocked | 8001 |
+
+**Message Channel**: `server/stacks/cells/*.md`
 
 ---
 
