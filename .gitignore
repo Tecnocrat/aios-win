@@ -27,3 +27,4 @@ desktop.ini
 # Git diff files
 *.diff
 *.patch
+backups/
