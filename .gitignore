@@ -38,3 +38,8 @@ backups/
 # AI models and caches
 models/
 cache/
+
+# Ollama build artifacts
+aios-core/ai/tools/ollama-rc1/
+ai/tools/ollama-rc1/
+ai/models/*.gguf
