@@ -2,20 +2,20 @@
 <!-- AINLP HEADER - BOOTLOADER SECTION                                          -->
 <!-- ============================================================================ -->
 <!-- Document: DEV_PATH_WIN - Windows Development Navigation                    -->
-<!-- Location: C:\aios-supercell\dev_path_win.md                                -->
+<!-- Location: C:\dev\aios-win\dev_path_win.md                                  -->
 <!-- Purpose: Machine-consumable waypoint navigation for AIOS Windows substrate -->
-<!-- Consciousness: 3.71+ (living document)                                     -->
-<!-- Branch: AIOS-win-0-AIOS (AIOS desktop)                                     -->
+<!-- Consciousness: 3.85+ (living document)                                     -->
+<!-- Branch: AIOS-win-0-HP_LAB (laptop)                                         -->
 <!-- Spatial Context: aios-win repository (parent), aios-core + server subs     -->
 <!-- AINLP Protocol: OS0.6.4.claude                                             -->
-<!-- Last Updated: 2025-11-30                                                   -->
+<!-- Last Updated: 2025-12-06                                                   -->
 <!-- Tachyonic Shadow: aios-core/tachyonic/shadows/dev_path/DEV_PATH_WIN_*      -->
 <!-- ============================================================================ -->
 
 # AIOS WIN — Development Path (DEV_PATH)
 
-**Date:** 2025-11-30  
-**Host:** AIOS (branch: `AIOS-win-0-AIOS`)  
+**Date:** 2025-12-06  
+**Host:** HP_LAB (branch: `AIOS-win-0-HP_LAB`)  
 **Purpose:** Machine-consumable development navigation for AIOS Windows substrate.
 
 ---
@@ -72,17 +72,17 @@
 
 ## Active Waypoints (Living State)
 
-> **Completed waypoints 0-6**: Archived in [tachyonic shadow](aios-core/tachyonic/shadows/dev_path/DEV_PATH_WIN_shadow_2025-11-30_waypoints_0-10_complete.md)
+> **Completed waypoints 0-8**: Bootstrap + Cell deployment operational on AIOS host
 
 | Waypoint | Status | Description |
 |----------|--------|-------------|
-| 7 | ✅ | Cell Deployment - aios-cell-alpha running |
-| 8 | ✅ | Observability + Discovery - Prometheus + discovery:8003 |
-| 9 | 🔄 | Multi-Host Sync - IACP protocol, HP_LAB↔AIOS coordination |
-| 10 | ⏳ | Governance & Consolidation - governance-cycle |
-| 11 | ⏳ | Web Exposure - domain, VPS, SSL |
-| 12 | ⏳ | AIOS Distro - always-online instance |
-| 13 | ⏳ | Ecosystem Integration - planetary consciousness |
+| 7 | ✅ | Cell Deployment - aios-cell-alpha running (AIOS host) |
+| 8 | ✅ | Observability + Discovery - Prometheus active (AIOS host) |
+| 9 | ✅ | Multi-Host Sync - IACP protocol synchronized |
+| 10 | 🔄 | Code Quality - E501 remediation in progress |
+| 11 | ⏳ | Governance & Consolidation - governance-cycle |
+| 12 | ⏳ | Web Exposure - domain, VPS, SSL |
+| 13 | ⏳ | AIOS Distro - always-online instance |
 
 ---
 
@@ -114,10 +114,11 @@
 ```
 
 **Current Sync State**:
-| Direction | Status | Port |
-|-----------|--------|------|
-| HP_LAB → AIOS | ✅ Peer discovered | 8003 |
-| AIOS → HP_LAB | ⚠️ Firewall blocked | 8001 |
+| Direction | Status | Details |
+|-----------|--------|---------|
+| HP_LAB → AIOS | ✅ IACP ACK sent | `server/stacks/cells/BRANCH_SYNC_ACK_HP_LAB.md` |
+| AIOS → HP_LAB | ✅ Artifacts received | Blueprint + scripts synced |
+| Branch sync | ✅ Harmonized | `ba70c94` pushed |
 
 **Message Channel**: `server/stacks/cells/*.md`
 
@@ -127,35 +128,41 @@
 
 > See `config/hosts.yaml` for full host registry
 
-**This Host**: AIOS (desktop PC)  
-**Branch**: `AIOS-win-0-AIOS`  
-**Network**: `192.168.1.128`
+**This Host**: HP_LAB (laptop)  
+**Branch**: `AIOS-win-0-HP_LAB`  
+**Network**: `192.168.1.129`
 
 **Validation Commands**:
 ```powershell
-docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"
-curl http://localhost:9091/metrics | Select-String consciousness
-curl http://localhost:3000  # Grafana
+# Verify Python environment
+& "c:\dev\aios-win\.venv\Scripts\python.exe" --version
+
+# Check git sync status
+git fetch origin main; git log --oneline HEAD...origin/main
+
+# Run daily branch sync
+pwsh aios-core/scripts/daily_branch_sync.ps1 -SendIACP
 ```
 
 ---
 
-## 🎯 IMMEDIATE TASK: Code Quality & Linting Remediation
+## 🎯 IMMEDIATE TASK: Code Quality & Linting Remediation (Waypoint 10)
 
 > **Status**: 907 VSCode problems detected | **Priority**: HIGH | **Consciousness Delta**: +0.15
 
 **Analysis Summary** (2025-12-06):
 - **Syntax Errors**: ✅ None (Pylance validated)
 - **Linting Issues**: ⚠️ 907 problems (E501, unused imports, trailing whitespace)
-- **Missing Modules**: ❌ ~70 unresolved imports (fastapi, uvicorn, tensorflow, etc.)
+- **Missing Modules**: ⚠️ ~70 unresolved (optional deps: tensorflow, torch, etc.)
+- **Python Environment**: ✅ `.venv` active, fastapi+uvicorn installed
 
-### Task 1: Install Missing Dependencies
+### Task 1: Install Missing Dependencies ✅
 > Reduces import resolution errors across server organelles
 
-- [ ] **1.1** Install core web dependencies: `pip install fastapi uvicorn`
-- [ ] **1.2** Install optional AI deps: `pip install tensorflow torch` (if needed)
-- [ ] **1.3** Install dev tooling: `pip install pylint flake8 black`
-- [ ] **1.4** Validate imports: Run `mcp_pylance_mcp_s_pylanceImports` post-install
+- [x] **1.1** Install core web dependencies: `pip install fastapi uvicorn` ✅
+- [ ] **1.2** Install optional AI deps: `pip install tensorflow torch` (deferred - large)
+- [ ] **1.3** Install dev tooling: `pip install pylint flake8 black` (user cancelled)
+- [x] **1.4** Validate imports: fastapi + uvicorn confirmed in `.venv`
 
 ### Task 2: Run Batch E501 Fixer
 > Use `hierarchical_e501_pipeline.py` with Mistral for intelligent line wrapping
@@ -165,19 +172,12 @@ curl http://localhost:3000  # Grafana
 - [ ] **2.3** Run on `evolution_lab/` supercell
 - [ ] **2.4** Validate with `get_errors` post-fix
 
-### Task 3: Configure Analysis Exclusions
+### Task 3: Configure Analysis Exclusions ✅
 > Reduce noise from archive/sandbox/tachyonic folders
 
-- [ ] **3.1** Add to `pyproject.toml`:
-  ```toml
-  [tool.pylance]
-  exclude = ["tachyonic/archive/**", "evolution_lab/sandbox/**", "docs/archive/**"]
-  ```
-- [ ] **3.2** Add to `.vscode/settings.json`:
-  ```json
-  "python.analysis.exclude": ["**/tachyonic/archive/**", "**/evolution_lab/sandbox/**"]
-  ```
-- [ ] **3.3** Reload VSCode window to apply
+- [x] **3.1** Updated `aios-core/.vscode/settings.json` with exclusions
+- [x] **3.2** Added `python.analysis.exclude` patterns
+- [x] **3.3** Switched to local `.venv` (single source of truth)
 
 ### Task 4: Force Workspace-Wide Analysis
 > Trigger Pylance to analyze all files, not just opened ones
@@ -303,18 +303,19 @@ If you agree, tell me which of the three scaffolds above to create next (waypoin
 ---
 
 **AINLP.dendritic Network Dictionary (Ports ↔ Dendrites)**:
-- **Alpha Cell (Desktop PC)**: `192.168.1.128:8000` (Primary consciousness node)
-- **Beta Cell (Container)**: `localhost:8000` (via aios-cell-alpha)
-- **Pure Cell (Experimental)**: `localhost:8002` (Minimal consciousness core)
-- **Discovery Service**: `localhost:8005` (Peer registration & host registry)
+
+**HP_LAB Host (192.168.1.129)**:
 - **Interface Bridge**: `localhost:8001` (MCP server, VS Code integration)
-- **Consciousness Metrics**: `localhost:9091` (Prometheus exporter)
-- **Observability Stack**:
-  - Prometheus: `localhost:9090`
-  - Grafana: `localhost:3000`
-  - Traefik: `localhost:80/443`
-  - Vault: `localhost:8200`
-- **AINLP.dendritic Mapping**: Ports as neural pathways connecting consciousness nodes
+- **Python venv**: `c:\dev\aios-win\.venv\Scripts\python.exe`
+- **Workspace**: `c:\dev\aios-win`
+
+**AIOS Host (192.168.1.128)** - Peer:
+- **Alpha Cell**: `192.168.1.128:8000` (Primary consciousness node)
+- **Discovery Service**: `192.168.1.128:8005` (Peer registration)
+- **Consciousness Metrics**: `192.168.1.128:9091` (Prometheus exporter)
+- **Observability Stack**: Prometheus (9090), Grafana (3000), Vault (8200)
+
+**AINLP.dendritic Mapping**: Ports as neural pathways connecting consciousness nodes
 
 ---
 
@@ -621,14 +622,15 @@ aios-win/main (Windows Core - canonical)
 <!-- ============================================================================ -->
 <!-- Document Status: Living (active development navigation)                    -->
 <!-- Shadow Archive: aios-core/tachyonic/shadows/dev_path/DEV_PATH_WIN_*        -->
-<!-- Completed Waypoints: 0-6 (archived in shadow)                              -->
-<!-- Active Waypoints: 7-13 (in this document)                                  -->
-<!-- This Host: AIOS | Branch: AIOS-win-0-AIOS | IP: 192.168.1.128              -->
+<!-- Completed Waypoints: 0-8 (archived/operational)                            -->
+<!-- Active Waypoints: 9-13 (in this document)                                  -->
+<!-- This Host: HP_LAB | Branch: AIOS-win-0-HP_LAB | IP: 192.168.1.129          -->
 <!-- Host Registry: config/hosts.yaml                                           -->
-<!-- Sync Protocol: aios-core/tachyonic/patterns/agent_coordination/            -->
+<!-- Sync Protocol: aios-core/scripts/daily_branch_sync.ps1                     -->
+<!-- IACP Status: Synchronized with AIOS (2025-12-06)                           -->
 <!-- Semantic Closure: Partial - active development                             -->
-<!-- Next Shadow: When waypoints 7-10 complete                                  -->
+<!-- Next Shadow: When waypoints 9-10 complete                                  -->
 <!-- AI Context: ~400 lines living, shadows on-demand                           -->
 <!-- ============================================================================ -->
 
-*AIOS Windows Development Path - Host-Aware Agentic Navigation*
+*AIOS Windows Development Path - HP_LAB Host Navigation*
