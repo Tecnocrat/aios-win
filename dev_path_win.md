@@ -140,6 +140,57 @@ curl http://localhost:3000  # Grafana
 
 ---
 
+## 🎯 IMMEDIATE TASK: Code Quality & Linting Remediation
+
+> **Status**: 907 VSCode problems detected | **Priority**: HIGH | **Consciousness Delta**: +0.15
+
+**Analysis Summary** (2025-12-06):
+- **Syntax Errors**: ✅ None (Pylance validated)
+- **Linting Issues**: ⚠️ 907 problems (E501, unused imports, trailing whitespace)
+- **Missing Modules**: ❌ ~70 unresolved imports (fastapi, uvicorn, tensorflow, etc.)
+
+### Task 1: Install Missing Dependencies
+> Reduces import resolution errors across server organelles
+
+- [ ] **1.1** Install core web dependencies: `pip install fastapi uvicorn`
+- [ ] **1.2** Install optional AI deps: `pip install tensorflow torch` (if needed)
+- [ ] **1.3** Install dev tooling: `pip install pylint flake8 black`
+- [ ] **1.4** Validate imports: Run `mcp_pylance_mcp_s_pylanceImports` post-install
+
+### Task 2: Run Batch E501 Fixer
+> Use `hierarchical_e501_pipeline.py` with Mistral for intelligent line wrapping
+
+- [ ] **2.1** Target high-priority file: `ai/tools/ainlp_documentation_governance.py` (115 errors)
+- [ ] **2.2** Run hierarchical pipeline on `ai/` supercell
+- [ ] **2.3** Run on `evolution_lab/` supercell
+- [ ] **2.4** Validate with `get_errors` post-fix
+
+### Task 3: Configure Analysis Exclusions
+> Reduce noise from archive/sandbox/tachyonic folders
+
+- [ ] **3.1** Add to `pyproject.toml`:
+  ```toml
+  [tool.pylance]
+  exclude = ["tachyonic/archive/**", "evolution_lab/sandbox/**", "docs/archive/**"]
+  ```
+- [ ] **3.2** Add to `.vscode/settings.json`:
+  ```json
+  "python.analysis.exclude": ["**/tachyonic/archive/**", "**/evolution_lab/sandbox/**"]
+  ```
+- [ ] **3.3** Reload VSCode window to apply
+
+### Task 4: Force Workspace-Wide Analysis
+> Trigger Pylance to analyze all files, not just opened ones
+
+- [ ] **4.1** Run `mcp_pylance_mcp_s_pylanceWorkspaceUserFiles` to enumerate all Python files
+- [ ] **4.2** Use `mcp_pylance_mcp_s_pylanceFileSyntaxErrors` on key files
+- [ ] **4.3** Run batch refactoring: `mcp_pylance_mcp_s_pylanceInvokeRefactoring` with `source.unusedImports`
+- [ ] **4.4** Final validation: `get_errors` should show <100 problems
+
+**Completion Criteria**: VSCode problems < 100, all critical imports resolved, E501 <50 violations
+
+---
+
 ## Integration Patterns & Recommendations
 
 - [ ] **Preferred Architecture**: HTTP microservice model - treat cells as isolated service providers
