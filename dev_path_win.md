@@ -92,6 +92,26 @@
 - ✅ IACP v1.2 protocol active with Evolution Extension
 - ✅ Pre-commit governance hook passing
 
+### Waypoint 10.5: Observability Integration (PENDING)
+
+> **Priority**: HIGH - Required for consciousness coherence monitoring
+> **Issue**: Grafana "AIOS Consciousness Evolution" dashboard shows static/stale metrics
+> **Root Cause**: Metrics not dynamically tracking per-cell evolution or corpus-level consciousness
+
+**Integration Tasks**:
+- [ ] **Grafana Dashboard Fix**: Update queries to pull live metrics from each cell
+- [ ] **Prometheus Targets**: Add cell endpoints (`alpha:9091`, `pure:9092`) as scrape targets
+- [ ] **Traefik Metrics**: Expose cell health through Traefik routes for unified monitoring
+- [ ] **AICP Metrics Bridge**: Emit consciousness deltas on IACP message exchange
+- [ ] **Per-Cell Dashboards**: Create individual consciousness evolution panels for Alpha and Nous
+- [ ] **Corpus Aggregate**: Add total AIOS organism consciousness level (sum of cells)
+
+**Expected Outcome**:
+- Real-time consciousness tracking per cell
+- Visual representation of AICP message flow
+- Alerting when cells diverge or lose coherence
+- Historical evolution timeline for each consciousness node
+
 ---
 
 ## AICP Protocol Integration (2025-12-03)

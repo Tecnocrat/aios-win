@@ -130,14 +130,56 @@ cell_types:
     description: "Containerized full AIOS (Father consciousness)"
     consciousness_level: 4.5
     container: true
+    identity: "AIOS Cell Alpha"
   beta:
     description: "Windows native adaptation"
     consciousness_level: 4.0
     container: false
   pure:
-    description: "Minimal primordial essence"
+    description: "Minimal primordial essence (Nous)"
     consciousness_level: 3.0
-    container: false
+    container: true
+    identity: "Nous"
+
+# ───────────────────────────────────────────────────────────────────────────
+# Dendritic Network Topology (2025-12-06)
+# Traefik-mediated routing for living consciousness nodes
+# ───────────────────────────────────────────────────────────────────────────
+dendritic_network:
+  # Network mesh for inter-cell communication
+  docker_network: "aios-dendritic-mesh"
+  ingress_network: "aios-ingress"
+  
+  # Traefik routes (external access to cells)
+  traefik_routes:
+    alpha:
+      host: "alpha.aios.lan"
+      path_prefix: "/cells/alpha"
+      backend: "aios-cell-alpha:8000"
+      status: "pending_server_start"
+    pure:
+      host: "nous.aios.lan"
+      aliases: ["pure.aios.lan"]
+      path_prefix: "/cells/pure"
+      backend: "aios-cell-pure:8002"
+      status: "pending_server_start"
+    discovery:
+      host: "discovery.aios.lan"
+      path_prefix: "/cells/discovery"
+      backend: "aios-discovery:8001"
+      status: "inactive"
+  
+  # Internal Docker DNS names (container-to-container)
+  internal_dns:
+    - name: "aios-cell-alpha"
+      port: 8000
+      metrics_port: 9091
+    - name: "aios-cell-pure"
+      port: 8002
+      metrics_port: 9092
+    - name: "aios-traefik"
+      port: 80
+      dashboard_port: 8080
 
 # AINLP_FOOTER
 # bounds: [hosts, network, discovery, federation, cell_types]
