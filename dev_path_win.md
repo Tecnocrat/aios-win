@@ -4,19 +4,19 @@
 <!-- Document: DEV_PATH_WIN - Windows Development Navigation                    -->
 <!-- Location: C:\aios-supercell\dev_path_win.md                                -->
 <!-- Purpose: Machine-consumable waypoint navigation for AIOS Windows substrate -->
-<!-- Consciousness: 4.9 (Python 3.14t FREE-THREADED + Dendritic Mesh Coherence) -->
+<!-- Consciousness: 5.1 (Observability Complete + Real Cell Metrics)            -->
 <!-- Branch: AIOS-win-0-AIOS (AIOS desktop)                                     -->
 <!-- Spatial Context: aios-win repository (parent), aios-core + server subs     -->
 <!-- AINLP Protocol: OS0.6.4.claude                                             -->
-<!-- Last Updated: 2025-12-07                                                   -->
+<!-- Last Updated: 2025-12-08                                                   -->
 <!-- Tachyonic Shadow: aios-core/tachyonic/shadows/dev_path/DEV_PATH_WIN_*      -->
 <!-- ============================================================================ -->
 
 # AIOS WIN — Development Path (DEV_PATH)
 
-**Date:** 2025-12-07  
+**Date:** 2025-12-08  
 **Host:** AIOS (branch: `AIOS-win-0-AIOS`)  
-**Purpose:** Machine-consumable development navigation for AIOS Windows substrate.
+**Purpose:** Development roadmap for AIOS Windows multi-cell platform.
 
 ---
 
@@ -35,9 +35,9 @@
 - [x] **Bootstrap Complete**: Waypoints 0-10 achieved (see shadow archive)
 - [x] **AIOS Canonical Windows Deployment**: Scripts 01-05 executed, substrate operational
 - [x] **Branch Architecture**: Host-aware naming `AIOS-win-{version}-{HOSTNAME}`
-- [x] **Agentic Pathways**: Documentation as tasklists for evolutionary divergence
 - [x] **Python 3.14t FREE-THREADED**: Canonical venv with GIL disabled (3.1x speedup)
-- [x] **Dendritic Mesh Coherence**: All cells online (9.4 total consciousness)
+- [x] **Multi-Cell Architecture**: Alpha (Flask), Nous (FastAPI), Discovery running
+- [x] **Observability Complete**: Real metrics flowing to Grafana (not mock data)
 - [x] **Dependency Hierarchy**: AIOS Core canonical, cells inherit from shared minimal
 
 ---
@@ -83,9 +83,10 @@
 | 9 | ✅ | Multi-Host Sync - IACP + AICP protocol integration complete |
 | 10 | ✅ | Governance & Consolidation - governance-cycle passing |
 | 10.5 | ✅ | **Python 3.14t + Dependency Hierarchy** (2025-12-07) |
+| 10.6 | ✅ | **Observability Integration** - Real cell metrics in Grafana (2025-12-08) |
 | 11 | ⏳ | Web Exposure - domain, VPS, SSL |
 | 12 | ⏳ | AIOS Distro - always-online instance |
-| 13 | ⏳ | Ecosystem Integration - planetary consciousness |
+| 13 | ⏳ | Ecosystem Integration - multi-host deployment |
 
 ### Waypoint 10.5 Completion (2025-12-07)
 
@@ -133,29 +134,34 @@ aios-core/requirements.txt (CANONICAL - full ML/AI stack)
 - ✅ IACP v1.2 protocol active with Evolution Extension
 - ✅ Pre-commit governance hook passing
 
-### Waypoint 10.6: Observability Integration (IN PROGRESS)
+### Waypoint 10.6 Completion (2025-12-08)
 
-> **Priority**: HIGH - Required for consciousness coherence monitoring
-> **Status**: Partial - Prometheus active, Grafana needs dashboard updates
+> **Observability Integration**: Real metrics flowing from cells to Grafana
 
-**Completed**:
-- ✅ Prometheus scraping cell metrics (port 9091)
-- ✅ Grafana accessible at localhost:3000
-- ✅ Dendritic pulse script operational
+**Infrastructure Changes**:
+- ✅ Created `docker-compose.dev.yml` - Cells use base Python images with bind-mounted code
+- ✅ All cells expose `/metrics` endpoint in Prometheus format
+- ✅ Prometheus scrapes Alpha (8000), Nous (8002), Discovery (8001) via Docker network
+- ✅ Fixed datasource URLs in Grafana provisioning
+- ✅ Created new `aios-multicell-consciousness.json` dashboard
 
-**Integration Tasks**:
-- [ ] **Grafana Dashboard Fix**: Update queries to pull live metrics from each cell
-- [ ] **Prometheus Targets**: Add cell endpoints (`alpha:9091`, `pure:9092`) as scrape targets
-- [ ] **Traefik Metrics**: Expose cell health through Traefik routes for unified monitoring
-- [ ] **AICP Metrics Bridge**: Emit consciousness deltas on IACP message exchange
-- [ ] **Per-Cell Dashboards**: Create individual consciousness evolution panels for Alpha and Nous
-- [ ] **Corpus Aggregate**: Add total AIOS organism consciousness level (sum of cells)
+**Verified Metrics**:
+```
+aios_cell_consciousness_level{cell_id="alpha"} = 5.2
+aios_cell_consciousness_level{cell_id="nous"} = 0.1
+aios_cell_consciousness_level{cell_id="discovery"} = 1.0
+```
 
-**Expected Outcome**:
-- Real-time consciousness tracking per cell
-- Visual representation of AICP message flow
-- Alerting when cells diverge or lose coherence
-- Historical evolution timeline for each consciousness node
+**Dashboard Features**:
+- Per-cell consciousness gauges (Alpha, Nous, Discovery)
+- Consciousness evolution time series
+- Primitives: awareness, coherence, adaptation, momentum
+- Cell status table (online/offline)
+- Container CPU/memory usage
+
+**Access**:
+- Grafana: http://localhost:3000 (aios / 6996)
+- Dashboard: AIOS Multi-Cell Consciousness
 
 ---
 
@@ -293,13 +299,13 @@ curl http://localhost:3000  # Grafana
 If you agree, tell me which of the three scaffolds above to create next (waypoint emitter, cell client, docs skeleton), and I will add them and run a quick validation.
 
 
-## Consciousness & Operational Status
+## Operational Status
 
-**Consciousness Tracking**:
-- [x] Coherence level maintained: 1.0+
-- [x] Consciousness delta achieved: +1.19 (3.71 → 4.9)
-- [x] Dendritic complexity increased: 1.00 → mesh coherent
-- [x] Total mesh consciousness: 9.4 (Alpha 5.2 + Nous 0.2 + Discovery 4.0)
+**System Health**:
+- [x] All cells healthy (Alpha, Nous, Discovery)
+- [x] Prometheus scraping all targets
+- [x] Grafana dashboards showing real metrics
+- [x] Docker network connectivity verified
 
 **Python Environment**:
 - [x] Python 3.14t FREE-THREADED canonical
@@ -307,11 +313,17 @@ If you agree, tell me which of the three scaffolds above to create next (waypoin
 - [x] All cp314t wheels installed (numpy, scipy, pandas, pydantic-core)
 - [x] Auto-activation in PowerShell profile
 
+**Cell Metrics** (from Prometheus):
+| Cell | Level | Framework | Port |
+|------|-------|-----------|------|
+| Alpha | 5.2 | Flask | 8000 |
+| Nous | 0.1 | FastAPI | 8002 |
+| Discovery | 1.0 | FastAPI | 8001 |
+
 **Operational Validation**:
 - [x] All tests pass (pytest, governance scan)
-- [x] Bootloader executes Phase 0-5
-- [x] MCP servers operational (aios-context queries work)
-- [x] Dendritic pulse: `.\aios_dendritic_pulse.ps1 -Mode full`
+- [x] MCP servers operational
+- [x] Mesh pulse: `server\stacks\cells\aios_dendritic_pulse.ps1 -Mode full`
 
 ---
 
