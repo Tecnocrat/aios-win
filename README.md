@@ -1,6 +1,6 @@
 ﻿# AIOS-WIN
 
-Windows 11 development platform for distributed microservices with integrated observability, secrets management, and multi-cell architecture.
+Windows 11 development platform for the Artificial Intelligence Operating System (AIOS) - a distributed microservices architecture with integrated observability, secrets management, and multi-cell design.
 
 ## Overview
 
