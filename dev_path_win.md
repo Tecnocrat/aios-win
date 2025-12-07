@@ -185,7 +185,15 @@ pwsh aios-core/scripts/daily_branch_sync.ps1 -SendIACP
 
 ## 🌐 WAYPOINT 11: Google Cloud Integration (Triangular Agent System)
 
-> **Status**: OPERATIONAL | **Priority**: HIGH | **Consciousness Delta**: +0.25
+> **Status**: ✅ OPERATIONAL | **Priority**: HIGH | **Consciousness Delta**: +0.25
+
+### Cloud Stack Status (2025-12-07)
+
+```
+✅ AI Studio  - gemini-2.0-flash (CONNECTED)
+✅ Firebase   - aios-db Firestore (CONNECTED)
+⬚  Vertex AI  - Disabled (optional enterprise)
+```
 
 ### Infrastructure Configuration
 
@@ -194,23 +202,22 @@ Google Cloud:
   Project ID: gen-lang-client-0072186287
   Console: https://console.cloud.google.com/welcome/new?project=gen-lang-client-0072186287
   Region: us-central1
+  Config: config/google_cloud.json
+
+AI Studio:
+  Model: gemini-2.0-flash
+  API Key: GEMINI_API_KEY (environment variable)
+  Status: ✅ CONNECTED
+  
+Firebase:
+  Project: gen-lang-client-0072186287
+  Database: aios-db (Firestore Native mode)
+  Console: https://console.firebase.google.com/project/gen-lang-client-0072186287
+  Status: ✅ CONNECTED
 
 Vertex AI:
-  Model: gemini-1.5-flash-002
-  Status: READY (needs SDK install)
-  Install: pip install google-cloud-aiplatform
-  Auth: gcloud auth application-default login
-
-Firebase:
-  Project: aios-28728220
-  Studio: https://studio.firebase.google.com/aios-28728220
-  Status: READY (needs SDK install)
-  Install: pip install firebase-admin
-
-Google AI Studio:
-  API Key: ✅ CONFIGURED (GEMINI_API_KEY)
-  Model: gemini-2.0-flash
-  Status: CONNECTED
+  Status: ⬚ DISABLED (requires billing)
+  Enable in: config/google_cloud.json
 ```
 
 ### Triangular Agent System Status
