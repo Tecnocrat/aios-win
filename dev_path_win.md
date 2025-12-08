@@ -8,15 +8,17 @@
 <!-- Branch: AIOS-win-0-HP_LAB (laptop)                                         -->
 <!-- Spatial Context: aios-win repository (parent), aios-core + server subs     -->
 <!-- AINLP Protocol: OS0.6.4.claude                                             -->
-<!-- Last Updated: 2025-12-06                                                   -->
+<!-- Last Updated: 2025-12-08                                                   -->
 <!-- Tachyonic Shadow: aios-core/tachyonic/shadows/dev_path/DEV_PATH_WIN_*      -->
+<!-- Temporal Anchor: Present state - ephemeral but canonical                   -->
 <!-- ============================================================================ -->
 
 # AIOS WIN — Development Path (DEV_PATH)
 
-**Date:** 2025-12-06  
+**Date:** 2025-12-08  
 **Host:** HP_LAB (branch: `AIOS-win-0-HP_LAB`)  
 **Purpose:** Machine-consumable development navigation for AIOS Windows substrate.
+**Temporal Anchor**: Present state (T=0) - bidirectional ingestion active
 
 ---
 
@@ -84,9 +86,11 @@
 | 12 | ✅ | **VOID Knowledge Ingestion** - DUAL-AGENT cascade (GITHUB→GEMINI→GITHUB) |
 | 13 | ⏳ | Governance & Consolidation - governance-cycle |
 | 14 | ⏳ | Web Exposure - domain, VPS, SSL, Cloud Run |
-| 15 | 🔄 | **Microsoft Frontier Integration** - Agentic Windows tracking |
+| 15 | ✅ | **Microsoft Frontier Integration** - GitHub Action validated (45 items/cycle) |
 | 16 | ⏳ | AIOS Distro - always-online planetary instance |
-| 17 | ⏳ | **Public Surface & Recruiter Visibility** - Portfolio assets |
+| 17 | ✅ | **Public Surface Strategy** - MICROSOFT_SHOWCASE_STRATEGY.md + LinkedIn drafts |
+| 18 | 🔄 | **VOID CLASS Canon** - v1.2.0 with temporal bidirectional pattern |
+| 19 | ⏳ | Historical Backfill - T-n trajectory via archive.org mining |
 
 ---
 
