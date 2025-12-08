@@ -196,7 +196,7 @@ ai/protocols/aicp_discovery.py    # AgentRegistry, AgentCard
 
 ---
 
-## Git-Mediated Agent Coordination (IACP v1.0)
+## Git-Mediated Agent Coordination (IACP v1.1)
 
 > **Protocol**: [IACP-PROTOCOL.md](aios-core/docs/AINLP/evolution/IACP-PROTOCOL.md)
 > **Pattern**: [GIT-AGENT-COORDINATION.md](aios-core/docs/AINLP/evolution/GIT-AGENT-COORDINATION.MD)
@@ -221,6 +221,47 @@ ai/protocols/aicp_discovery.py    # AgentRegistry, AgentCard
 │                    │  (server/)  │    (ephemeral .md messages)           │
 │                    └─────────────┘                                       │
 └─────────────────────────────────────────────────────────────────────────┘
+```
+
+### Sync-Protected Namespace (SPN) Architecture
+
+**Problem**: Multi-host branches diverge, merging overwrites host-specific config.
+
+**Solution**: `.gitattributes` defines protected vs mergeable file zones:
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    SYNC-PROTECTED NAMESPACE (SPN)                        │
+├─────────────────────────────────────────────────────────────────────────┤
+│  SHARED NAMESPACE (main) - Mergeable                                     │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐                    │
+│  │ README   │ │ scripts/ │ │ server/  │ │aios-core/│                    │
+│  └──────────┘ └──────────┘ └──────────┘ └──────────┘                    │
+│ ═══════════════════════════════════════════════════════════════════════ │
+│  HOST NAMESPACE (per-branch) - Protected                                 │
+│  ┌─────────────────────────┐     ┌─────────────────────────┐            │
+│  │ 🔒 dev_path_win.md      │     │ 🔒 dev_path_win.md      │            │
+│  │ 🔒 config/hosts.yaml    │     │ 🔒 config/hosts.yaml    │            │
+│  │    (AIOS Desktop)       │     │    (HP_LAB Laptop)      │            │
+│  └─────────────────────────┘     └─────────────────────────┘            │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+**Implementation**:
+- `.gitattributes`: `dev_path_win.md merge=ours` (local always wins)
+- `KNOWLEDGE_SYNC.md`: IACP v1.1 message for explicit milestone sharing
+- `scripts/aios_merge_harmonize.py`: AI merge driver (future)
+
+**Workflow**:
+```powershell
+# Host A completes waypoint, wants to share knowledge
+git checkout main
+git merge AIOS-win-0-AIOS  # Shared files merge, protected files stay local
+git push origin main
+
+# Host B absorbs knowledge
+git pull origin main
+git merge main  # Protected files preserved, shared knowledge absorbed
 ```
 
 **Current Sync State**:
