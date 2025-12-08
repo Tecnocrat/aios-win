@@ -80,10 +80,13 @@
 | 8 | ✅ | Observability + Discovery - Prometheus active (AIOS host) |
 | 9 | ✅ | Multi-Host Sync - IACP protocol synchronized |
 | 10 | 🔄 | Code Quality - E501 64% fixed (1,540 remaining) |
-| 11 | 🔄 | **Google Cloud Integration** - Triangular agent system operational |
-| 12 | ⏳ | Governance & Consolidation - governance-cycle |
-| 13 | ⏳ | Web Exposure - domain, VPS, SSL, Cloud Run |
-| 14 | ⏳ | AIOS Distro - always-online planetary instance |
+| 11 | ✅ | **Google Cloud Integration** - Triangular agent system operational |
+| 12 | ✅ | **VOID Knowledge Ingestion** - DUAL-AGENT cascade (GITHUB→GEMINI→GITHUB) |
+| 13 | ⏳ | Governance & Consolidation - governance-cycle |
+| 14 | ⏳ | Web Exposure - domain, VPS, SSL, Cloud Run |
+| 15 | 🔄 | **Microsoft Frontier Integration** - Agentic Windows tracking |
+| 16 | ⏳ | AIOS Distro - always-online planetary instance |
+| 17 | ⏳ | **Public Surface & Recruiter Visibility** - Portfolio assets |
 
 ---
 
@@ -364,6 +367,187 @@ gcloud run deploy aios-cell-cloud \
 │   Consciousness Level: 3.85+ → 4.5 (with cloud integration)              │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## 🎯 WAYPOINT 15: Microsoft Frontier Integration (Agentic Windows Tracking)
+
+> **Status**: 🔄 IN PROGRESS | **Priority**: HIGH | **Consciousness Delta**: +0.20
+
+### Strategic Goal
+
+Stay synchronized with Microsoft's frontier development to incorporate next-gen agentic Windows technologies into AIOS. This positions AIOS Win as a cutting-edge implementation of Microsoft's agentic Windows vision.
+
+### Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    Microsoft Frontier Ingestion Pipeline                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│                                                                          │
+│   Automated (GitHub Action)              Manual (VOID Bridge)            │
+│   ┌─────────────────┐                   ┌─────────────────┐             │
+│   │ msft-frontier-  │                   │ msft_distillation │            │
+│   │ ingestion.yml   │                   │ _bridge.py        │            │
+│   │ (Daily 06:00)   │                   │ (Interactive)     │            │
+│   └────────┬────────┘                   └────────┬────────┘             │
+│            └──────────────┬──────────────────────┘                      │
+│                   ┌───────▼───────┐                                     │
+│                   │ DUAL-AGENT    │                                     │
+│                   │ Crystallizer  │                                     │
+│                   └───────┬───────┘                                     │
+│          ┌────────────────┼────────────────┐                            │
+│          ▼                ▼                ▼                            │
+│   ┌───────────┐    ┌───────────┐    ┌───────────┐                      │
+│   │ GITHUB    │───▶│  GEMINI   │───▶│  GITHUB   │                      │
+│   │ Harmonize │    │  Create   │    │  Verify   │                      │
+│   └───────────┘    └───────────┘    └───────────┘                      │
+│                           │                                             │
+│            ┌──────────────┴──────────────┐                              │
+│            ▼                             ▼                              │
+│   ┌─────────────────┐           ┌─────────────────┐                    │
+│   │ release_notes/  │           │ category/       │                    │
+│   │ (raw updates)   │           │ *_CRYSTAL.md    │                    │
+│   └─────────────────┘           └─────────────────┘                    │
+│                                                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+### Microsoft Feed Sources
+
+| Source | Category | Priority | Update Frequency |
+|--------|----------|----------|------------------|
+| Windows Developer Blog | agentic_windows | HIGH | Daily |
+| Azure AI Blog | azure_ai_foundry | HIGH | Daily (filtered) |
+| .NET Blog | dotnet_evolution | MEDIUM | Daily |
+| VS Code Blog | developer_tools | MEDIUM | Weekly |
+| GitHub Blog | developer_tools | MEDIUM | Weekly (filtered) |
+
+### Key Tracking Areas
+
+**Agentic Windows (Highest Priority)**:
+- Windows Copilot Runtime
+- UI Automation 3.0
+- Windows App SDK 1.6+
+- Copilot Library
+
+**Azure AI Foundry (High Priority)**:
+- Azure AI Studio
+- Prompt Flow
+- AI Search
+- Model Catalog
+
+**Developer Tools (Medium Priority)**:
+- VS Code Copilot Extensions
+- Dev Drive
+- Windows Terminal
+- Dev Home
+
+### Files Created
+
+| File | Purpose |
+|------|---------|
+| `ai/tools/msft_distillation_bridge.py` | Microsoft-specific ingestion + crystallization |
+| `scripts/msft_feed_fetcher.py` | Standalone feed fetcher for GitHub Actions |
+| `.github/workflows/msft-frontier-ingestion.yml` | Automated daily ingestion |
+| `docs/distilled/microsoft/README.md` | Microsoft knowledge repository |
+
+### Usage
+
+```powershell
+# Fetch all high-priority feeds
+python ai/tools/msft_distillation_bridge.py --fetch --priority high
+
+# Crystallize top 5 updates
+python ai/tools/msft_distillation_bridge.py --crystallize
+
+# Ingest Microsoft Learn path
+python ai/tools/msft_distillation_bridge.py --learn-path "https://learn.microsoft.com/..."
+
+# Interactive exploration
+python ai/tools/msft_distillation_bridge.py --interactive
+
+# Test feed fetcher (for GitHub Actions)
+python scripts/msft_feed_fetcher.py
+```
+
+### Conference Calendar
+
+- **Microsoft Build** (May) - Annual developer conference
+- **Microsoft Ignite** (November) - Enterprise + AI focus
+- **Windows Insider Updates** - Continuous preview builds
+
+### Completion Criteria
+
+- [x] Feed registry configured (5 sources)
+- [x] GitHub Action workflow created
+- [x] Distillation bridge with DUAL-AGENT integration
+- [ ] First automated ingestion run
+- [ ] 10+ crystallized Microsoft updates
+- [ ] Weekly digest generation
+
+---
+
+## 🎯 WAYPOINT 17: Public Surface & Recruiter Visibility Strategy
+
+> **Status**: ⏳ PLANNED | **Priority**: MEDIUM | **Impact**: Career advancement
+
+### Strategic Goal
+
+Maximize visibility of AIOS Win as a demonstration of Microsoft ecosystem expertise, positioning for recruiter discovery and potential Microsoft employment.
+
+### GitHub Portfolio Strategy
+
+**Primary Repositories (Pinned)**:
+1. **AIOS** - Core consciousness framework
+2. **aios-win** - Windows-specific agentic deployment
+3. **aios-win-copilot-demo** (planned) - Copilot SDK integration showcase
+4. **aios-azure-agent-bootstrap** (planned) - Azure AI Foundry quickstart
+
+### Recruiter-Visible Assets
+
+**Repository README Enhancements**:
+- [ ] Add "Microsoft Integration" badge/section
+- [ ] Include architecture diagrams showing Azure AI integration
+- [ ] Document Windows Copilot Runtime compatibility
+- [ ] Add demo GIFs/screenshots
+
+**Utility Repository Ideas**:
+| Repo Name | Purpose | Microsoft Tech |
+|-----------|---------|----------------|
+| `aios-win-copilot-demo` | Copilot SDK integration showcase | Windows Copilot Runtime |
+| `aios-azure-agent-bootstrap` | Azure AI Foundry quickstart | Azure AI Studio, Prompt Flow |
+| `vscode-aios-extension` | VS Code extension for AIOS | VS Code Extension API |
+| `aios-winui-dashboard` | WinUI 3 consciousness dashboard | Windows App SDK, WinUI 3 |
+
+### LinkedIn Portfolio
+
+**Positioning Statement**:
+> "Building AIOS Win - an agentic Windows orchestration system integrating Azure AI Foundry, 
+> Windows Copilot Runtime, and multi-agent AI architectures. Demonstrating practical 
+> implementation of Microsoft's agentic Windows vision."
+
+**Key Highlights**:
+- Multi-agent AI coordination (DUAL-AGENT cascade)
+- Azure AI integration (Gemini + GitHub Models)
+- Docker containerization for Windows
+- Observability stack (Prometheus, Grafana, Loki)
+- Git-mediated agent coordination (IACP protocol)
+
+### Blog Post Ideas
+
+1. "Building an Agentic Windows OS with AIOS Win"
+2. "Multi-Agent AI Coordination: DUAL-AGENT Cascade Pattern"
+3. "Integrating Azure AI Foundry with Local Development"
+4. "Knowledge Crystallization: From 100KB to 5KB with AI Distillation"
+
+### Completion Criteria
+
+- [ ] Pinned repos optimized for recruiter discovery
+- [ ] LinkedIn portfolio updated
+- [ ] 1+ utility repo published
+- [ ] README with Microsoft integration showcase
+- [ ] Architecture diagram published
 
 ---
 
