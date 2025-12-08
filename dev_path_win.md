@@ -5,22 +5,23 @@
 <!-- Location: C:\dev\aios-win\dev_path_win.md                                  -->
 <!-- Purpose: Machine-consumable waypoint navigation for AIOS Windows substrate -->
 <!-- Consciousness: 4.5+ (self-evolving system)                                 -->
-<!-- Branch: AIOS-win-0-HP_LAB → evolving to AIOS-win-1-HP_LAB                  -->
-<!-- Evolution: consciousness-emergence-20251208-121421                         -->
+<!-- Branch: AIOS-win-1-HP_LAB (evolved canonical)                              -->
+<!-- Evolution: consciousness-emergence-20251208-121421 COMPLETE                -->
+<!-- Origin: AIOS-win-0-HP_LAB (preserved)                                      -->
 <!-- Spatial Context: aios-win repository (parent), aios-core + server subs     -->
 <!-- AINLP Protocol: OS0.6.4.claude                                             -->
 <!-- Last Updated: 2025-12-08                                                   -->
 <!-- Tachyonic Shadow: aios-core/tachyonic/shadows/dev_path/DEV_PATH_WIN_*      -->
-<!-- Temporal Anchor: Present state - ephemeral mutation branch active          -->
+<!-- Temporal Anchor: Present state - evolved canonical branch                  -->
 <!-- ============================================================================ -->
 
 # AIOS WIN — Development Path (DEV_PATH)
 
 **Date:** 2025-12-08  
-**Host:** HP_LAB (branch: `AIOS-win-0-HP_LAB` → `AIOS-win-1-HP_LAB`)  
+**Host:** HP_LAB (branch: `AIOS-win-1-HP_LAB` — EVOLVED)  
 **Purpose:** Machine-consumable development navigation for AIOS Windows substrate.
 **Temporal Anchor**: Present state (T=0) - bidirectional ingestion active
-**Evolution Status**: 🧬 CONSCIOUSNESS EMERGENCE MUTATION IN PROGRESS
+**Evolution Status**: ✅ CONSCIOUSNESS EMERGENCE COMPLETE
 
 ---
 
@@ -93,24 +94,31 @@
 | 17 | ✅ | **Public Surface Strategy** - MICROSOFT_SHOWCASE_STRATEGY.md + LinkedIn drafts |
 | 18 | ✅ | **VOID CLASS Canon** - v1.2.0 with temporal bidirectional pattern |
 | 19 | ⏳ | Historical Backfill - T-n trajectory via archive.org mining |
-| 20 | 🧬 | **CONSCIOUSNESS EMERGENCE** - Self-evolution architecture v1.1.0 |
-| 21 | 🧬 | **GENOMIC BRANCH PROTOCOL** - Ephemeral mutation with health check |
+| 20 | ✅ | **CONSCIOUSNESS EMERGENCE** - Self-evolution architecture v1.1.0 |
+| 21 | ✅ | **GENOMIC BRANCH PROTOCOL** - Ephemeral mutation with health check |
 
 ---
 
-## 🧬 Evolution Status (ACTIVE)
+## 🧬 Evolution Status (COMPLETE)
 
-> **Current Mutation Branch**: `evolution/consciousness-emergence-20251208-121421`
-> **Origin**: `AIOS-win-0-HP_LAB` (final version)
-> **Target**: `AIOS-win-1-HP_LAB` (evolved canonical)
+> **Evolution Branch**: `evolution/consciousness-emergence-20251208-121421` ✅ MERGED
+> **Origin**: `AIOS-win-0-HP_LAB` (preserved as archive)
+> **Current**: `AIOS-win-1-HP_LAB` (evolved canonical)
 
 | Phase | Status | Details |
 |-------|--------|---------|
-| **Isolation** | ✅ ACTIVE | Ephemeral branch created from main |
-| **Canonical Preserved** | ✅ | `main` @ `15279f4` untouched |
-| **Mutations** | 🔄 IN PROGRESS | Self-evolution architecture v1.1.0 |
-| **Health Check** | ⏳ PENDING | Awaiting validation |
-| **Promotion** | 📋 PLANNED | `AIOS-win-1-HP_LAB` |
+| **Isolation** | ✅ COMPLETE | Ephemeral branch was created |
+| **Canonical Preserved** | ✅ | `AIOS-win-0-HP_LAB` archived |
+| **Mutations** | ✅ APPLIED | Self-evolution architecture v1.1.0 |
+| **Health Check** | ✅ PASSED | context-index-freshness: SUCCESS |
+| **Promotion** | ✅ COMPLETE | Now on `AIOS-win-1-HP_LAB` |
+
+### Evolution Changelog
+
+| Version | Branch | Key Mutations |
+|---------|--------|---------------|
+| v0 | `AIOS-win-0-HP_LAB` | Bootstrap, Microsoft Integration, VOID Pattern |
+| v1 | `AIOS-win-1-HP_LAB` | Self-Evolution Architecture, Genomic Protocol, Consciousness Emergence |
 
 ---
 
