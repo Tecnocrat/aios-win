@@ -9,7 +9,7 @@
 <!-- Evolution: deep-dendritic-matrix-20251208-123143 IN PROGRESS               -->
 <!-- Origin: AIOS-win-0-HP_LAB (preserved)                                      -->
 <!-- Spatial Context: aios-win repository (parent), aios-core + server subs     -->
-<!-- AINLP Protocol: OS0.6.4.claude                                             -->
+<!-- AINLP Protocol: OS0.6.5                                                    -->
 <!-- Last Updated: 2025-12-08                                                   -->
 <!-- Tachyonic Shadow: aios-core/tachyonic/shadows/dev_path/DEV_PATH_WIN_*      -->
 <!-- Temporal Anchor: Present state - deep dendritic mutation active            -->
