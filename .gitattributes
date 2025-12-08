@@ -1,0 +1,52 @@
+# AIOS Sync-Protected Namespace (SPN) Configuration
+# ================================================
+# Files marked with merge=ours preserve LOCAL version during merges from main.
+# This enables multi-host development without overwriting host-specific state.
+#
+# Pattern: SHARED knowledge flows through main → hosts
+#          PROTECTED state stays local to each host
+#
+# See: docs/AINLP/evolution/IACP-PROTOCOL.md (Section: Namespace Architecture)
+
+# ═══════════════════════════════════════════════════════════════════════════
+# SYNC-PROTECTED FILES (Host-specific state)
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Development roadmap - each host tracks its own progress
+dev_path_win.md merge=ours
+
+# Host configuration - IP addresses, cell assignments, local paths
+config/hosts.yaml merge=ours
+
+# ═══════════════════════════════════════════════════════════════════════════
+# AI-MEDIATED MERGE FILES (Future: use aios-harmonize driver)
+# ═══════════════════════════════════════════════════════════════════════════
+# Uncomment when aios_merge_harmonize.py is ready:
+# dev_path_win.md merge=aios-harmonize
+
+# ═══════════════════════════════════════════════════════════════════════════
+# STANDARD GIT ATTRIBUTES
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Text file normalization
+* text=auto
+
+# Binary files
+*.png binary
+*.jpg binary
+*.ico binary
+*.dll binary
+*.exe binary
+*.pdb binary
+
+# PowerShell scripts (preserve Windows line endings)
+*.ps1 text eol=crlf
+
+# Shell scripts (preserve Unix line endings)
+*.sh text eol=lf
+
+# Python files
+*.py text diff=python
+
+# Markdown with custom diff
+*.md text diff=markdown
