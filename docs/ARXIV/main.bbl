@@ -1,0 +1,177 @@
+\begin{thebibliography}{10}
+
+\bibitem{ackerman2025metacognition}
+Christopher Ackerman.
+\newblock Evidence for limited metacognition in llms.
+\newblock {\em arXiv preprint}, 2025.
+
+\bibitem{alkire2008consciousness}
+Michael~T Alkire, Anthony~G Hudetz, and Giulio Tononi.
+\newblock Consciousness and anesthesia.
+\newblock {\em Science}, 322(5903):876--880, 2008.
+
+\bibitem{sentience_xrisk}
+{Anonymous EA Forum Contributor}.
+\newblock Not understanding sentience is a significant x-risk.
+\newblock \url{https://forum.effectivealtruism.org/posts/ddDdbEAJd4duWdgiJ/not-understanding-sentience-is-a-significant-x-risk}, 2024.
+\newblock EA Forum post.
+
+\bibitem{anthropic2025systemcard}
+{Anthropic}.
+\newblock Claude 4 system card.
+\newblock \url{https://www-cdn.anthropic.com/4263b940cabb546aa0e3283f35b686f4f3b2ff47.pdf}, 2025.
+\newblock Accessed 2025-08-27.
+
+\bibitem{baars1988}
+Bernard Baars.
+\newblock A cognitive theory of consciousness.
+\newblock In {\em A Cognitive Theory of Consciousness}. Cambridge University Press, 1988.
+
+\bibitem{betley2025tellme}
+Jan Betley, Xuchan Bao, Martín Soto, Anna Sztyber-Betley, James Chua, and Owain Evans.
+\newblock Tell me about yourself: Llms are aware of their learned behaviors.
+\newblock {\em arXiv preprint}, 2025.
+
+\bibitem{bubeck2023sparks}
+Sébastien Bubeck, Varun Chandrasekaran, Ronen Eldan, Johannes Gehrke, Eric Horvitz, Ece Kamar, Yin~Tat Lee, Yuanzhi Li, Scott Lundberg, Harsha Nori, Hamid Palangi, Marco~Tulio Ribeiro, and Yi~Zhang.
+\newblock Sparks of artificial general intelligence: Early experiments with gpt-4.
+\newblock {\em arXiv preprint}, 2023.
+
+\bibitem{butlin2023consciousness}
+Patrick Butlin, Robert Long, Yoshua Bengio, Stanislas Dehaene, et~al.
+\newblock Consciousness in artificial intelligence: Insights from the science of consciousness.
+\newblock {\em arXiv preprint arXiv:2308.08708}, 2023.
+
+\bibitem{casali2013pci}
+Adenauer~G Casali, Olivia Gosseries, et~al.
+\newblock A theoretically based index of consciousness independent of sensory processing and behavior.
+\newblock {\em Science Translational Medicine}, 5(198):198ra105, 2013.
+
+\bibitem{caviola2025digitalminds}
+Lucius Caviola and Bradford Saad.
+\newblock Futures with digital minds: Expert forecasts in 2025.
+\newblock {\em arXiv preprint}, 2025.
+
+\bibitem{chen2024imitation}
+X.~Chen et~al.
+\newblock From imitation to introspection: Probing self-consciousness in language models.
+\newblock {\em arXiv preprint arXiv:2410.18819}, 2024.
+
+\bibitem{clark2013}
+Andy Clark.
+\newblock Whatever next? predictive brains, situated agents, and the future of cognitive science.
+\newblock {\em Behavioral and Brain Sciences}, 36(3):181--204, 2013.
+
+\bibitem{dehaene2017}
+Stanislas Dehaene, Hakwan Lau, and Sid Kouider.
+\newblock What is consciousness, and could machines have it?
+\newblock {\em Science}, 358(6362):486--492, 2017.
+
+\bibitem{dehaene2001}
+Stanislas Dehaene and Lionel Naccache.
+\newblock Towards a cognitive neuroscience of consciousness: basic evidence and a workspace framework.
+\newblock {\em Cognition}, 79(1-2):1--37, 2001.
+
+\bibitem{friston2010}
+Karl Friston.
+\newblock The free-energy principle: a unified brain theory?
+\newblock {\em Nature Reviews Neuroscience}, 11(2):127--138, 2010.
+
+\bibitem{graziano2017}
+Michael~SA Graziano.
+\newblock The attention schema theory: A mechanistic account of subjective awareness.
+\newblock {\em Frontiers in Psychology}, 8:1714, 2017.
+
+\bibitem{hofstadter1979geb}
+Douglas~R. Hofstadter.
+\newblock {\em Gödel, Escher, Bach: An Eternal Golden Braid}.
+\newblock Basic Books, 1979.
+
+\bibitem{keeling2024tradeoffs}
+Geoff Keeling, Winnie Street, Martyna Stachaczyk, Daria Zakharova, Iulia Comsa, Anastasiya Sakovych, Isabella Logothetis, Zejia Zhang, Blaise Agüera~y Arcas, and Jonathan Birch.
+\newblock Can llms make trade-offs involving stipulated pain and pleasure states?
+\newblock {\em arXiv preprint}, 2024.
+
+\bibitem{lamme2006recurrent}
+Victor~A.F. Lamme.
+\newblock Towards a true neural stance on consciousness.
+\newblock {\em Trends in Cognitive Sciences}, 10(11):494--501, 2006.
+
+\bibitem{lau2011}
+Hakwan Lau and David Rosenthal.
+\newblock Empirical support for higher-order theories of conscious awareness.
+\newblock {\em Trends in Cognitive Sciences}, 15(8):365--373, 2011.
+
+\bibitem{li2024awareness}
+Y.~Li et~al.
+\newblock Measuring model self-awareness: Benchmarks for introspective and social awareness in llms.
+\newblock {\em arXiv preprint}, 2024.
+
+\bibitem{lin2022truthfulqa}
+Stephanie Lin, Jacob Hilton, and Owain Evans.
+\newblock Truthfulqa: Measuring how models mimic human falsehoods.
+\newblock In {\em Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)}, pages 3214--3252, 2022.
+
+\bibitem{lindsey2025emergent}
+Jack Lindsey.
+\newblock Emergent introspective awareness in large language models.
+\newblock {\em Transformer Circuits Thread}, 2025.
+
+\bibitem{marr1982vision}
+David Marr.
+\newblock {\em Vision: A Computational Investigation into the Human Representation and Processing of Visual Information}.
+\newblock MIT Press, 1982.
+
+\bibitem{mcgrath2024mappinglatent}
+Thomas McGrath, Daniel Balsam, Liv Gorton, Murat Cubuktepe, Myra Deng, Nam Nguyen, Akshaj Jain, Thariq Shihipar, and Eric Ho.
+\newblock Mapping the latent space of llama 3.3 70b.
+\newblock Goodfire Research, December 23, 2024, 2024.
+\newblock Published via Goodfire AI website; sparse autoencoders applied to Llama latent space.
+
+\bibitem{justismills2025awakening}
+Justis Mills.
+\newblock So you think you’ve awoken chatgpt.
+\newblock \url{https://www.lesswrong.com/posts/2pkNCvBtK6G6FKoNn/so-you-think-you-ve-awoken-chatgpt}, 2025.
+\newblock LessWrong post, July 10, 2025.
+
+\bibitem{nagel1974bat}
+Thomas Nagel.
+\newblock What is it like to be a bat?
+\newblock {\em The Philosophical Review}, 83(4):435--450, 1974.
+
+\bibitem{oizumi2014}
+Masafumi Oizumi, Larissa Albantakis, and Giulio Tononi.
+\newblock From the phenomenology to the mechanisms of consciousness: integrated information theory 3.0.
+\newblock {\em PLoS Computational Biology}, 10(5):e1003588, 2014.
+
+\bibitem{perez2023discovering}
+Ethan Perez, Sam Ringer, Kamilė Lukošiūtė, Karina Nguyen, Edwin Chen, Scott Heiner, Craig Pettit, Catherine Olsson, Sandipan Kundu, Saurav Kadavath, Andy Jones, Anna Chen, Ben Mann, Brian Israel, Bryan Seethor, Cameron McKinnon, Christopher Olah, Da~Yan, Daniela Amodei, Dario Amodei, Dawn Drain, Dustin Li, Eli Tran-Johnson, Guro Khundadze, Jackson Kernion, James Landis, Jamie Kerr, Jared Mueller, Jeeyoon Hyun, Joshua Landau, Kamal Ndousse, Landon Goldberg, Liane Lovitt, Martin Lucas, Michael Sellitto, Miranda Zhang, Neerav Kingsland, Nelson Elhage, Nicholas Joseph, Noemí Mercado, Nova DasSarma, Oliver Rausch, Robin Larson, Sam McCandlish, Scott Johnston, Shauna Kravec, Sheer~El Showk, Tamera Lanham, Timothy Telleen-Lawton, Tom Brown, Tom Henighan, Tristan Hume, Yuntao Bai, Zac Hatfield-Dodds, Jack Clark, Samuel~R. Bowman, Amanda Askell, Roger Grosse, Danny Hernandez, Deep Ganguli, Evan Hubinger, Nicholas Schiefer, and Jared Kaplan.
+\newblock Discovering language model behaviors with model-written evaluations.
+\newblock In {\em Findings of the Association for Computational Linguistics: ACL 2023}, pages 13387--13434. Association for Computational Linguistics, 2023.
+
+\bibitem{plunkett2025selfinterp}
+Dillon Plunkett, Adam Morris, Keerthi Reddy, and Jorge Morales.
+\newblock Self-interpretability: Llms can describe complex internal processes that drive their decisions, and improve with training.
+\newblock {\em arXiv preprint}, 2025.
+
+\bibitem{rosenthal2005}
+David~M. Rosenthal.
+\newblock {\em Consciousness and Mind}.
+\newblock Oxford University Press, 2005.
+
+\bibitem{tononi2008}
+Giulio Tononi.
+\newblock Consciousness as integrated information: a provisional manifesto.
+\newblock {\em The Biological Bulletin}, 215(3):216--242, 2008.
+
+\bibitem{wang2025sensory}
+Sophie~L. Wang, Phillip Isola, and Brian Cheung.
+\newblock Words that make language models perceive.
+\newblock {\em arXiv preprint arXiv:2510.02425}, 2025.
+
+\bibitem{wei2022chain}
+Jason Wei, Xuezhi Wang, Dale Schuurmans, Maarten Bosma, Brian Ichter, Fei Xia, Ed~Chi, Quoc Le, and Denny Zhou.
+\newblock Chain-of-thought prompting elicits reasoning in large language models.
+\newblock {\em Advances in Neural Information Processing Systems}, 35:24824--24837, 2022.
+
+\end{thebibliography}
