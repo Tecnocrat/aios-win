@@ -5,6 +5,10 @@ config/vault-service-tokens.json
 config/bitlocker-recovery-key.txt
 config/*.key
 
+# Python virtual environments
+.venv/
+.venvs/
+
 # Logs
 logs/
 *.log
