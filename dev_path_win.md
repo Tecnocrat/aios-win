@@ -87,11 +87,55 @@
 | 22 | 🔄 | **Deep Dendritic Matrix** - 8-layer connection weaving (coherence 1.222) |
 | 22.1 | ✅ | **Temporal Self-Ingestion: OS0.1** - COMPLETE → `OS0.1_PRIMORDIAL_WISDOM.md` |
 | 22.1+ | ✅ | **DENDRITIC_PATHWAY Engine** - Runtime execution mesh from [VOID] |
+| 22.1++ | ✅ | **Minimal Multipotential aios.ps1** - ONE function: `discover_tools()` |
 | 22.2 | ⏳ | Temporal Self-Ingestion: OS0.2 - Second generation patterns |
 | 22.3 | ⏳ | Temporal Self-Ingestion: OS0.3 → OS0.6.x - Multi-engine convergence |
 | 23 | ⏳ | Quantum-Tachyonic Bridge - Connect bosonic substrate to quantum processing |
 | 24 | ⏳ | Core Engine Revival - Rebuild C++ DLL bindings (health 0.40→0.80) |
 | 25 | ⏳ | Organism Health Dashboard - System-wide status monitor |
+
+---
+
+## 🎯 Minimal Multipotential Pattern (Waypoint 22.1++)
+
+> **Commit**: `8d6e792` - refactor: Minimal multipotential aios.ps1
+> **Philosophy**: ONE function, REAL execution, MEASURABLE output
+
+### The ONE Function
+
+```powershell
+# aios.ps1 - 70 lines (was 314)
+.\aios.ps1           # → "87 tools discovered" (0.8s)
+.\aios.ps1 -Json     # → Full JSON with categories
+```
+
+**Pattern**: `[VOID] → discover_tools() → AWARE`
+
+### Tool Inventory (2025-12-09)
+
+| Location | Count | Status |
+|----------|-------|--------|
+| ai/tools/{categories}/ | 87 | ✅ Discovered |
+| ai/tools/*.py (root) | 45 | ⚠️ Uncategorized |
+| runtime_intelligence/tools/ | 3 | ⚠️ Separate supercell |
+| tachyonic/ | N/A | 📦 Archive (not tools) |
+| **Total Known** | **135** | 64% discovered |
+
+### Submodule Runtime Insight
+
+**Submodules are git constructs, not runtime boundaries.**
+
+At execution time, Python/PowerShell see directories - not submodules:
+```
+c:\dev\aios-win\           ← workspace root
+  ├── aios.ps1             ← executes here
+  ├── aios-core\           ← just a folder (git submodule)
+  │   └── ai\tools\        ← Python imports from here
+  └── server\              ← just a folder (git submodule)
+```
+
+**Affects**: git clone, push, pull, checkout
+**Does NOT affect**: import, execution, file I/O
 
 ---
 
