@@ -2,6 +2,15 @@
 
 ## 🛡️ Architecture Protection Strategy
 
+### Branch Linking Pattern
+```
+Parent: AIOS-win-1-HP_LAB
+    ↓
+All Submodules: win-1 branch
+    ↓
+Production: main (protected, PR required)
+```
+
 ### Recovery Checkpoint
 - **Branch**: `checkpoint/pre-submodule-harmonization_20251209_233923`
 - **Created**: 2025-12-09T23:39:23
